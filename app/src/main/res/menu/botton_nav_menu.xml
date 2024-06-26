@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_nav"
+        android:icon="@drawable/home"
+        android:title="Home"
+        android:checked="true"
+        android:color="@color/Gold_Dark"/>
+
+    <item
+        android:id="@+id/favorite_nav"
+        android:icon="@drawable/heart"
+        android:title="Favorite"
+        android:color="@color/Gold_Dark"/>
+
+    <item
+        android:id="@+id/category_nav"
+        android:icon="@drawable/category"
+        android:title="Categories"
+        android:color="@color/Gold_Dark"/>
+
+    <item
+        android:id="@+id/profile_nav"
+        android:icon="@drawable/user"
+        android:title="Profile"
+        android:color="@color/Gold_Dark"/>
+</menu>

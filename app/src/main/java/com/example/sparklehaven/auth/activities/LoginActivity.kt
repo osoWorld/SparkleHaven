@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sparklehaven.R
+import com.example.sparklehaven.dashboard.DashboardActivity
 import com.example.sparklehaven.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -24,6 +25,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.createAccountBtn.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.loginBtn.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
     }

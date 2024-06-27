@@ -53,4 +53,16 @@ dependencies {
 
     // Bubble Navigation Bar
     implementation  (libs.bubbletabbar)
+
+    // Circular ImageView
+    implementation (libs.circleimageview)
+
+    // Auto Image Slider
+    implementation (libs.imageslideshow)
+    implementation (libs.auto.image.slider)
+
+    // Glide
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
+
 }

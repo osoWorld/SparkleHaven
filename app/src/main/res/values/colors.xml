@@ -11,5 +11,7 @@
     <color name="Black_Pure">#FF000000</color>
     <color name="White_Pure">#FFFFFFFF</color>
     <color name="Blue_Facebook">#1877F1</color>
+    <color name="Hint_Color">#C4C4C4</color>
+
 
 </resources>

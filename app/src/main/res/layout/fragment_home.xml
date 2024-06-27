@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".dashboard.navigation_fragments.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                app:cardCornerRadius="45dp"
+                app:cardBackgroundColor="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/splash_img"
+                    android:scaleType="fitXY"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center|start"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lora_medium"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Muhammad Suffian"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lora_medium"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:cardBackgroundColor="@color/Black_Pure"
+                    app:cardCornerRadius="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="6dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="9"
+                        android:textStyle="bold"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:padding="1dp"
+                        android:layout_marginBottom="4dp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/shopping_bag"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/searchbar_background"
+                android:padding="10dp"
+                android:hint="Search"
+                android:fontFamily="@font/lora_medium"
+                android:drawableStart="@drawable/search_normal_32"
+                android:drawablePadding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Special Offers"
+                android:fontFamily="@font/lora_medium"
+                android:textSize="22sp"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="24dp"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.codebyashish.autoimageslider.AutoImageSlider
+                    android:id="@+id/autoImageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:ais_auto_sliding="true"
+                    app:ais_indicator_align="@string/center"
+                    app:ais_time_interval="1000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

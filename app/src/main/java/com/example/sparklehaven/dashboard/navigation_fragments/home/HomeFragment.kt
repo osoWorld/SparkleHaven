@@ -1,28 +1,38 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.codebyashish.autoimageslider.Enums.ImageActionTypes
-import com.codebyashish.autoimageslider.Enums.ImageScaleType
+import android.widget.LinearLayout
+import androidx.appcompat.app.ActionBar.LayoutParams
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.codebyashish.autoimageslider.Interfaces.ItemsListener
-import com.codebyashish.autoimageslider.Models.ImageSlidesModel
-import com.denzcoskun.imageslider.interfaces.ItemClickListener
-import com.denzcoskun.imageslider.models.SlideModel
 import com.example.sparklehaven.R
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ImageSliderAdapter
 import com.example.sparklehaven.databinding.FragmentHomeBinding
+import kotlin.math.abs
 
-class HomeFragment : Fragment(), ItemsListener {
+class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private var listener : ItemsListener? = null
+    private lateinit var handler: Handler
+    private lateinit var imageList: ArrayList<Int>
+    private lateinit var adapter: ImageSliderAdapter
+
+    private val runnable = Runnable {
+        binding.viewPagerImageSlider.currentItem = binding.viewPagerImageSlider.currentItem + 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -31,42 +41,112 @@ class HomeFragment : Fragment(), ItemsListener {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        // initialization of the listener
-        listener = this
+        initImageSlider()
+        setUpTransformer()
+        setUpIndicators()
+        setCurrentIndicator(0)
 
-        // create an imageArrayList which extend ImageSlideModel class
-        val autoImageList : ArrayList<ImageSlidesModel> = ArrayList()
-
-
-        autoImageList.add(ImageSlidesModel(R.drawable.black_and_white_silver_earrings))
-        autoImageList.add(ImageSlidesModel(R.drawable.black_diamond_ring_limited_tag))
-        autoImageList.add(ImageSlidesModel(R.drawable.blue_gray_modern_rings))
-
-        autoImageList.add(ImageSlidesModel(R.drawable.brown_and_white_simple_jewelry_dd))
-        autoImageList.add(ImageSlidesModel(R.drawable.golden_wedding_rings))
-
-        // set the added images inside the AutoImageSlider
-        binding.autoImageSlider.setImageList(autoImageList, ImageScaleType.FIT)
-
-        // set any default animation or custom animation (setSlideAnimation(ImageAnimationTypes.ZOOM_IN))
-        binding.autoImageSlider.setDefaultAnimation()
-
-        // handle click event on item click
-        binding.autoImageSlider.onItemClickListener(listener)
+        binding.viewPagerImageSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                // Update the indicator using modulo operation to handle infinite loop correctly
+                setCurrentIndicator(position % imageList.size)
+                handler.removeCallbacks(runnable)
+                handler.postDelayed(runnable, 2000)
+            }
+        })
 
         return binding.root
     }
 
-    override fun onItemChanged(position: Int) {
-        TODO("Not yet implemented")
+    private fun initImageSlider() {
+        handler = Handler(Looper.myLooper()!!)
+        imageList = ArrayList()
+        imageList.add(R.drawable.black_and_white_silver_earrings)
+        imageList.add(R.drawable.black_diamond_ring_limited_tag)
+        imageList.add(R.drawable.blue_gray_modern_rings)
+        imageList.add(R.drawable.golden_wedding_rings)
+
+        adapter = ImageSliderAdapter(imageList, binding.viewPagerImageSlider)
+        binding.viewPagerImageSlider.adapter = adapter
+
+        binding.viewPagerImageSlider.apply {
+            offscreenPageLimit = 2
+            clipToPadding = false
+            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        }
+
+        // Set initial item to a multiple of imageList.size to handle looping
+        binding.viewPagerImageSlider.setCurrentItem(imageList.size * 1000, false)
     }
 
-    override fun onItemClicked(position: Int) {
-        TODO("Not yet implemented")
+    private fun setUpTransformer() {
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(40))
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.15f
+        }
+        binding.viewPagerImageSlider.setPageTransformer(transformer)
     }
 
-    override fun onTouched(actionTypes: ImageActionTypes?, position: Int) {
-        TODO("Not yet implemented")
+    private fun setUpIndicators() {
+        val indicators = arrayOfNulls<ImageView>(imageList.size)
+        val layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(8, 0, 8, 0)
+
+        for (i in indicators.indices) {
+            indicators[i] = ImageView(context)
+            indicators[i]?.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.indicator_inactive
+                )
+            )
+            indicators[i]?.layoutParams = layoutParams
+            binding.indicatorsLayout.addView(indicators[i])
+        }
     }
 
+    private fun setCurrentIndicator(index: Int) {
+        val childCount = binding.indicatorsLayout.childCount
+        for (i in 0 until childCount) {
+            val imageView = binding.indicatorsLayout.getChildAt(i) as ImageView
+            if (i == index) {
+                imageView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.indicator_active
+                    )
+                )
+            } else {
+                imageView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.indicator_inactive
+                    )
+                )
+            }
+        }
+    }
+
+    private fun refreshIndicator() {
+        // Refreshing the indicator on resume using modulo operation
+        val currentItem = binding.viewPagerImageSlider.currentItem % imageList.size
+        setCurrentIndicator(currentItem)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        handler.postDelayed(runnable, 2000)
+        refreshIndicator() // Refreshing the indicator on resume
+    }
+
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacks(runnable)
+    }
 }

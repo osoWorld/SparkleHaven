@@ -9,15 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.appcompat.app.ActionBar.LayoutParams
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.codebyashish.autoimageslider.Interfaces.ItemsListener
 import com.example.sparklehaven.R
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.HomeCategoryAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ImageSliderAdapter
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ProductItemsAdapter
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.HomeCategoryModel
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
 import com.example.sparklehaven.databinding.FragmentHomeBinding
 import kotlin.math.abs
 
@@ -26,9 +31,14 @@ class HomeFragment : Fragment() {
     private lateinit var handler: Handler
     private lateinit var imageList: ArrayList<Int>
     private lateinit var adapter: ImageSliderAdapter
+    private lateinit var categoryAdapter: HomeCategoryAdapter
+    private lateinit var productItemAdapter: ProductItemsAdapter
+
+    // Initialize ViewModel using viewModels() delegate
+    private val viewModel: HomeViewModel by viewModels()
 
     private val runnable = Runnable {
-        binding.viewPagerImageSlider.currentItem = binding.viewPagerImageSlider.currentItem + 1
+        binding.viewPagerImageSlider.currentItem += 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,10 +51,20 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
+        // ImageSlider
         initImageSlider()
         setUpTransformer()
+
+        // ImageSlider Indicators
         setUpIndicators()
         setCurrentIndicator(0)
+
+        // Categories RecyclerView
+        categories()
+
+        // Items According to categories RecyclerView
+        productItems()
+
 
         binding.viewPagerImageSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -137,6 +157,27 @@ class HomeFragment : Fragment() {
         // Refreshing the indicator on resume using modulo operation
         val currentItem = binding.viewPagerImageSlider.currentItem % imageList.size
         setCurrentIndicator(currentItem)
+    }
+
+    private fun categories () {
+        categoryAdapter = HomeCategoryAdapter(ArrayList()) { category ->
+            viewModel.filterProductsByCategories(category)
+        }
+        binding.categoryHomeRecView.adapter = categoryAdapter
+
+        viewModel.categories.observe(viewLifecycleOwner) { categories ->
+            categoryAdapter.submitList(categories)
+        }
+    }
+
+    private fun productItems () {
+        productItemAdapter = ProductItemsAdapter(ArrayList())
+        binding.productItemsRecView.adapter = productItemAdapter
+        binding.productItemsRecView.layoutManager = GridLayoutManager(context,2)
+
+        viewModel.products.observe(viewLifecycleOwner) { products ->
+            productItemAdapter.updateItems(products)
+        }
     }
 
     override fun onResume() {

@@ -65,4 +65,7 @@ dependencies {
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
 
+    // ViewModels
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.fragment.ktx)
 }

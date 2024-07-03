@@ -68,4 +68,7 @@ dependencies {
     // ViewModels
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.fragment.ktx)
+
+    // Material Rating Bar
+    implementation (libs.library)
 }

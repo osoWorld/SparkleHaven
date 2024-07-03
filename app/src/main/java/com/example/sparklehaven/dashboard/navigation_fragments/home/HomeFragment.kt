@@ -171,7 +171,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun productItems () {
-        productItemAdapter = ProductItemsAdapter(ArrayList())
+        productItemAdapter = ProductItemsAdapter(ArrayList(), requireContext())
         binding.productItemsRecView.adapter = productItemAdapter
         binding.productItemsRecView.layoutManager = GridLayoutManager(context,2)
 

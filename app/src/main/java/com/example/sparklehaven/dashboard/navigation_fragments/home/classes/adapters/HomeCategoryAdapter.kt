@@ -12,11 +12,9 @@ import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.mode
 import com.example.sparklehaven.databinding.HomeCategoryRcvBinding
 
 class HomeCategoryAdapter(private val homeCategoryList: ArrayList<HomeCategoryModel>, private val onCategoryClick: (String) -> Unit) :
-    ListAdapter<HomeCategoryModel, HomeCategoryAdapter.HomeCategoryViewModel>(CategoryDiffCallback()) {
+    RecyclerView.Adapter<HomeCategoryAdapter.HomeCategoryViewModel>() {
 
-    // private var selectedPosition = -1  // Track the selected position
-
-    private var selectedPosition: Int = homeCategoryList.indexOfFirst { it.title == "Accessory" } // Default selected position
+    private var selectedPosition: Int = -1  // No selection by default
 
     class HomeCategoryViewModel(val binding: HomeCategoryRcvBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -77,14 +75,16 @@ class HomeCategoryAdapter(private val homeCategoryList: ArrayList<HomeCategoryMo
         }
 
         holder.itemView.setOnClickListener {
-            val previousPosition = selectedPosition
-            selectedPosition = if (selectedPosition == position) -1 else position  // Toggle selection
+            if (selectedPosition != position) {
+                val previousPosition = selectedPosition
+                selectedPosition = position
 
-            // Notify the adapter to update both the newly selected and previously selected items
-            notifyItemChanged(previousPosition)
-            notifyItemChanged(selectedPosition)
+                // Notify the adapter to update both the newly selected and previously selected items
+                notifyItemChanged(previousPosition)
+                notifyItemChanged(selectedPosition)
 
-            onCategoryClick(homeCategoryList[position].title)
+                onCategoryClick(homeCategoryList[position].title)
+            }
         }
     }
 
@@ -93,6 +93,10 @@ class HomeCategoryAdapter(private val homeCategoryList: ArrayList<HomeCategoryMo
         homeCategoryList.clear()
         homeCategoryList.addAll(newCategories)
         notifyDataSetChanged()
+
+        // Set initial selected position to "Accessory"
+        selectedPosition = homeCategoryList.indexOfFirst { it.title == "Accessory" }    // Accessory position is selected by default
+        notifyItemChanged(selectedPosition)
     }
 
     // Implement your CategoryDiffCallback for efficient updates

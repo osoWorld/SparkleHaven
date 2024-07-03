@@ -166,7 +166,7 @@ class HomeFragment : Fragment() {
         binding.categoryHomeRecView.adapter = categoryAdapter
 
         viewModel.categories.observe(viewLifecycleOwner) { categories ->
-            categoryAdapter.submitList(categories)
+            categoryAdapter.updateCategories(categories)
         }
     }
 

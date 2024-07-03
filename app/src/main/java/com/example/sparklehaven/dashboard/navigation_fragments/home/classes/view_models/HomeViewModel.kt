@@ -16,7 +16,7 @@ class HomeViewModel : ViewModel() {
 
     private val allProductList: List<ProductItemsModel> = listOf(
         ProductItemsModel(R.drawable.elegant_gold_quartz_necklace, "Elegant Gold Quartz Necklace", "230,000"),
-        ProductItemsModel(R.drawable.elegant_asthetic_gold_pearl_earring, "Elegant Aesthetic Gold Pearl Earring", "180,000"),
+        ProductItemsModel(R.drawable.elegant_asthetic_gold_pearl_earring, "Elegant Aesthetic Gold Pearl Earrings", "180,000"),
         ProductItemsModel(R.drawable.pure_gold_couple_ring, "Pure Gold Couple Ring", "181,000"),
         ProductItemsModel(R.drawable.pure_gold_bracelet, "Pure Gold Bracelet", "93,000"),
         ProductItemsModel(R.drawable.luxury_gold_men_antique_watch, "Luxury Gold Men Antique Watch", "250,000"),

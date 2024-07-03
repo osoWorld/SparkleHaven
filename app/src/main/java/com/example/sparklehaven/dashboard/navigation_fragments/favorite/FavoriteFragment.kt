@@ -5,10 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sparklehaven.R
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ProductItemsAdapter
+import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
+import com.example.sparklehaven.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
+    private lateinit var binding: FragmentFavoriteBinding
 
+    private lateinit var productItemAdapter: ProductItemsAdapter
+
+    // Initialize ViewModel using viewModels() delegate
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,12 +28,21 @@ class FavoriteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+    ): View {
+        binding = FragmentFavoriteBinding.inflate(layoutInflater)
+
+        productItems()
+
+        return binding.root
     }
 
-    companion object {
+    private fun productItems () {
+        productItemAdapter = ProductItemsAdapter(ArrayList(), requireContext())
+        binding.favoriteRecView.adapter = productItemAdapter
+        binding.favoriteRecView.layoutManager = GridLayoutManager(context,2)
 
+        viewModel.products.observe(viewLifecycleOwner) { products ->
+            productItemAdapter.updateItems(products)
+        }
     }
 }

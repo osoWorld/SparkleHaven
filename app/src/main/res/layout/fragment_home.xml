@@ -121,10 +121,7 @@
                 android:textColorHint="@color/Hint_Color"
                 android:fontFamily="@font/lora_medium"
                 android:drawableStart="@drawable/search_normal_32"
-                android:drawablePadding="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:drawablePadding="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"

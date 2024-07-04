@@ -1,5 +1,6 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -24,6 +25,8 @@ import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.mode
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
 import com.example.sparklehaven.databinding.FragmentHomeBinding
+import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
+import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -65,6 +68,8 @@ class HomeFragment : Fragment() {
         // Items According to categories RecyclerView
         productItems()
 
+        // Go To cart
+        goToCart()
 
         binding.viewPagerImageSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -177,6 +182,12 @@ class HomeFragment : Fragment() {
 
         viewModel.products.observe(viewLifecycleOwner) { products ->
             productItemAdapter.updateItems(products)
+        }
+    }
+
+    private fun goToCart () {
+        binding.cartBtn.setOnClickListener {
+            startActivity(Intent(context, AddToCartActivity::class.java))
         }
     }
 

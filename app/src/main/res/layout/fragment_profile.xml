@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -83,7 +83,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upperSettingItemRecView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -93,15 +94,17 @@
             app:cardElevation="4dp"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="4dp"
+            android:layout_marginBottom="30dp"
             app:cardCornerRadius="12dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lowerSettingItemsRecView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"/>
 
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

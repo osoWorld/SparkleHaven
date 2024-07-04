@@ -2,6 +2,7 @@ package com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.HomeCategoryModel
@@ -28,6 +29,9 @@ class SettingsItemAdapter (private val context: Context) : RecyclerView.Adapter<
         holder.binding.apply {
             settingsItemIcon.setImageResource(settingsItemList[position].icon)
             settingsItemName.text = settingsItemList[position].title
+            if (position == settingsItemList.size) {
+                greyUnderline.visibility = View.INVISIBLE
+            }
         }
     }
     fun updateItems(newItems: List<HomeCategoryModel>) {

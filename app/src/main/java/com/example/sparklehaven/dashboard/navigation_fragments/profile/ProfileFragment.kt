@@ -40,8 +40,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupRecyclerViews() {
-        upperSettingsAdapter = SettingsItemAdapter(requireContext())
-        lowerSettingsAdapter = SettingsItemAdapter(requireContext())
+        upperSettingsAdapter = SettingsItemAdapter(requireContext(), childFragmentManager)
+        lowerSettingsAdapter = SettingsItemAdapter(requireContext(),childFragmentManager)
 
         binding.upperSettingItemRecView.layoutManager = LinearLayoutManager(context)
         binding.upperSettingItemRecView.adapter = upperSettingsAdapter

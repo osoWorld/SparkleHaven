@@ -5,12 +5,14 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.HomeCategoryModel
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.ProfileActivity
+import com.example.sparklehaven.dashboard.navigation_fragments.profile.fragments.ShippingDetailBottomSheetFragment
 import com.example.sparklehaven.databinding.SettingsItemLayoutBinding
 
-class SettingsItemAdapter (private val context: Context) : RecyclerView.Adapter<SettingsItemAdapter.SettingsItemViewHolder>() {
+class SettingsItemAdapter (private val context: Context, private val fragmentManager: FragmentManager) : RecyclerView.Adapter<SettingsItemAdapter.SettingsItemViewHolder>() {
 
     private var settingsItemList: List<HomeCategoryModel> = listOf()
     class SettingsItemViewHolder (val binding: SettingsItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
@@ -41,6 +43,9 @@ class SettingsItemAdapter (private val context: Context) : RecyclerView.Adapter<
             if (settingItems.title == "Profile") {
                 val intent = Intent(context, ProfileActivity::class.java)
                 context.startActivity(intent)
+            } else if (settingItems.title == "Shipping Address") {
+                val bottomSheet = ShippingDetailBottomSheetFragment()
+                bottomSheet.show(fragmentManager, "ShippingDetailBottomSheet")
             }
         }
     }

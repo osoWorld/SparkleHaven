@@ -1,6 +1,5 @@
-package com.example.sparklehaven.product.add_to_cart
+package com.example.sparklehaven.product.checkout
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -8,25 +7,25 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sparklehaven.R
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
-import com.example.sparklehaven.databinding.ActivityAddToCartBinding
+import com.example.sparklehaven.databinding.ActivityCheckoutBinding
 import com.example.sparklehaven.product.add_to_cart.classes.adapters.CartItemsAdapter
 import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
-import com.example.sparklehaven.product.checkout.CheckoutActivity
+import com.example.sparklehaven.product.checkout.classes.adapters.CheckOutItemsAdapter
+import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
+import com.example.sparklehaven.product.checkout.classes.view_model.CheckoutViewModel
 
-class AddToCartActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityAddToCartBinding
-    private lateinit var cartItemsAdapter : CartItemsAdapter
+class CheckoutActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityCheckoutBinding
+    private lateinit var checkOutItemsAdapter : CheckOutItemsAdapter
 
     // Initialize ViewModel using viewModels() delegate
-    private val viewModel: AddToCartViewModel by viewModels()
+    private val viewModel: CheckoutViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddToCartBinding.inflate(layoutInflater)
+        binding = ActivityCheckoutBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
@@ -39,30 +38,33 @@ class AddToCartActivity : AppCompatActivity() {
         loadCartItem()
         observeViewModel()
 
-        // Move to Checkout Screen
-        proceedToCheckOut()
+        // Payment Methods
+        paymentBottomSheet()
+
     }
 
     private fun loadCartItem() {
-        cartItemsAdapter = CartItemsAdapter()
-        binding.cartItemsRecView.adapter = cartItemsAdapter
-        binding.cartItemsRecView.layoutManager = LinearLayoutManager(this)
+        checkOutItemsAdapter = CheckOutItemsAdapter()
+        binding.checkoutCartItemsRecView.adapter = checkOutItemsAdapter
+        binding.checkoutCartItemsRecView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun observeViewModel() {
-        viewModel.cartItemsList.observe(this) { cartItems ->
+        viewModel.checkoutItemsList.observe(this) { cartItems ->
             if (cartItems != null) {
                 Log.d("AddToCartActivity", "Cart items received: $cartItems")
-                cartItemsAdapter.updateItems(cartItems)
+                checkOutItemsAdapter.updateItems(cartItems)
             } else {
                 Log.e("AddToCartActivity", "cartItemsList is null")
             }
         }
     }
 
-    private fun proceedToCheckOut() {
-        binding.proceedToCheckoutButton.setOnClickListener {
-            startActivity(Intent(this, CheckoutActivity::class.java))
+    private fun paymentBottomSheet() {
+        binding.paymentMethodCard.setOnClickListener {
+            val bottomSheet = PaymentMethodBottomSheetFragment()
+            bottomSheet.show(supportFragmentManager, "PaymentMethodBottomSheet")
         }
     }
+
 }

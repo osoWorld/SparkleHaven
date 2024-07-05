@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sparklehaven.R
+import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.adapters.FavoriteItemAdapter
+import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteItemViewModel
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ProductItemsAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
 import com.example.sparklehaven.databinding.FragmentFavoriteBinding
@@ -15,10 +17,10 @@ import com.example.sparklehaven.databinding.FragmentFavoriteBinding
 class FavoriteFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteBinding
 
-    private lateinit var productItemAdapter: ProductItemsAdapter
+    private lateinit var favoriteItemAdapter: FavoriteItemAdapter
 
     // Initialize ViewModel using viewModels() delegate
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: FavoriteItemViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +39,12 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun productItems () {
-        productItemAdapter = ProductItemsAdapter(ArrayList(), requireContext())
-        binding.favoriteRecView.adapter = productItemAdapter
+        favoriteItemAdapter = FavoriteItemAdapter(requireContext())
+        binding.favoriteRecView.adapter = favoriteItemAdapter
         binding.favoriteRecView.layoutManager = GridLayoutManager(context,2)
 
-        viewModel.products.observe(viewLifecycleOwner) { products ->
-            productItemAdapter.updateItems(products)
+        viewModel.favoriteItemsList.observe(viewLifecycleOwner) { favItems ->
+            favoriteItemAdapter.updateItems(favItems)
         }
     }
 }

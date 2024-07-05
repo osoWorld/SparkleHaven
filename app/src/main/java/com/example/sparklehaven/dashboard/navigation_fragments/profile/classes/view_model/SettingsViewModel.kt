@@ -24,7 +24,7 @@ class SettingsViewModel : ViewModel() {
         HomeCategoryModel(R.drawable.profile, "Profile"),
         HomeCategoryModel(R.drawable.message, "Message"),
         HomeCategoryModel(R.drawable.shopping_bag, "My Order"),
-        HomeCategoryModel(R.drawable.unfav_icon, "Favorite"),
+        HomeCategoryModel(R.drawable.unfav_icon, "Favorites"),
         HomeCategoryModel(R.drawable.shipping_address, "Shipping Address"),
         HomeCategoryModel(R.drawable.credit_card, "My Card"),
         HomeCategoryModel(R.drawable.setting, "Settings"),

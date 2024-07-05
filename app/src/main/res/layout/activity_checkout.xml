@@ -455,6 +455,7 @@
                 android:gravity="end|bottom">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/placeOrderButton"
                     android:layout_width="140dp"
                     android:layout_height="50dp"
                     android:background="@drawable/black_btn_shape_rounded"

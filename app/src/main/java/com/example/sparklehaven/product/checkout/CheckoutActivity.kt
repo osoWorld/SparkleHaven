@@ -1,5 +1,6 @@
 package com.example.sparklehaven.product.checkout
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,7 @@ import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCart
 import com.example.sparklehaven.product.checkout.classes.adapters.CheckOutItemsAdapter
 import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
 import com.example.sparklehaven.product.checkout.classes.view_model.CheckoutViewModel
+import com.example.sparklehaven.success.SuccessActivity
 
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCheckoutBinding
@@ -41,6 +43,9 @@ class CheckoutActivity : AppCompatActivity() {
         // Payment Methods
         paymentBottomSheet()
 
+        // Place Order
+        placeOrder()
+
     }
 
     private fun loadCartItem() {
@@ -64,6 +69,12 @@ class CheckoutActivity : AppCompatActivity() {
         binding.paymentMethodCard.setOnClickListener {
             val bottomSheet = PaymentMethodBottomSheetFragment()
             bottomSheet.show(supportFragmentManager, "PaymentMethodBottomSheet")
+        }
+    }
+
+    private fun placeOrder () {
+        binding.placeOrderButton.setOnClickListener {
+            startActivity(Intent(this, SuccessActivity::class.java))
         }
     }
 

@@ -71,4 +71,7 @@ dependencies {
 
     // Material Rating Bar
     implementation (libs.library)
+
+    // Lottie Animation
+    implementation (libs.lottie)
 }

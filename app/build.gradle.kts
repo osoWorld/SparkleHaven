@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -74,4 +75,20 @@ dependencies {
 
     // Lottie Animation
     implementation (libs.lottie)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation (libs.firebase.auth.ktx)
+    implementation (libs.firebase.firestore.ktx)
+    implementation (libs.firebase.storage.ktx)
+
+    // Room
+    implementation (libs.androidx.room.runtime)
+//    ksp (libs.androidx.room.compiler)
+
+    // Shared Preferences
+    implementation (libs.androidx.preference.ktx)
+
+    // Shimmer
+    implementation (libs.shimmer)
 }

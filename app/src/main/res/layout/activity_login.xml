@@ -99,6 +99,7 @@
                     android:fontFamily="@font/lora_medium"/>
 
                 <TextView
+                    android:id="@+id/forgetPasswordTextBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Forget Password ?"

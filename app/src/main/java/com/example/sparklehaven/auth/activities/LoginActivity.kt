@@ -32,5 +32,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
+
+        binding.forgetPasswordTextBtn.setOnClickListener {
+            val intent = Intent(this, ForgetPasswordActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

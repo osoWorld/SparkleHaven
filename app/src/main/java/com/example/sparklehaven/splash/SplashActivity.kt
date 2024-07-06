@@ -19,7 +19,7 @@ import com.example.sparklehaven.databinding.ActivitySplashBinding
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
     private val MAX_LEVEL: Int = 10000
-    private val REVEAL_DURATION: Long = 3600 // Animation duration in milliseconds
+    private val REVEAL_DURATION: Long = 3350 // Animation duration in milliseconds
     private var hasAnimationPlayed: Boolean = false
     private lateinit var clipDrawable: ClipDrawable
     private lateinit var animator: ValueAnimator

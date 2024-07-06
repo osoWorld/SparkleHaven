@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.sparklehaven.R
-import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.model.CategoryModel
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
 
 class CategoryDetailViewModel : ViewModel() {

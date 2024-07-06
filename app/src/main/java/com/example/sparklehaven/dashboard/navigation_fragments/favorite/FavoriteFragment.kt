@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.adapters.FavoriteItemAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteItemViewModel
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ProductItemsAdapter
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
 import com.example.sparklehaven.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {

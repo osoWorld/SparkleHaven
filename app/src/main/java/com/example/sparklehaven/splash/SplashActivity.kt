@@ -1,5 +1,6 @@
 package com.example.sparklehaven.splash
 
+import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.drawable.ClipDrawable
@@ -18,7 +19,11 @@ import com.example.sparklehaven.databinding.ActivitySplashBinding
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
     private val MAX_LEVEL: Int = 10000
-    private val REVEAL_DURATION: Long = 3700 // Animation duration in milliseconds
+    private val REVEAL_DURATION: Long = 3600 // Animation duration in milliseconds
+    private var hasAnimationPlayed: Boolean = false
+    private lateinit var clipDrawable: ClipDrawable
+    private lateinit var animator: ValueAnimator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -30,32 +35,51 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
 
+        setupAnimation()
+    }
 
-        // Create a ClipDrawable to control the reveal animation
-        val clipDrawable = ClipDrawable(resources.getDrawable(R.drawable.sparkle_haven_redesign_f_f),
+    override fun onResume() {
+        super.onResume()
+        if (!hasAnimationPlayed) {
+            startAnimation()
+        } else {
+            goToNextActivity()
+        }
+    }
+
+    private fun setupAnimation() {
+        clipDrawable = ClipDrawable(
+            resources.getDrawable(R.drawable.sparkle_haven_redesign_f_f),
             ClipDrawable.VERTICAL,
             ClipDrawable.HORIZONTAL
         )
         binding.appLogo.setImageDrawable(clipDrawable)
 
-
-        // Create a ValueAnimator for the reveal animation
-        val animator = ValueAnimator.ofInt(0, MAX_LEVEL)
-        animator.setDuration(REVEAL_DURATION)
-        animator.addUpdateListener { animation: ValueAnimator ->
-            val level = animation.animatedValue as Int
-            clipDrawable.setLevel(level)
+        animator = ValueAnimator.ofInt(0, MAX_LEVEL).apply {
+            duration = REVEAL_DURATION
+            addUpdateListener { animation: ValueAnimator ->
+                val level = animation.animatedValue as Int
+                clipDrawable.level = level
+            }
+            addListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {}
+                override fun onAnimationEnd(animation: Animator) {
+                    hasAnimationPlayed = true
+                    goToNextActivity()
+                }
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
+            })
         }
+    }
 
-
-        // Start the animation
+    private fun startAnimation() {
         animator.start()
+    }
 
-        // Timer to go to new activity
-        Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, REVEAL_DURATION + 100)
+    private fun goToNextActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

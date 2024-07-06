@@ -17,6 +17,9 @@
     <color name="OffWhite">#FAF9F6</color>
 
     <color name="glossy">#40FFFFFF</color>
+    <color name="glossy_lighter">#21FFFFFF</color>
+
     <color name="Darker_Glossy">#732E2E2E</color>
+    <color name="Darker_Glossy_light">#4D2E2E2E</color>
 
 </resources>

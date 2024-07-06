@@ -12,6 +12,7 @@ import com.example.sparklehaven.dashboard.navigation_fragments.profile.activitie
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.ProfileActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.fragments.ShippingDetailBottomSheetFragment
 import com.example.sparklehaven.databinding.SettingsItemLayoutBinding
+import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
 import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
 
 class SettingsItemAdapter (private val context: Context, private val fragmentManager: FragmentManager) : RecyclerView.Adapter<SettingsItemAdapter.SettingsItemViewHolder>() {
@@ -53,6 +54,9 @@ class SettingsItemAdapter (private val context: Context, private val fragmentMan
                 bottomSheet.show(fragmentManager, "PaymentMethodBottomSheet")
             } else if (settingItems.title == "Favorites") {
                 val intent = Intent(context, FavoriteItemsActivity::class.java)
+                context.startActivity(intent)
+            } else if (settingItems.title == "My Order") {
+                val intent = Intent(context, AddToCartActivity::class.java)
                 context.startActivity(intent)
             }
         }

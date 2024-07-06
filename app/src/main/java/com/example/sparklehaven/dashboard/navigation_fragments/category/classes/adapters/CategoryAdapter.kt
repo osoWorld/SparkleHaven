@@ -1,9 +1,11 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.category.classes.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sparklehaven.dashboard.navigation_fragments.category.activites.CategoryDetailActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.model.CategoryModel
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.model.ShippingDetailBottomSheetModel
 import com.example.sparklehaven.databinding.CategoryLayoutBinding
@@ -26,6 +28,12 @@ class CategoryAdapter (private val context: Context) : RecyclerView.Adapter<Cate
             categoryName.text = category.categoryName
             categoryCount.text = category.categoryCount
             categoryImage.setImageResource(category.categoryImage)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, CategoryDetailActivity::class.java)
+            intent.putExtra("categoryTitle",category.categoryName)
+            context.startActivity(intent)
         }
     }
 

@@ -11,6 +11,7 @@ import com.example.sparklehaven.R
 import com.example.sparklehaven.auth.classes.FirebaseUser
 import com.example.sparklehaven.dashboard.DashboardActivity
 import com.example.sparklehaven.databinding.ActivityRegisterBinding
+import com.example.sparklehaven.utils.references.FirebaseRef
 import com.example.sparklehaven.utils.singleton.FirebaseModule
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
@@ -57,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                             firebaseUser  = FirebaseUser(username, email, password, uid)
                         }
 
-                        firestore.collection("User").document(uid!!).set(firebaseUser).addOnSuccessListener {
+                        firestore.collection(FirebaseRef.USER).document(uid!!).set(firebaseUser).addOnSuccessListener {
                             val intent = Intent(this, DashboardActivity::class.java)
                             startActivity(intent)
                             finish()

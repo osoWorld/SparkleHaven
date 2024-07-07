@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp")
+//    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    alias(libs.plugins.google.gms.google.services)
+//    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -48,6 +51,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -77,18 +83,52 @@ dependencies {
     implementation (libs.lottie)
 
     // Firebase
-    implementation(platform(libs.firebase.bom))
-    implementation (libs.firebase.auth.ktx)
-    implementation (libs.firebase.firestore.ktx)
-    implementation (libs.firebase.storage.ktx)
+//    implementation(platform(libs.firebase.bom))
+//    implementation (libs.firebase.auth.ktx)
+//    implementation (libs.firebase.firestore.ktx)
+//    implementation (libs.firebase.storage.ktx)
 
     // Room
-    implementation (libs.androidx.room.runtime)
-//    ksp (libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+//    kapt(libs.androidx.room.compiler)
 
     // Shared Preferences
     implementation (libs.androidx.preference.ktx)
 
     // Shimmer
     implementation (libs.shimmer)
+
+    // Hilt
+//    implementation(libs.hilt.android)
+//    kapt(libs.hilt.android.compiler)
+
+    // Dagger 2
+//    implementation (libs.dagger)
+//    kapt (libs.dagger.compiler)
+
+//    implementation (libs.dagger.android)
+//    implementation (libs.dagger.android.support) // if you use the support libraries
+//    kapt (libs.dagger.android.processor)
+//    implementation (libs.javax.inject)
+
+//    implementation ("com.google.dagger:dagger:2.51")
+//    kapt ("com.google.dagger:dagger-compiler:2.51")
+//    implementation ("com.google.dagger:dagger-android:2.51")
+//    implementation ("com.google.dagger:dagger-android-support:2.51")
+//    kapt ("com.google.dagger:dagger-android-processor:2.51")
+
+
+
+    // Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
 }
+
+// Allow references to generated code
+//kapt {
+//    correctErrorTypes = true
+//}
+
+//hilt {
+//    enableAggregatingTask = true
+//}

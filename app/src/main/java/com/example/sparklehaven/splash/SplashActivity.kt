@@ -5,16 +5,18 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
-import android.os.Handler
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sparklehaven.R
 import com.example.sparklehaven.auth.activities.LoginActivity
+import com.example.sparklehaven.data.local.AppDatabase
 import com.example.sparklehaven.databinding.ActivitySplashBinding
-
+import com.example.sparklehaven.utils.singleton.NetworkModule
+import com.example.sparklehaven.utils.singleton.RoomModule
+import com.example.sparklehaven.utils.singleton.SharedPreferencesModule
+import com.google.firebase.FirebaseApp
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
@@ -26,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // FirebaseApp.initializeApp(this) // Initialize Firebase first
         binding = ActivitySplashBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
@@ -35,6 +38,9 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Initialize Firebase, Room, SharedPreferences, and NetworkModule
+//        instances()
 
         setupAnimation()
     }
@@ -83,4 +89,21 @@ class SplashActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+//    private fun instances() {
+//        // Using FirebaseModule
+//        val auth = FirebaseModule.firebaseAuth
+//        val firestore = FirebaseModule.firebaseFirestore
+//        val storage = FirebaseModule.firebaseStorage
+//
+//        // Using SharedPreferencesModule
+//        val sharedPreferences = SharedPreferencesModule.getSharedPreferences(this)
+//
+//        // Using NetworkModule
+//        val retrofit = NetworkModule.retrofit
+//
+//        // Using RoomModule
+//        val database = AppDatabase.getDatabase(this)
+//        val userDao = database.userDao()
+//    }
 }

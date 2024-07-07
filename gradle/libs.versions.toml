@@ -6,10 +6,17 @@ bubblenavigation = "1.0.7"
 bubbletabbar = "1.0.8"
 circleimageview = "3.1.0"
 compiler = "4.12.0"
+converterGson = "2.9.0"
+dagger = "2.51"
+daggerAndroid = "2.51.1"
 firebaseBom = "33.1.1"
 fragmentKtx = "1.8.1"
 glide = "4.15.1"
+hiltAndroid = "2.51"
+hiltAndroidCompiler = "2.51"
+hiltLifecycleViewmodelVersion = "1.0.0-alpha03"
 imageslideshow = "0.1.2"
+javaxInject = "1"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -23,8 +30,13 @@ material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 preferenceKtx = "1.2.1"
+retrofit = "2.9.0"
 roomRuntime = "2.6.1"
 shimmer = "0.5.0"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.0.0"
+firebaseFirestore = "25.0.0"
+firebaseStorage = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +45,7 @@ androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmode
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodel" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 auto-image-slider = { module = "com.github.dangiashish:Auto-Image-Slider", version.ref = "autoImageSliderVersion" }
 autoimageslider = { module = "com.github.smarteist:autoimageslider", version.ref = "autoimageslider" }
@@ -40,12 +53,22 @@ bubblenavigation = { module = "com.gauravk.bubblenavigation:bubblenavigation", v
 bubbletabbar = { module = "io.ak1:bubbletabbar", version.ref = "bubbletabbar" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-android = { module = "com.google.dagger:dagger-android", version.ref = "daggerAndroid" }
+dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "daggerAndroid" }
+dagger-android-support = { module = "com.google.dagger:dagger-android-support", version.ref = "daggerAndroid" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx" }
 firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodelVersion" }
 imageslideshow = { module = "com.github.denzcoskun:ImageSlideshow", version.ref = "imageslideshow" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -55,9 +78,14 @@ lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

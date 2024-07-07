@@ -3,6 +3,7 @@ package com.example.sparklehaven.auth.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -47,8 +48,15 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.passwordEditText.text.toString().trim()
 
         if (validateInput(email, password)) {
+            // Show the progress bar
+            binding.progressBar.visibility = View.VISIBLE
+
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
+
+                    // Hide the progress bar
+                    binding.progressBar.visibility = View.GONE
+
                     if (task.isSuccessful) {
                         // Login successful, go to DashboardActivity
                         Snackbar.make(binding.root, "Login successful", Snackbar.LENGTH_SHORT).show()

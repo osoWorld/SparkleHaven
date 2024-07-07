@@ -22,4 +22,7 @@
     <color name="Darker_Glossy">#732E2E2E</color>
     <color name="Darker_Glossy_light">#4D2E2E2E</color>
 
+    <color name="Darker_Glossy_original">#2E2E2E</color>
+    <color name="Darker_Glossy_invisible">#D92E2E2E</color>
+
 </resources>

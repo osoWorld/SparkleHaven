@@ -3,6 +3,7 @@ package com.example.sparklehaven.auth.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,6 +36,8 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
+        binding.progressBar.visibility = View.GONE
+
         binding.registerBtn.setOnClickListener {
             registerUser()
         }
@@ -46,7 +49,10 @@ class RegisterActivity : AppCompatActivity() {
         val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
         val username = binding.usernameEditText.text.toString().trim()
 
-        if (validateInput(email, password, confirmPassword)) {
+        if (validateInput(username ,email, password, confirmPassword)) {
+            // Show the progress bar
+            binding.progressBar.visibility = View.VISIBLE
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -59,11 +65,18 @@ class RegisterActivity : AppCompatActivity() {
                         }
 
                         firestore.collection(FirebaseRef.USER).document(uid!!).set(firebaseUser).addOnSuccessListener {
+                            // Hide the progress bar
+                            binding.progressBar.visibility = View.GONE
+
                             val intent = Intent(this, DashboardActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
                             .addOnFailureListener { firestoreExp ->
+                                // Hide the progress bar
+                                binding.progressBar.visibility = View.GONE
+
+                                // If saving user data fails, display a message to the user.
                                 Snackbar.make(binding.root, "Error saving user data: ${firestoreExp.message}", Snackbar.LENGTH_SHORT).show()
                             }
 
@@ -75,7 +88,13 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun validateInput(email: String, password: String, confirmPassword: String): Boolean {
+    private fun validateInput(username: String, email: String, password: String, confirmPassword: String): Boolean {
+        if (username.isEmpty()) {
+            binding.usernameEditText.error = "Username is required"
+            binding.usernameEditText.requestFocus()
+            return false
+        }
+
         if (email.isEmpty()) {
             binding.emailEditText.error = "Email is required"
             binding.emailEditText.requestFocus()

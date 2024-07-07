@@ -28,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        binding.progressBar.visibility = View.GONE
+
         binding.createAccountBtn.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)

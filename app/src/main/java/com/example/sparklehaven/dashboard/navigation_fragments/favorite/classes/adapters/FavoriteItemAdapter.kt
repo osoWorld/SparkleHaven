@@ -17,7 +17,7 @@ import com.example.sparklehaven.utils.references.ExtrasRef
 class FavoriteItemAdapter (
     private val context: Context,
     private val favoriteViewModel: FavoriteViewModel
-) : RecyclerView.Adapter<FavoriteItemAdapter.FavoriteItemViewHolder> (){
+) : RecyclerView.Adapter<FavoriteItemAdapter.FavoriteItemViewHolder> () {
 
     private var favoriteItemsList : List<Product> = listOf()
 
@@ -40,30 +40,12 @@ class FavoriteItemAdapter (
             itemProductPrice.text = favoriteItem.price
 
             // Update Favorite Icon based on User Clicked
-//            isFavoriteIcon.setImageResource(
-//                if (favoriteItem.isFavorite) {
-//                    R.drawable.fav_icon
-//                } else {
-//                    R.drawable.unfav_icon
-//                }
-//            )
-
-            favoriteViewModel.favoriteProducts.observe(context as LifecycleOwner) { favorites ->
-                val isFavorite = favorites.any { it.productId == favoriteItem.productId }
-                isFavoriteIcon.setImageResource(
-                    if (isFavorite) R.drawable.fav_icon else R.drawable.unfav_icon
-                )
-            }
+            isFavoriteIcon.setImageResource(R.drawable.fav_icon)
 
             favoriteBtn.setOnClickListener {
                 favoriteViewModel.toggleFavorite(favoriteItem)
             }
         }
-
-//        holder.binding.favoriteIconBtn.setOnClickListener {
-//            favoriteItem.isFavorite = !favoriteItem.isFavorite
-//            notifyItemChanged(position)
-//        }
 
         holder.itemView.setOnClickListener {
             context.startActivity(Intent(context, ProductDetailsActivity::class.java)
@@ -76,3 +58,4 @@ class FavoriteItemAdapter (
         notifyDataSetChanged()
     }
 }
+

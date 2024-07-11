@@ -48,34 +48,16 @@ class ProductItemsAdapter (
             itemProductPrice.text = product.price
 
             // Update Favorite Icon based on User Clicked
-//            isFavoriteIcon.setImageResource(
-//                if (productItemsList[position].isFavorite) {
-//                    R.drawable.fav_icon
-//                } else {
-//                    R.drawable.unfav_icon
-//                }
-//            )
-
-            favoriteViewModel.favoriteProducts.observe(context as LifecycleOwner) { favorites ->
-                val isFavorite = favorites.any { it.productId == product.productId }
-                isFavoriteIcon.setImageResource(
-                    if (isFavorite) R.drawable.fav_icon else R.drawable.unfav_icon
-                )
-            }
+            isFavoriteIcon.setImageResource(R.drawable.fav_icon)
 
             favoriteBtn.setOnClickListener {
                 favoriteViewModel.toggleFavorite(product)
             }
         }
 
-//        holder.binding.favoriteIconBtn.setOnClickListener {
-//            productItemsList[position].isFavorite = !productItemsList[position].isFavorite
-//            notifyItemChanged(position)
-//        }
-
         holder.itemView.setOnClickListener {
             context.startActivity(Intent(context, ProductDetailsActivity::class.java)
-                .putExtra(ExtrasRef.PRODUCT_DETAILS,product))
+                .putExtra(ExtrasRef.PRODUCT_DETAILS, product))
         }
     }
     fun updateItems(newItems : List<Product>) {

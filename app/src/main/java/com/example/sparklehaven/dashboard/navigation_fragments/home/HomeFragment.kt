@@ -197,7 +197,7 @@ class HomeFragment : Fragment() {
         }
 
         // Fetch and observe favorites
-        favoriteViewModel.fetchFavorites()
+ //      favoriteViewModel.fetchFavorites()
     }
 
     private fun goToCart () {

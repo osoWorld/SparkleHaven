@@ -9,6 +9,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class FavoriteRepository(private val favoriteDao: FavoriteDao, private val db: FirebaseFirestore) {
+
     suspend fun toggleFavorite(userId: String, product: Product) {
         val favoriteRef = db.collection("favorites")
             .whereEqualTo("userId", userId)
@@ -17,11 +18,11 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao, private val db: F
         val documents = favoriteRef.get().await()
         if (documents.isEmpty) {
             val favorite = Favorite(userId, product.productId)
-            db.collection("favorites").add(favorite)
+            db.collection("favorites").add(favorite).await()
             favoriteDao.insertFavorite(favorite)
         } else {
             for (document in documents) {
-                document.reference.delete()
+                document.reference.delete().await()
             }
             val favorite = Favorite(userId, product.productId)
             favoriteDao.deleteFavorite(favorite)
@@ -29,11 +30,14 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao, private val db: F
     }
 
     suspend fun fetchFavorites(userId: String): List<Favorite> {
-        val result = db.collection("favorites")
+        val firebaseFavorites = db.collection("favorites")
             .whereEqualTo("userId", userId)
             .get()
             .await()
-        return result.toObjects(Favorite::class.java)
+            .toObjects(Favorite::class.java)
+
+        favoriteDao.insertFavorites(firebaseFavorites)
+        return favoriteDao.getFavoritesForUser(userId)
     }
 
     suspend fun fetchProductsByIds(productIds: List<String>): List<Product> {

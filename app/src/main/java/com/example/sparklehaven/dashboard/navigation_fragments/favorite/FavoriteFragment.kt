@@ -51,7 +51,7 @@ class FavoriteFragment : Fragment() {
             favoriteItemAdapter.updateItems(favoriteProducts)
         }
 
-        viewModel.fetchFavorites() // Fetch favorites when the fragment is created
+   //     viewModel.fetchFavorites() // Fetch favorites when the fragment is created
 
         return binding.root
     }

@@ -73,6 +73,10 @@ class CategoryDetailActivity : AppCompatActivity() {
             favoriteItemAdapter.updateItems(categoryDetailItems)
 //            categoryDetailItems.forEach { Log.d("CategoryDetailActivity", "Product: ${it.name}, Category: ${it.category}") }
         }
+
+        // Fetch and observe favorites
+        favViewModel.fetchFavorites()
+
         viewModel.message.observe(this) { errorMessage ->
             showSnackbar(errorMessage)
         }

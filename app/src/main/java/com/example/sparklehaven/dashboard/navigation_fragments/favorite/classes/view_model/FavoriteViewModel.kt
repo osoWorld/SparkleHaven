@@ -14,9 +14,6 @@ class FavoriteViewModel(private val userId: String, private val repository: Favo
     private val _favoriteProducts = MutableLiveData<List<Product>>()
     val favoriteProducts: LiveData<List<Product>> get() = _favoriteProducts
 
-    init {
-        fetchFavorites()
-    }
 
     fun toggleFavorite(product: Product) {
         viewModelScope.launch {
@@ -25,12 +22,12 @@ class FavoriteViewModel(private val userId: String, private val repository: Favo
         }
     }
 
-    private fun fetchFavorites() {
+    fun fetchFavorites() {
         viewModelScope.launch {
             val favorites = repository.fetchFavorites(userId)
             val productIds = favorites.map { it.productId }
             val favoriteProducts = repository.fetchProductsByIds(productIds)
-            _favoriteProducts.postValue(favoriteProducts)
+            _favoriteProducts.value = favoriteProducts
         }
     }
 }

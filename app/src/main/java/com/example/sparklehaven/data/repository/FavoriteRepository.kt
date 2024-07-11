@@ -18,11 +18,11 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao, private val db: F
         val documents = favoriteRef.get().await()
         if (documents.isEmpty) {
             val favorite = Favorite(userId, product.productId)
-            db.collection("favorites").add(favorite).await()
+            db.collection("favorites").add(favorite)
             favoriteDao.insertFavorite(favorite)
         } else {
             for (document in documents) {
-                document.reference.delete().await()
+                document.reference.delete()
             }
             val favorite = Favorite(userId, product.productId)
             favoriteDao.deleteFavorite(favorite)
@@ -30,14 +30,11 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao, private val db: F
     }
 
     suspend fun fetchFavorites(userId: String): List<Favorite> {
-        val firebaseFavorites = db.collection("favorites")
+        val result = db.collection("favorites")
             .whereEqualTo("userId", userId)
             .get()
             .await()
-            .toObjects(Favorite::class.java)
-
-        favoriteDao.insertFavorites(firebaseFavorites)
-        return favoriteDao.getFavoritesForUser(userId)
+        return result.toObjects(Favorite::class.java)
     }
 
     suspend fun fetchProductsByIds(productIds: List<String>): List<Product> {

@@ -47,8 +47,12 @@ class ProductItemsAdapter (
             itemProductName.text = product.name
             itemProductPrice.text = product.price
 
-            // Update Favorite Icon based on User Clicked
-            isFavoriteIcon.setImageResource(R.drawable.fav_icon)
+            favoriteViewModel.favoriteProducts.observe(context as LifecycleOwner) { favorites ->
+                val isFavorite = favorites.any { it.productId == product.productId }
+                isFavoriteIcon.setImageResource(
+                    if (isFavorite) R.drawable.fav_icon else R.drawable.unfav_icon
+                )
+            }
 
             favoriteBtn.setOnClickListener {
                 favoriteViewModel.toggleFavorite(product)

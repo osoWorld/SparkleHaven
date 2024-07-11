@@ -43,8 +43,8 @@ class FavoriteItemsActivity : AppCompatActivity() {
         binding.favoriteRecView.adapter = favoriteItemAdapter
         binding.favoriteRecView.layoutManager = GridLayoutManager(this,2)
 
-        viewModel.favoriteItemsList.observe(this) { favItems ->
-            favoriteItemAdapter.updateItems(favItems)
-        }
+//        viewModel.favoriteItemsList.observe(this) { favItems ->
+//            favoriteItemAdapter.updateItems(favItems)
+//        }
     }
 }

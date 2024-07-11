@@ -11,8 +11,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sparklehaven.R
 import com.example.sparklehaven.auth.activities.LoginActivity
+import com.example.sparklehaven.dashboard.DashboardActivity
 import com.example.sparklehaven.data.local.AppDatabase
 import com.example.sparklehaven.databinding.ActivitySplashBinding
+import com.example.sparklehaven.utils.singleton.FirebaseModule
 import com.example.sparklehaven.utils.singleton.NetworkModule
 import com.example.sparklehaven.utils.singleton.RoomModule
 import com.example.sparklehaven.utils.singleton.SharedPreferencesModule
@@ -26,9 +28,10 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var clipDrawable: ClipDrawable
     private lateinit var animator: ValueAnimator
 
+    private val auth = FirebaseModule.firebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // FirebaseApp.initializeApp(this) // Initialize Firebase first
         binding = ActivitySplashBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
@@ -38,9 +41,6 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Initialize Firebase, Room, SharedPreferences, and NetworkModule
-//        instances()
 
         setupAnimation()
     }
@@ -85,25 +85,17 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToNextActivity() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // User is logged in, go to DashboardActivity
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        } else {
+            // User is not logged in, go to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
         finish()
     }
 
-//    private fun instances() {
-//        // Using FirebaseModule
-//        val auth = FirebaseModule.firebaseAuth
-//        val firestore = FirebaseModule.firebaseFirestore
-//        val storage = FirebaseModule.firebaseStorage
-//
-//        // Using SharedPreferencesModule
-//        val sharedPreferences = SharedPreferencesModule.getSharedPreferences(this)
-//
-//        // Using NetworkModule
-//        val retrofit = NetworkModule.retrofit
-//
-//        // Using RoomModule
-//        val database = AppDatabase.getDatabase(this)
-//        val userDao = database.userDao()
-//    }
 }

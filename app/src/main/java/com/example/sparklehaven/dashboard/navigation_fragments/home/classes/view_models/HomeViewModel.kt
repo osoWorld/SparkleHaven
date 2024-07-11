@@ -3,26 +3,29 @@ package com.example.sparklehaven.dashboard.navigation_fragments.home.classes.vie
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.sparklehaven.Product
 import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.HomeCategoryModel
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
+import com.example.sparklehaven.utils.singleton.FirebaseModule
+import com.google.firebase.firestore.Source
 
 class HomeViewModel : ViewModel() {
     private val _categories = MutableLiveData<List<HomeCategoryModel>>()
     val categories: LiveData<List<HomeCategoryModel>> get() = _categories
 
-    private val _products = MutableLiveData<List<ProductItemsModel>>()
-    val products: LiveData<List<ProductItemsModel>> get() = _products
+    private val _products = MutableLiveData<List<Product>>()
+    val products: LiveData<List<Product>> get() = _products
 
-    private val allProductList: List<ProductItemsModel> = listOf(
-        ProductItemsModel(R.drawable.elegant_gold_quartz_necklace, "Elegant Gold Quartz Necklace", "230,000"),
-        ProductItemsModel(R.drawable.elegant_asthetic_gold_pearl_earring, "Elegant Aesthetic Gold Pearl Earrings", "180,000"),
-        ProductItemsModel(R.drawable.pure_gold_couple_ring, "Pure Gold Couple Ring", "181,000"),
-        ProductItemsModel(R.drawable.pure_gold_bracelet, "Pure Gold Bracelet", "93,000"),
-        ProductItemsModel(R.drawable.luxury_gold_men_antique_watch, "Luxury Gold Men Antique Watch", "250,000"),
+    private val _messages = MutableLiveData<String>()
+    val messages: LiveData<String> = _messages
 
-        // Add all your products here with their respective categories
-    )
+    private val _progress = MutableLiveData<Boolean>()
+    val progress: LiveData<Boolean> = _progress
+
+    private val firestore = FirebaseModule.firebaseFirestore
+
+    // Store the original list of products
+    private var allProducts: List<Product> = emptyList()
 
     init {
         loadCategories()
@@ -36,21 +39,53 @@ class HomeViewModel : ViewModel() {
             HomeCategoryModel(R.drawable.earrings, "Earrings"),
             HomeCategoryModel(R.drawable.diamond_ring_icons, "Ring"),
             HomeCategoryModel(R.drawable.bracelet, "Bracelet"),
-            HomeCategoryModel(R.drawable.brooch, "Brooch"),
-            HomeCategoryModel(R.drawable.smart_watch, "Watch"),
             HomeCategoryModel(R.drawable.anklet, "Anklet"),
         )
     }
 
     private fun loadAllProducts() {
-        _products.value = allProductList
+        _progress.postValue(true)
+        firestore.collection("products")
+            .get(Source.CACHE)
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    fetchProductsFromServer()
+                } else {
+                    val products = documents.map { it.toObject(Product::class.java) }
+                    allProducts = products
+                    _products.value = products
+                    _progress.postValue(false)
+                }
+            }
+            .addOnFailureListener {
+                fetchProductsFromServer()
+            }
+    }
+
+    private fun fetchProductsFromServer() {
+        firestore.collection("products")
+            .get()
+            .addOnSuccessListener { documents ->
+                _progress.postValue(false)
+                val products = documents.map { it.toObject(Product::class.java) }
+                allProducts = products
+                _products.value = products
+            }
+            .addOnFailureListener { exception ->
+                _progress.postValue(false)
+                _messages.postValue("Error getting documents: $exception")
+            }
     }
 
     fun filterProductsByCategories(category: String) {
         if (category == "Accessory") {
-            loadAllProducts()
+            _products.value = allProducts
         } else {
-            _products.value = allProductList.filter { it.productItemName.contains(category) }
+            val filteredProducts = allProducts.filter {
+                val regex = "\\b${Regex.escape(category)}\\b".toRegex(RegexOption.IGNORE_CASE)
+                regex.containsMatchIn(it.name)
+            }
+            _products.value = filteredProducts
         }
     }
 }

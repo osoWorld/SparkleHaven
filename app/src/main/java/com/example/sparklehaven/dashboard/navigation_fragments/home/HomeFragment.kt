@@ -21,12 +21,9 @@ import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.HomeCategoryAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ImageSliderAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ProductItemsAdapter
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.HomeCategoryModel
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
 import com.example.sparklehaven.databinding.FragmentHomeBinding
 import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
-import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {

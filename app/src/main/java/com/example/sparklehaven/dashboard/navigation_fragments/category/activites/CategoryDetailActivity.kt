@@ -1,6 +1,8 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.category.activites
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.view_model.CategoryDetailViewModel
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.adapters.FavoriteItemAdapter
 import com.example.sparklehaven.databinding.ActivityCategoryDetailBinding
+import com.google.android.material.snackbar.Snackbar
 
 class CategoryDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoryDetailBinding
@@ -19,6 +22,7 @@ class CategoryDetailActivity : AppCompatActivity() {
 
     // Initialize ViewModel using viewModels() delegate
        private val viewModel: CategoryDetailViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoryDetailBinding.inflate(layoutInflater)
@@ -35,21 +39,35 @@ class CategoryDetailActivity : AppCompatActivity() {
         val title = intent.getStringExtra("categoryTitle")
         binding.categoryDetailTitle.text = title!!
 
+        // Fetch products based on category title
+        viewModel.loadProducts(title)
+
         // Load & observe CategoryItems
-        loadCategoryDetailItems()
+        loadCategoryDetailItems(title)
         observeCategoryDetailItems()
     }
 
-    private fun loadCategoryDetailItems () {
+    private fun loadCategoryDetailItems(categoryTitle: String) {
         favoriteItemAdapter = FavoriteItemAdapter(this)
         binding.categoryDetailRecView.adapter = favoriteItemAdapter
-        binding.categoryDetailRecView.layoutManager = GridLayoutManager(this,2)
-
+        binding.categoryDetailRecView.layoutManager = GridLayoutManager(this, 2)
+        viewModel.loadProducts(categoryTitle)
     }
 
-    private fun observeCategoryDetailItems () {
+    private fun observeCategoryDetailItems() {
         viewModel.categoryDetailList.observe(this) { categoryDetailItems ->
             favoriteItemAdapter.updateItems(categoryDetailItems)
+//            categoryDetailItems.forEach { Log.d("CategoryDetailActivity", "Product: ${it.name}, Category: ${it.category}") }
         }
+        viewModel.message.observe(this) { errorMessage ->
+            showSnackbar(errorMessage)
+        }
+        viewModel.progress.observe(this) { progress ->
+            binding.progressBar.visibility = if (progress) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 }

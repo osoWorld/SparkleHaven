@@ -48,13 +48,13 @@ class HomeCategoryAdapter(private val homeCategoryList: ArrayList<HomeCategoryMo
             holder.binding.homeCategoryImage.imageTintList = ColorStateList.valueOf(
                 ContextCompat.getColor(
                     holder.itemView.context,
-                    R.color.white
+                    R.color.Beige
                 )
             )
             holder.binding.homeCategoryTitle.setTextColor(
                 ContextCompat.getColor(
                     holder.itemView.context,
-                    R.color.white
+                    R.color.Beige
                 )
             )
         } else {

@@ -41,7 +41,7 @@ class FavoriteFragment : Fragment() {
         binding.favoriteRecView.layoutManager = GridLayoutManager(context,2)
 
         viewModel.favoriteItemsList.observe(viewLifecycleOwner) { favItems ->
-            favoriteItemAdapter.updateItems(favItems)
+//            favoriteItemAdapter.updateItems(favItems)
         }
     }
 }

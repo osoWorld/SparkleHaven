@@ -81,6 +81,7 @@ class RegisterActivity : AppCompatActivity() {
                             }
 
                     } else {
+                        binding.progressBar.visibility = View.GONE
                         // If registration fails, display a message to the user.
                         Snackbar.make(binding.root, "Authentication failed: ${task.exception?.message}", Snackbar.LENGTH_SHORT).show()
                     }

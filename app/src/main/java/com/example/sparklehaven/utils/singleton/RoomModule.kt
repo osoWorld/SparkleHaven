@@ -8,12 +8,7 @@ import com.example.sparklehaven.data.local.UserDao
 import javax.inject.Singleton
 
 object RoomModule {
-
     fun provideDatabase(application: Application): AppDatabase {
         return Room.databaseBuilder(application, AppDatabase::class.java, "sparklehaven_db").build()
-    }
-
-    fun provideExampleDao(appDatabase: AppDatabase): UserDao {
-        return appDatabase.userDao()
     }
 }

@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.adapters.CategoryAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.view_model.CategoryViewModel
-import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.adapters.FavoriteItemAdapter
-import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteItemViewModel
 import com.example.sparklehaven.databinding.FragmentCategoriesBinding
 
 class CategoriesFragment : Fragment() {

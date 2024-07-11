@@ -18,12 +18,17 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sparklehaven.R
+import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteViewModel
+import com.example.sparklehaven.dashboard.navigation_fragments.favorite.viewmodel_factory.FavoriteViewModelFactory
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.HomeCategoryAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ImageSliderAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.ProductItemsAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view_models.HomeViewModel
+import com.example.sparklehaven.data.local.AppDatabase
+import com.example.sparklehaven.data.repository.FavoriteRepository
 import com.example.sparklehaven.databinding.FragmentHomeBinding
 import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
+import com.example.sparklehaven.utils.singleton.FirebaseModule
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -33,9 +38,19 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: ImageSliderAdapter
     private lateinit var categoryAdapter: HomeCategoryAdapter
     private lateinit var productItemAdapter: ProductItemsAdapter
+    private val userId = FirebaseModule.firebaseAuth.currentUser?.uid ?: ""
 
     // Initialize ViewModel using viewModels() delegate
     private val viewModel: HomeViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModels {
+        FavoriteViewModelFactory(
+            userId,
+            FavoriteRepository(
+                AppDatabase.getDatabase(requireContext()).favoriteDao(),
+                FirebaseModule.firebaseFirestore
+            )
+        )
+    }
 
     private val runnable = Runnable {
         binding.viewPagerImageSlider.currentItem += 1
@@ -173,13 +188,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun productItems () {
-        productItemAdapter = ProductItemsAdapter(ArrayList(), requireContext())
+        productItemAdapter = ProductItemsAdapter(ArrayList(), requireContext(), favoriteViewModel)
         binding.productItemsRecView.adapter = productItemAdapter
         binding.productItemsRecView.layoutManager = GridLayoutManager(context,2)
 
         viewModel.products.observe(viewLifecycleOwner) { products ->
             productItemAdapter.updateItems(products)
         }
+
+        // Fetch and observe favorites
+        favoriteViewModel.fetchFavorites()
     }
 
     private fun goToCart () {

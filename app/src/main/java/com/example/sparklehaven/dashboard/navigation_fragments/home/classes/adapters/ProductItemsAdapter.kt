@@ -4,16 +4,21 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sparklehaven.Product
 import com.example.sparklehaven.R
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
+import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteViewModel
 import com.example.sparklehaven.databinding.ItemsLayoutBinding
 import com.example.sparklehaven.product.activities.ProductDetailsActivity
 import com.example.sparklehaven.utils.references.ExtrasRef
 
-class ProductItemsAdapter (private val productItemsList: ArrayList<Product>, private val context: Context) : RecyclerView.Adapter<ProductItemsAdapter.ProductItemViewHolder>() {
+class ProductItemsAdapter (
+    private val productItemsList: ArrayList<Product>,
+    private val context: Context,
+    private val favoriteViewModel: FavoriteViewModel
+) : RecyclerView.Adapter<ProductItemsAdapter.ProductItemViewHolder>() {
 
     class ProductItemViewHolder(val binding: ItemsLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -50,6 +55,17 @@ class ProductItemsAdapter (private val productItemsList: ArrayList<Product>, pri
 //                    R.drawable.unfav_icon
 //                }
 //            )
+
+            favoriteViewModel.favoriteProducts.observe(context as LifecycleOwner) { favorites ->
+                val isFavorite = favorites.any { it.productId == product.productId }
+                isFavoriteIcon.setImageResource(
+                    if (isFavorite) R.drawable.fav_icon else R.drawable.unfav_icon
+                )
+            }
+
+            favoriteBtn.setOnClickListener {
+                favoriteViewModel.toggleFavorite(product)
+            }
         }
 
 //        holder.binding.favoriteIconBtn.setOnClickListener {

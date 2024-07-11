@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.sparklehaven.data.model.User
+import com.example.sparklehaven.data.model.Favorite
 
-@Database(entities = [User::class], version = 2, exportSchema = false)
+@Database(entities = [Favorite::class], version = 6)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun userDao(): UserDao
+//    abstract fun userDao(): UserDao
+    abstract fun favoriteDao(): FavoriteDao
 
     companion object {
         @Volatile

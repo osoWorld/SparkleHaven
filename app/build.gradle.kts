@@ -90,7 +90,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.ktx)
-//    kapt(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
 
     // Shared Preferences
     implementation (libs.androidx.preference.ktx)
@@ -125,9 +125,9 @@ dependencies {
 }
 
 // Allow references to generated code
-//kapt {
-//    correctErrorTypes = true
-//}
+kapt {
+    correctErrorTypes = true
+}
 
 //hilt {
 //    enableAggregatingTask = true

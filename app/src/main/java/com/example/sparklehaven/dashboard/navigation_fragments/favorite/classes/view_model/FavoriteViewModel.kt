@@ -18,7 +18,7 @@ class FavoriteViewModel(private val userId: String, private val repository: Favo
     fun toggleFavorite(product: Product) {
         viewModelScope.launch {
             repository.toggleFavorite(userId, product)
-            fetchFavorites()
+            fetchFavorites()    // Ensure the favorites are fetched after toggling
         }
     }
 

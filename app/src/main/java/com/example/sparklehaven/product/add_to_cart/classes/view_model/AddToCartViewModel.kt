@@ -1,34 +1,90 @@
 package com.example.sparklehaven.product.add_to_cart.classes.view_model
 
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.sparklehaven.Product
 import com.example.sparklehaven.R
+import com.example.sparklehaven.data.model.CartItem
 import com.example.sparklehaven.product.add_to_cart.classes.model.CartItemsModel
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
-class AddToCartViewModel : ViewModel() {
-    private val _cartItemsList = MutableLiveData<List<CartItemsModel>> ()
-    val cartItemsList : LiveData<List<CartItemsModel>> get() = _cartItemsList
+class AddToCartViewModel(application: Application) : AndroidViewModel(application) {
+    private val sharedPreferences: SharedPreferences = application.getSharedPreferences("cart_preferences", Context.MODE_PRIVATE)
+    private val _cartItemsList = MutableLiveData<MutableList<CartItem>>()
+    val cartItemsList: LiveData<MutableList<CartItem>> get() = _cartItemsList
 
-    private val allCartItems : List<CartItemsModel> = listOf(
-        CartItemsModel(R.drawable.elegant_asthetic_gold_pearl_earring, "Elegant Aesthetic Gold Pearl Earring", 25000, 1),
-        CartItemsModel(R.drawable.pure_gold_couple_ring, "Pure Gold Couple Ring", 85000, 1),
-        CartItemsModel(R.drawable.pure_gold_bracelet, "Pure Gold Bracelet", 25000, 1),
-        CartItemsModel(R.drawable.elegant_gold_quartz_necklace, "Elegant Gold Quartz Necklace", 25000, 1),
-    )
+    private val _subTotal = MutableLiveData<Double>()
+    val subTotal: LiveData<Double> get() = _subTotal
+
+    private val _shippingTotal = MutableLiveData<Double>()
+    val shippingTotal: LiveData<Double> get() = _shippingTotal
+
+    private val _grandTotal = MutableLiveData<Double>()
+    val grandTotal: LiveData<Double> get() = _grandTotal
+
+    private val _itemTotal = MutableLiveData<Int>()
+    val itemTotal: LiveData<Int> get() = _itemTotal
 
     init {
         loadCartItems()
-        Log.d("AddToCartViewModel", "Initializing ViewModel")
     }
 
     private fun loadCartItems() {
-        if (allCartItems.isNotEmpty()) {
-            _cartItemsList.postValue(allCartItems)
-            Log.d("AddToCartViewModel", "Loading cart items: $allCartItems")
+        val cartItemsJson = sharedPreferences.getString("cart_items", null)
+        val cartItems: MutableList<CartItem> = if (cartItemsJson != null) {
+            val type = object : TypeToken<MutableList<CartItem>>() {}.type
+            Gson().fromJson(cartItemsJson, type)
         } else {
-            Log.e("AddToCartViewModel", "allCartItems is empty")
+            mutableListOf()
         }
+        _cartItemsList.value = cartItems
+        calculateTotals()
+    }
+
+    private fun saveCartItems(cartItems: List<CartItem>) {
+        val editor = sharedPreferences.edit()
+        val cartItemsJson = Gson().toJson(cartItems)
+        editor.putString("cart_items", cartItemsJson)
+        editor.apply()
+    }
+
+    fun updateCartItemCount(cartItem: CartItem, count: Int, totalPrice: Double) {
+        val cartItems = _cartItemsList.value ?: mutableListOf()
+        val existingCartItem = cartItems.find { it.productId == cartItem.productId }
+        if (existingCartItem != null) {
+            existingCartItem.productCount = count
+            existingCartItem.totalPrice = totalPrice
+        }
+        _cartItemsList.value = cartItems
+        saveCartItems(cartItems)
+        calculateTotals()
+    }
+
+    fun removeCartItem(cartItem: CartItem) {
+        val cartItems = _cartItemsList.value ?: mutableListOf()
+        cartItems.removeAll { it.productId == cartItem.productId }
+        _cartItemsList.value = cartItems
+        saveCartItems(cartItems)
+        calculateTotals()
+    }
+
+    private fun calculateTotals() {
+        val cartItems = _cartItemsList.value ?: mutableListOf()
+        val subTotal = cartItems.sumOf { it.totalPrice }
+        val shippingTotal = subTotal * 0.05
+        val grandTotal = subTotal + shippingTotal
+        val itemTotal = cartItems.size
+
+        _subTotal.value = subTotal
+        _shippingTotal.value = shippingTotal
+        _grandTotal.value = grandTotal
+        _itemTotal.value = itemTotal
     }
 }

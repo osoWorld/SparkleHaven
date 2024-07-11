@@ -1,5 +1,7 @@
 package com.example.sparklehaven.product.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -10,13 +12,21 @@ import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.sparklehaven.Product
 import com.example.sparklehaven.R
+import com.example.sparklehaven.data.model.CartItem
 import com.example.sparklehaven.databinding.ActivityProductDetailsBinding
 import com.example.sparklehaven.utils.references.ExtrasRef
+import com.example.sparklehaven.utils.singleton.SharedPreferencesModule
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class ProductDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductDetailsBinding
     private lateinit var product : Product
     private var productCountText = 1
+    private val cartPreferences: SharedPreferences by lazy {
+        getSharedPreferences("cart_preferences", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +66,10 @@ class ProductDetailsActivity : AppCompatActivity() {
                 }
             }
 
-//            setupProductSizeAutoComplete(product.name)
+            addToCartBtn.setOnClickListener {
+                addToCart()
+            }
+
         }
     }
 
@@ -67,26 +80,44 @@ class ProductDetailsActivity : AppCompatActivity() {
         binding.productTotalPrice.text = totalPrice.toString()
     }
 
-//    private fun setupProductSizeAutoComplete(category: String) {
-//        val sizes = when {
-//            category.contains("Ring", ignoreCase = true) -> arrayOf("6", "7", "8", "9")
-//            category.contains("Necklace", ignoreCase = true) -> arrayOf("16\"", "18\"", "20\"", "22\"")
-//            category.contains("Earring", ignoreCase = true) -> arrayOf("Small", "Medium", "Large", "Extra Large")
-//            category.contains("Bracelet", ignoreCase = true) -> arrayOf("6.5\"", "7\"", "7.5\"", "8\"")
-//            category.contains("Anklet", ignoreCase = true) -> arrayOf("9\"", "9.5\"", "10\"", "10.5\"")
-//            else -> emptyArray()
-//        }
-//
-//        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, sizes)
-//        binding.productSizeOutCompleteText.setAdapter(adapter)
-//        binding.productSizeOutCompleteText.setOnClickListener {
-//            binding.productSizeOutCompleteText.showDropDown()
-//        }
-//
-//        // Add a simple item click listener to log selected item
-//        binding.productSizeOutCompleteText.setOnItemClickListener { parent, view, position, id ->
-//            val selectedItem = parent.getItemAtPosition(position).toString()
-//            Log.d("ViewDetailedProductActivity", "Selected size: $selectedItem")
-//        }
-//    }
+    private fun addToCart() {
+        val price = product.price.toDoubleOrNull() ?: 0.0
+        val totalPrice = price * productCountText
+
+        val cartItem = CartItem(
+            productId = product.productId,
+            productName = product.name,
+            productPrice = product.price.toDoubleOrNull() ?: 0.0,
+            productImageUrl = product.imageUrl,
+            productCount = productCountText,
+            totalPrice = totalPrice
+        )
+        saveCartItem(cartItem)
+        showSnackbar("Item added to cart")
+    }
+
+    private fun saveCartItem(cartItem: CartItem) {
+        val cartItems = getCartItems().toMutableList()
+        val existingItem = cartItems.find { it.productId == cartItem.productId }
+
+        if (existingItem != null) {
+            existingItem.productCount += cartItem.productCount
+        } else {
+            cartItems.add(cartItem)
+        }
+
+        val editor = cartPreferences.edit()
+        editor.putString("cart_items", Gson().toJson(cartItems))
+        editor.apply()
+    }
+
+    private fun getCartItems(): List<CartItem> {
+        val cartItemsJson = cartPreferences.getString("cart_items", null) ?: return emptyList()
+        val type = object : TypeToken<List<CartItem>>() {}.type
+        return Gson().fromJson(cartItemsJson, type)
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+    }
 }

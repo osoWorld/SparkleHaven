@@ -2,15 +2,25 @@ package com.example.sparklehaven.product.add_to_cart.classes.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.sparklehaven.data.model.CartItem
 import com.example.sparklehaven.databinding.CartItemsLayoutBinding
-import com.example.sparklehaven.product.add_to_cart.classes.model.CartItemsModel
+import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
 
-class CartItemsAdapter : RecyclerView.Adapter<CartItemsAdapter.CartItemsViewHolder>() {
+class CartItemsAdapter(private val viewModel: AddToCartViewModel) :
+    RecyclerView.Adapter<CartItemsAdapter.CartItemsViewHolder>() {
 
-    private var cartItemsList : List<CartItemsModel> = listOf()
+    private var cartItems = mutableListOf<CartItem>()
 
-    class CartItemsViewHolder (val binding: CartItemsLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    fun updateItems(items: List<CartItem>) {
+        cartItems = items.toMutableList()
+        notifyDataSetChanged()
+    }
+
+    class CartItemsViewHolder(val binding: CartItemsLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemsViewHolder {
         return CartItemsViewHolder(
@@ -22,36 +32,39 @@ class CartItemsAdapter : RecyclerView.Adapter<CartItemsAdapter.CartItemsViewHold
         )
     }
 
-    override fun getItemCount(): Int = cartItemsList.size
+    override fun getItemCount(): Int = cartItems.size
 
     override fun onBindViewHolder(holder: CartItemsViewHolder, position: Int) {
-        val cartItem = cartItemsList[position]
+        val cartItem = cartItems[position]
         holder.binding.apply {
-            cartItemImage.setImageResource(cartItem.itemIcon)
-            cartItemName.text = cartItem.itemName
-            cartItemPrice.text = cartItem.itemPrice.toString()
-            cartItemCounter.text = cartItem.itemCount.toString()
-        }
+            Glide.with(root.context).load(cartItem.productImageUrl).into(cartItemImage)
+            cartItemName.text = cartItem.productName
+            cartItemPrice.text = cartItem.totalPrice.toString()
+            cartItemCounter.text = cartItem.productCount.toString()
 
-
-        // For incrementing & Decrementing of Products
-        holder.binding.cartItemPlus.setOnClickListener {
-            if (cartItem.itemCount in 1..99) {
-                cartItem.itemCount ++
-                holder.binding.cartItemCounter.text = cartItem.itemCount.toString()
+            // For incrementing & Decrementing of Products
+            cartItemPlus.setOnClickListener {
+                val newCount = cartItem.productCount + 1
+                val newTotalPrice = cartItem.productPrice * newCount
+                viewModel.updateCartItemCount(cartItem, newCount, newTotalPrice)
             }
-        }
 
-        holder.binding.cartItemMinus.setOnClickListener {
-            if (cartItem.itemCount > 1) {
-                cartItem.itemCount --
-                holder.binding.cartItemCounter.text = cartItem.itemCount.toString()
+            cartItemMinus.setOnClickListener {
+                if (cartItem.productCount > 1) {
+                    val newCount = cartItem.productCount - 1
+                    val newTotalPrice = cartItem.productPrice * newCount
+                    viewModel.updateCartItemCount(cartItem, newCount, newTotalPrice)
+                } else {
+                    AlertDialog.Builder(root.context)
+                        .setMessage("Are you sure you want to remove this item from the cart?")
+                        .setPositiveButton("Yes") { dialog, which ->
+                            viewModel.removeCartItem(cartItem)
+                        }
+                        .setNegativeButton("No", null)
+                        .show()
+                }
             }
         }
     }
 
-    fun updateItems(newItems: List<CartItemsModel>) {
-        cartItemsList = newItems
-        notifyDataSetChanged()
-    }
 }

@@ -20,12 +20,14 @@ import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCart
 import com.example.sparklehaven.product.checkout.classes.adapters.CheckOutItemsAdapter
 import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
 import com.example.sparklehaven.product.checkout.classes.fragments.ProgressDialogFragment
+import com.example.sparklehaven.product.checkout.classes.model.Address
 import com.example.sparklehaven.product.checkout.classes.view_model.CheckoutViewModel
 import com.example.sparklehaven.success.SuccessActivity
 import com.example.sparklehaven.utils.references.ExtrasRef
 import com.example.sparklehaven.utils.singleton.FirebaseModule
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.Source
 
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckoutBinding
@@ -33,6 +35,7 @@ class CheckoutActivity : AppCompatActivity() {
     private val firestore = FirebaseModule.firebaseFirestore
     private val auth = FirebaseModule.firebaseAuth
     private val uid = auth.currentUser?.uid ?:""
+    private var updatedAddressId: String? = null
 
     // Initialize ViewModel using viewModels() delegate
     private val viewModel: CheckoutViewModel by viewModels()
@@ -66,6 +69,12 @@ class CheckoutActivity : AppCompatActivity() {
         loadCartItem()
         observeViewModel()
 
+        // Load shipping address
+        loadAddressFromCache()
+
+        // Go To Change Address
+        goToChangeAddress()
+
         // Payment Methods
         paymentBottomSheet()
 
@@ -87,6 +96,51 @@ class CheckoutActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun loadAddressFromCache() {
+        firestore.collection("ShippingAddress").document(uid).collection("addresses")
+            .get(Source.CACHE)
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    setNotFoundText()
+                } else {
+                    val address = documents.documents[0].toObject(Address::class.java)
+                    if (address != null) {
+                        binding.nameShippingDetails.text = address.name
+                        binding.phoneShippingDetails.text = address.phone
+                        binding.addressShippingDetails.text = address.address
+                        binding.cityShippingDetails.text = address.city
+                        binding.zipShippingDetails.text = address.postalCode
+                        binding.stateShippingDetails.text = address.state
+                        binding.countryShippingDetails.text = address.country
+                    } else {
+                        setNotFoundText()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                showSnackbar("Failed to load address: ${e.message}")
+                setNotFoundText()
+            }
+    }
+
+    private fun setNotFoundText() {
+        binding.nameShippingDetails.text = "Not Found"
+        binding.addressShippingDetails.text = "Not Found"
+        binding.cityShippingDetails.text = "Not Found"
+        binding.stateShippingDetails.text = "Not Found"
+        binding.phoneShippingDetails.text = "Not Found"
+        binding.zipShippingDetails.text = "Not Found"
+        binding.countryShippingDetails.text = "Not Found"
+    }
+
+    private fun goToChangeAddress() {
+        binding.changeAddressButton.setOnClickListener {
+            val intent = Intent(this, ShippingAddressActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
 
     private fun paymentBottomSheet() {
         binding.paymentMethodCard.setOnClickListener {

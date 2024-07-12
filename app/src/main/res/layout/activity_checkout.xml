@@ -66,6 +66,35 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Name:"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lora_medium"/>
+
+                <TextView
+                    android:id="@+id/nameShippingDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/lora_medium"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Address:"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -76,7 +105,7 @@
                     android:id="@+id/addressShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="X-421, Eden Orchard"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -105,7 +134,7 @@
                     android:id="@+id/cityShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Faisalabad"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -134,7 +163,7 @@
                     android:id="@+id/stateShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Punjab"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -160,9 +189,10 @@
                     android:fontFamily="@font/lora_medium"/>
 
                 <TextView
+                    android:id="@+id/phoneShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+92 303 6292862"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -188,9 +218,10 @@
                     android:fontFamily="@font/lora_medium"/>
 
                 <TextView
+                    android:id="@+id/zipShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="38000"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -216,9 +247,10 @@
                     android:fontFamily="@font/lora_medium"/>
 
                 <TextView
+                    android:id="@+id/countryShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pakistan"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -231,6 +263,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/changeAddressButton"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/black_btn_shape"

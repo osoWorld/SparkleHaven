@@ -85,14 +85,10 @@ class AddToCartActivity : AppCompatActivity() {
     private fun proceedToCheckOut() {
         binding.proceedToCheckoutButton.setOnClickListener {
             val cartItemsList = viewModel.cartItemsList.value ?: listOf()
-//            val subTotal = viewModel.subTotal.value ?: 0.0
-//            val shippingTotal = viewModel.shippingTotal.value ?: 0.0
             val grandTotal = viewModel.grandTotal.value ?: 0.0
 
             val intent = Intent(this, CheckoutActivity::class.java).apply {
                 putParcelableArrayListExtra("cartItems", ArrayList(cartItemsList))
-//                putExtra("subTotal", subTotal)
-//                putExtra("shippingTotal", shippingTotal)
                 putExtra("grandTotal", grandTotal)
             }
             startActivity(intent)

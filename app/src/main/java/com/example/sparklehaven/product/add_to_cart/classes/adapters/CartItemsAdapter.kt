@@ -66,5 +66,4 @@ class CartItemsAdapter(private val viewModel: AddToCartViewModel) :
             }
         }
     }
-
 }

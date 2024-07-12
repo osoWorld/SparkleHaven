@@ -1,6 +1,8 @@
 package com.example.sparklehaven.product.checkout
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -17,15 +19,27 @@ import com.example.sparklehaven.product.add_to_cart.classes.model.CartItemsModel
 import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
 import com.example.sparklehaven.product.checkout.classes.adapters.CheckOutItemsAdapter
 import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
+import com.example.sparklehaven.product.checkout.classes.fragments.ProgressDialogFragment
 import com.example.sparklehaven.product.checkout.classes.view_model.CheckoutViewModel
 import com.example.sparklehaven.success.SuccessActivity
+import com.example.sparklehaven.utils.references.ExtrasRef
+import com.example.sparklehaven.utils.singleton.FirebaseModule
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FieldValue
 
 class CheckoutActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityCheckoutBinding
-    private lateinit var checkOutItemsAdapter : CheckOutItemsAdapter
+    private lateinit var binding: ActivityCheckoutBinding
+    private lateinit var checkOutItemsAdapter: CheckOutItemsAdapter
+    private val firestore = FirebaseModule.firebaseFirestore
+    private val auth = FirebaseModule.firebaseAuth
+    private val uid = auth.currentUser?.uid ?:""
 
     // Initialize ViewModel using viewModels() delegate
     private val viewModel: CheckoutViewModel by viewModels()
+
+    private val cartPreferences: SharedPreferences by lazy {
+        getSharedPreferences("cart_preferences", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +55,6 @@ class CheckoutActivity : AppCompatActivity() {
 
         // Receive cart items and totals from Intent
         val cartItemsList = intent.getParcelableArrayListExtra<CartItem>("cartItems")
-//        val subTotal = intent.getDoubleExtra("subTotal", 0.0)
-//        val shippingTotal = intent.getDoubleExtra("shippingTotal", 0.0)
         val grandTotal = intent.getDoubleExtra("grandTotal", 0.0)
 
         if (cartItemsList != null) {
@@ -58,7 +70,7 @@ class CheckoutActivity : AppCompatActivity() {
         paymentBottomSheet()
 
         // Place Order
-        placeOrder()
+        placeOrder(cartItemsList, grandTotal)
 
     }
 
@@ -83,9 +95,63 @@ class CheckoutActivity : AppCompatActivity() {
         }
     }
 
-    private fun placeOrder () {
+    private fun placeOrder(cartItemsList: List<CartItem>?, grandTotal: Double) {
         binding.placeOrderButton.setOnClickListener {
-            startActivity(Intent(this, SuccessActivity::class.java))
+
+            val progressDialog = ProgressDialogFragment()
+            progressDialog.isCancelable = false
+            progressDialog.show(supportFragmentManager, ProgressDialogFragment.TAG)
+
+            // Save the receipt/billing info to Firestore
+            // Prepare the order data
+            val orderData = hashMapOf(
+                "uid" to uid,
+                "cartItems" to cartItemsList?.map { cartItem ->
+                    hashMapOf(
+                        "productId" to cartItem.productId,
+                        "productName" to cartItem.productName,
+                        "productPrice" to cartItem.productPrice,
+                        "productImageUrl" to cartItem.productImageUrl,
+                        "productCount" to cartItem.productCount,  // This is the quantity
+                        "totalPrice" to cartItem.totalPrice
+                    )
+                },
+                "grandTotal" to grandTotal,
+                "date" to FieldValue.serverTimestamp()
+            )
+            firestore.collection("orders")
+                .add(orderData)
+                .addOnSuccessListener {
+                    // Hide the dialogue
+                    progressDialog.dismiss()
+                    // Clear the cart
+                    clearCart()
+                    // Navigate to SuccessActivity
+                    startActivity(Intent(this, SuccessActivity::class.java))
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    // Hide the dialogue
+                    progressDialog.dismiss()
+                    // Handle the error
+                    showSnackbar("Order placement failed: ${e.message}")
+                }
         }
+    }
+
+    private fun clearCart() {
+        val editor = cartPreferences.edit()
+        editor.clear()
+        editor.apply()
+        startActivity(
+            Intent(this, SuccessActivity::class.java).putExtra(
+                ExtrasRef.SUCCESS_SCREEN,
+                ExtrasRef.SUCCESS_MESSAGE
+            )
+        )
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 }

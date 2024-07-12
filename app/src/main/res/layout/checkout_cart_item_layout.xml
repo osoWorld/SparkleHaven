@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardBackgroundColor="@color/Beige"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp">
+
+            <ImageView
+                android:id="@+id/cartItemImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/elegant_asthetic_gold_pearl_earring"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cartItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elegant Asthetic Gold Pearl Earring"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:fontFamily="@font/cinzel_medium"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PKR."
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/lora_medium"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/cartItemPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12,000,000"
+                    android:textSize="18sp"
+                    android:layout_marginStart="6dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/lora_medium"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="36dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/black_btn_shape_rounded"
+            android:orientation="horizontal"
+            android:layout_marginEnd="12dp"
+            android:padding="3dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/productItemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:fontFamily="@font/lora_medium"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/grey_line_shape"/>
+
+</LinearLayout>

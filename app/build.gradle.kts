@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 //    id("com.google.devtools.ksp")
     id("kotlin-kapt")
+    id ("kotlin-parcelize")
+
     alias(libs.plugins.google.gms.google.services)
 //    id("com.google.dagger.hilt.android")
 }

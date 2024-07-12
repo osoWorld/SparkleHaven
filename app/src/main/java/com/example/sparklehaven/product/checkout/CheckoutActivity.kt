@@ -10,8 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sparklehaven.R
+import com.example.sparklehaven.data.model.CartItem
 import com.example.sparklehaven.databinding.ActivityCheckoutBinding
 import com.example.sparklehaven.product.add_to_cart.classes.adapters.CartItemsAdapter
+import com.example.sparklehaven.product.add_to_cart.classes.model.CartItemsModel
 import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
 import com.example.sparklehaven.product.checkout.classes.adapters.CheckOutItemsAdapter
 import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
@@ -37,6 +39,18 @@ class CheckoutActivity : AppCompatActivity() {
             insets
         }
 
+        // Receive cart items and totals from Intent
+        val cartItemsList = intent.getParcelableArrayListExtra<CartItem>("cartItems")
+//        val subTotal = intent.getDoubleExtra("subTotal", 0.0)
+//        val shippingTotal = intent.getDoubleExtra("shippingTotal", 0.0)
+        val grandTotal = intent.getDoubleExtra("grandTotal", 0.0)
+
+        if (cartItemsList != null) {
+            viewModel.setCartItems(cartItemsList)
+        }
+
+        binding.grandPriceText.text = grandTotal.toString()
+
         loadCartItem()
         observeViewModel()
 
@@ -57,10 +71,7 @@ class CheckoutActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.checkoutItemsList.observe(this) { cartItems ->
             if (cartItems != null) {
-                Log.d("AddToCartActivity", "Cart items received: $cartItems")
                 checkOutItemsAdapter.updateItems(cartItems)
-            } else {
-                Log.e("AddToCartActivity", "cartItemsList is null")
             }
         }
     }
@@ -77,5 +88,4 @@ class CheckoutActivity : AppCompatActivity() {
             startActivity(Intent(this, SuccessActivity::class.java))
         }
     }
-
 }

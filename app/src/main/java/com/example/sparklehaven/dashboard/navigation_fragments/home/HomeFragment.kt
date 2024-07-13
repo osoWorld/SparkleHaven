@@ -113,10 +113,15 @@ class HomeFragment : Fragment() {
                     user?.let {
                         binding.usernameText.text = it.username
 
-                        Glide.with(this)
-                            .load(it.userImageUrl)
-                            .placeholder(R.drawable.splash_img)
-                            .into(binding.userHomeImg)
+                        if (user.userImageUrl != ""){
+                            Glide.with(this)
+                                .load(it.userImageUrl)
+                                .placeholder(R.drawable.splash_img)
+                                .into(binding.userHomeImg)
+                        } else {
+                            binding.userHomeImg.setImageResource(R.drawable.splash_img)
+                        }
+
                     }
                 } else {
                     // Fetch from server if cache is empty

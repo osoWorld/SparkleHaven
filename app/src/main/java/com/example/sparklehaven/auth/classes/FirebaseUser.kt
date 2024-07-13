@@ -5,5 +5,6 @@ data class FirebaseUser(
     val email : String = "",
     val password : String = "",
     val uid : String = "",
-    val userImageUrl : String = ""
+    val userImageUrl : String = "",
+    val age : String = ""
 )

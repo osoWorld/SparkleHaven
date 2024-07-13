@@ -34,9 +34,10 @@
                     app:cardCornerRadius="14dp">
 
                     <ImageView
+                        android:id="@+id/userImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/elegant_asthetic_gold_pearl_earring"
+                        android:src="@drawable/splash_img"
                         android:scaleType="fitXY"/>
 
                 </androidx.cardview.widget.CardView>
@@ -48,15 +49,21 @@
                     android:layout_margin="12dp">
 
                     <TextView
+                        android:id="@+id/usernameText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Muhammad Suffian"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"/>
+                        android:fontFamily="@font/lora_medium"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeMaxTextSize="18sp"
+                        android:autoSizeStepGranularity="1sp"/>
 
                     <TextView
+                        android:id="@+id/userEmailText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="muhammadsuffian5@gmail.com"
@@ -64,7 +71,11 @@
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:textSize="16sp"
-                        android:fontFamily="@font/lora_medium"/>
+                        android:fontFamily="@font/lora_medium"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeMaxTextSize="16sp"
+                        android:autoSizeStepGranularity="1sp"/>
 
                 </LinearLayout>
 

@@ -19,6 +19,7 @@ import com.example.sparklehaven.databinding.ActivityAddToCartBinding
 import com.example.sparklehaven.product.add_to_cart.classes.adapters.CartItemsAdapter
 import com.example.sparklehaven.product.add_to_cart.classes.view_model.AddToCartViewModel
 import com.example.sparklehaven.product.checkout.CheckoutActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -85,13 +86,22 @@ class AddToCartActivity : AppCompatActivity() {
     private fun proceedToCheckOut() {
         binding.proceedToCheckoutButton.setOnClickListener {
             val cartItemsList = viewModel.cartItemsList.value ?: listOf()
-            val grandTotal = viewModel.grandTotal.value ?: 0.0
 
-            val intent = Intent(this, CheckoutActivity::class.java).apply {
-                putParcelableArrayListExtra("cartItems", ArrayList(cartItemsList))
-                putExtra("grandTotal", grandTotal)
+            if (cartItemsList.isEmpty()) {
+                showSnackbar("No Item Added in Cart")
+            } else {
+                val grandTotal = viewModel.grandTotal.value ?: 0.0
+
+                val intent = Intent(this, CheckoutActivity::class.java).apply {
+                    putParcelableArrayListExtra("cartItems", ArrayList(cartItemsList))
+                    putExtra("grandTotal", grandTotal)
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
         }
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 }

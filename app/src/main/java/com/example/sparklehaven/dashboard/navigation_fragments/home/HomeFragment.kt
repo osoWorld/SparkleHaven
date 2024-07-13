@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.example.sparklehaven.R
+import com.example.sparklehaven.auth.classes.FirebaseUser
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteViewModel
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.viewmodel_factory.FavoriteViewModelFactory
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.adapters.HomeCategoryAdapter
@@ -28,7 +30,10 @@ import com.example.sparklehaven.data.local.AppDatabase
 import com.example.sparklehaven.data.repository.FavoriteRepository
 import com.example.sparklehaven.databinding.FragmentHomeBinding
 import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
+import com.example.sparklehaven.utils.references.FirebaseRef
 import com.example.sparklehaven.utils.singleton.FirebaseModule
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.Source
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -66,6 +71,9 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
+        // Fetch user data from Firestore
+        fetchUserData()
+
         // ImageSlider
         initImageSlider()
         setUpTransformer()
@@ -95,6 +103,64 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun fetchUserData() {
+        val firestore = FirebaseModule.firebaseFirestore
+        firestore.collection(FirebaseRef.USER).document(userId).get(Source.CACHE)
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val user = document.toObject(FirebaseUser::class.java)
+                    user?.let {
+                        binding.usernameText.text = it.username
+
+                        Glide.with(this)
+                            .load(it.userImageUrl)
+                            .placeholder(R.drawable.splash_img)
+                            .into(binding.userHomeImg)
+                    }
+                } else {
+                    // Fetch from server if cache is empty
+                    fetchUserDataFromServer()
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Handle the error
+                showSnackbar("Error fetching user data: ${exception.message}")
+                // Attempt to fetch from server if cache retrieval fails
+                fetchUserDataFromServer()
+            }
+    }
+
+    private fun fetchUserDataFromServer() {
+        val firestore = FirebaseModule.firebaseFirestore
+        firestore.collection(FirebaseRef.USER).document(userId).get(Source.SERVER)
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val user = document.toObject(FirebaseUser::class.java)
+                    user?.let {
+                        binding.usernameText.text = it.username
+
+                        if (user.userImageUrl != "") {
+                            Glide.with(this)
+                                .load(it.userImageUrl)
+                                .placeholder(R.drawable.splash_img)
+                                .into(binding.userHomeImg)
+                        } else {
+                            binding.userHomeImg.setImageResource(R.drawable.splash_img)
+                        }
+
+                    }
+                } else {
+                    // Handle case where user data does not exist on the server
+                    showSnackbar("User data does not exist")
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Handle the error
+                showSnackbar("Error fetching user data from server: ${exception.message}")
+            }
+    }
+
 
     private fun initImageSlider() {
         handler = Handler(Looper.myLooper()!!)
@@ -215,5 +281,9 @@ class HomeFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(runnable)
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 }

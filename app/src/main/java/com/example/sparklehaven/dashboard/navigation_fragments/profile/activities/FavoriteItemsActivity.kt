@@ -2,6 +2,7 @@ package com.example.sparklehaven.dashboard.navigation_fragments.profile.activiti
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -60,6 +61,9 @@ class FavoriteItemsActivity : AppCompatActivity() {
         // Load FavItems
         productItems()
 
+        // Observe favorites LiveData and update adapter
+        observeFavorites()
+
 
     }
 
@@ -67,10 +71,15 @@ class FavoriteItemsActivity : AppCompatActivity() {
         favoriteItemAdapter = FavoriteItemAdapter(this, favViewModel)
         binding.favoriteRecView.adapter = favoriteItemAdapter
         binding.favoriteRecView.layoutManager = GridLayoutManager(this,2)
+    }
 
-        // Observe favorites LiveData and update adapter
+    private fun observeFavorites() {
         viewModel.favoriteProducts.observe(this) { favoriteProducts ->
             favoriteItemAdapter.updateItems(favoriteProducts)
+        }
+
+        viewModel.progress.observe(this) { progress ->
+            if (progress) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
         }
 
         viewModel.fetchFavorites() // Fetch favorites when the fragment is created

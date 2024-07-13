@@ -14,20 +14,26 @@ class FavoriteViewModel(private val userId: String, private val repository: Favo
     private val _favoriteProducts = MutableLiveData<List<Product>>()
     val favoriteProducts: LiveData<List<Product>> get() = _favoriteProducts
 
+    private val _progress = MutableLiveData<Boolean>()
+    val progress: LiveData<Boolean> get() = _progress
 
     fun toggleFavorite(product: Product) {
         viewModelScope.launch {
+            _progress.value = true
             repository.toggleFavorite(userId, product)
             fetchFavorites()    // Ensure the favorites are fetched after toggling
+            _progress.value = false
         }
     }
 
     fun fetchFavorites() {
         viewModelScope.launch {
+            _progress.value = true
             val favorites = repository.fetchFavorites(userId)
             val productIds = favorites.map { it.productId }
             val favoriteProducts = repository.fetchProductsByIds(productIds)
             _favoriteProducts.value = favoriteProducts
+            _progress.value = false
         }
     }
 }

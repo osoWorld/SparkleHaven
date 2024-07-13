@@ -55,12 +55,12 @@ class FavoriteFragment : Fragment() {
             }
         }
 
+        binding.progressBar.visibility = View.GONE
+
         setupRecyclerView()
 
         // Observe favorites LiveData and update adapter
-        viewModel.favoriteProducts.observe(viewLifecycleOwner) { favoriteProducts ->
-            favoriteItemAdapter.updateItems(favoriteProducts)
-        }
+        observeFavorites()
 
         viewModel.fetchFavorites() // Fetch favorites when the fragment is created
 
@@ -71,6 +71,16 @@ class FavoriteFragment : Fragment() {
         favoriteItemAdapter = FavoriteItemAdapter(requireContext(), viewModel)
         binding.favoriteRecView.adapter = favoriteItemAdapter
         binding.favoriteRecView.layoutManager = GridLayoutManager(context, 2)
+    }
+
+    private fun observeFavorites() {
+        viewModel.favoriteProducts.observe(viewLifecycleOwner) { favoriteProducts ->
+            favoriteItemAdapter.updateItems(favoriteProducts)
+        }
+
+        viewModel.progress.observe(viewLifecycleOwner) { progress ->
+            if (progress) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
+        }
     }
 
     private fun goToSearchProduct () {

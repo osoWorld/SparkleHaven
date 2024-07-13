@@ -35,7 +35,6 @@ class CheckoutActivity : AppCompatActivity() {
     private val firestore = FirebaseModule.firebaseFirestore
     private val auth = FirebaseModule.firebaseAuth
     private val uid = auth.currentUser?.uid ?:""
-    private var updatedAddressId: String? = null
 
     // Initialize ViewModel using viewModels() delegate
     private val viewModel: CheckoutViewModel by viewModels()
@@ -152,6 +151,10 @@ class CheckoutActivity : AppCompatActivity() {
     private fun placeOrder(cartItemsList: List<CartItem>?, grandTotal: Double) {
         binding.placeOrderButton.setOnClickListener {
 
+            if (binding.addressShippingDetails.text == "Not Found") {
+                showSnackbar("Please add shipping address first")
+            } else {
+                // Show the progress dialog
             val progressDialog = ProgressDialogFragment()
             progressDialog.isCancelable = false
             progressDialog.show(supportFragmentManager, ProgressDialogFragment.TAG)
@@ -190,6 +193,8 @@ class CheckoutActivity : AppCompatActivity() {
                     // Handle the error
                     showSnackbar("Order placement failed: ${e.message}")
                 }
+            }
+
         }
     }
 

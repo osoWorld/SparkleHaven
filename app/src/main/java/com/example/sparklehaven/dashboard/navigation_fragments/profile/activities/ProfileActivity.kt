@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -35,6 +36,10 @@ class ProfileActivity : AppCompatActivity() {
     private val storage = FirebaseModule.firebaseStorage.reference
     private val userId = auth.currentUser?.uid ?: ""
     private lateinit var googleApiClient: GoogleApiClient
+
+    private val cartPreferences: SharedPreferences by lazy {
+        getSharedPreferences("cart_preferences", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -279,6 +284,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun logout() {
+        // Clear shared preferences before logging out
+        clearSharedPreferences()
+
         // Connect GoogleApiClient before attempting to sign out
         googleApiClient.connect()
         googleApiClient.registerConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
@@ -287,48 +295,54 @@ class ProfileActivity : AppCompatActivity() {
                 auth.signOut()
 
                 Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback {
-                    // User is now signed out
-                    googleApiClient.disconnect()
-                    redirectToLogin()
-                }
-
-                revokeAccess()
-            }
-
-            override fun onConnectionSuspended(i: Int) {
-
-            }
-        })
-    }
-
-    private fun revokeAccess() {
-        // Connect GoogleApiClient before attempting to revoke access
-        googleApiClient.connect()
-        googleApiClient.registerConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
-            override fun onConnected(bundle: Bundle?) {
-                auth.signOut()
-                Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback {
-                    // User access is revoked
-                    googleApiClient.disconnect()
-                    redirectToLogin()
+                    // Handle the sign-out result here if needed
+                    if (it.isSuccess) {
+                        showSnackbar("Logout successful")
+                        // Redirect to the login activity
+                        startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
+                        finish() // Finish the current activity to prevent user from going back
+                    } else {
+                        // Handle logout failure if needed
+                        showSnackbar("Logout failed")
+                    }
                 }
             }
 
             override fun onConnectionSuspended(i: Int) {
-
+                // Handle GoogleApiClient connection suspended case if needed
+                showSnackbar("GoogleApiClient connection suspended")
             }
         })
     }
 
-    private fun redirectToLogin() {
-        // Redirect the user to LoginActivity
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
+    private fun clearSharedPreferences() {
+        val editor = cartPreferences.edit()
+        editor.clear()
+        editor.apply()
     }
 
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun revokeAccess() {
+        // Clear shared preferences before revoking access
+        clearSharedPreferences()
+
+        // Sign out from Firebase Auth
+        auth.signOut()
+
+        // Revoke access from Google Sign-In
+        Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback {
+            if (it.isSuccess) {
+                showSnackbar("Access revoked successfully")
+                // Redirect to the login activity
+                startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
+                finish() // Finish the current activity to prevent user from going back
+            } else {
+                // Handle revoke access failure if needed
+                showSnackbar("Failed to revoke access")
+            }
+        }
     }
 }

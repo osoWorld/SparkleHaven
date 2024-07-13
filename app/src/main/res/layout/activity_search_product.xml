@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".dashboard.navigation_fragments.category.activites.CategoryDetailActivity">
+    tools:context=".product.activities.SearchProductActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -22,10 +22,9 @@
             app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
-                android:id="@+id/categoryDetailTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Category"
+                android:text="Search  Product"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:fontFamily="@font/cinzel_medium"
@@ -40,12 +39,17 @@
             app:layout_collapseMode="pin">
 
             <EditText
-                android:id="@+id/categoryDetailSearchView"
+                android:id="@+id/allProductSearchView"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/searchbar_background"
                 android:padding="10dp"
                 android:hint="Search"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textColor="@color/black"
                 android:textColorHint="@color/Hint_Color"
                 android:fontFamily="@font/lora_medium"
                 android:drawableStart="@drawable/search_normal_32"
@@ -55,7 +59,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryDetailRecView"
+        android:id="@+id/allProductRecView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"

@@ -1,5 +1,6 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.favorite
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.sparklehaven.dashboard.navigation_fragments.favorite.viewmode
 import com.example.sparklehaven.data.local.AppDatabase
 import com.example.sparklehaven.data.repository.FavoriteRepository
 import com.example.sparklehaven.databinding.FragmentFavoriteBinding
+import com.example.sparklehaven.product.activities.SearchProductActivity
 import com.example.sparklehaven.utils.singleton.FirebaseModule
 import com.google.android.material.snackbar.Snackbar
 
@@ -44,6 +46,15 @@ class FavoriteFragment : Fragment() {
     ): View {
         binding = FragmentFavoriteBinding.inflate(layoutInflater)
 
+        binding.searchView.apply {
+            isFocusable = false
+            isFocusableInTouchMode = false
+            isClickable = true
+            setOnClickListener {
+                goToSearchProduct()
+            }
+        }
+
         setupRecyclerView()
 
         // Observe favorites LiveData and update adapter
@@ -60,6 +71,10 @@ class FavoriteFragment : Fragment() {
         favoriteItemAdapter = FavoriteItemAdapter(requireContext(), viewModel)
         binding.favoriteRecView.adapter = favoriteItemAdapter
         binding.favoriteRecView.layoutManager = GridLayoutManager(context, 2)
+    }
+
+    private fun goToSearchProduct () {
+        startActivity(Intent(context, SearchProductActivity::class.java))
     }
 
     private fun showSnackbar(message: String) {

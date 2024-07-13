@@ -1,12 +1,9 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.category.classes.view_model
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.sparklehaven.Product
-import com.example.sparklehaven.R
-import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.ProductItemsModel
 import com.example.sparklehaven.utils.singleton.FirebaseModule
 import com.google.firebase.firestore.Source
 
@@ -55,9 +52,6 @@ class CategoryDetailViewModel : ViewModel() {
     }
 
     private fun filterProducts(products: List<Product>, categoryTitle: String) {
-        Log.d("CategoryDetailViewModel", "Filtering products for category: $categoryTitle")
-        products.forEach { Log.d("CategoryDetailViewModel", "Product name: ${it.name}") }
-
         val filteredProducts = if (categoryTitle == "All Accessories") {
             products
         } else {
@@ -65,7 +59,7 @@ class CategoryDetailViewModel : ViewModel() {
         }
 
         if (filteredProducts.isEmpty()) {
-            Log.d("CategoryDetailViewModel", "No products found for category: $categoryTitle")
+            _messages.postValue("No products found for this category.")
         }
 
         _categoryDetailList.value = filteredProducts
@@ -74,5 +68,4 @@ class CategoryDetailViewModel : ViewModel() {
     fun loadProducts(categoryTitle: String) {
         fetchProducts(categoryTitle)
     }
-
 }

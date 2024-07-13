@@ -1,5 +1,6 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.profile.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -15,6 +16,7 @@ import com.example.sparklehaven.dashboard.navigation_fragments.favorite.viewmode
 import com.example.sparklehaven.data.local.AppDatabase
 import com.example.sparklehaven.data.repository.FavoriteRepository
 import com.example.sparklehaven.databinding.ActivityFavoriteItemsBinding
+import com.example.sparklehaven.product.activities.SearchProductActivity
 import com.example.sparklehaven.utils.singleton.FirebaseModule
 
 class FavoriteItemsActivity : AppCompatActivity() {
@@ -46,6 +48,15 @@ class FavoriteItemsActivity : AppCompatActivity() {
             insets
         }
 
+        binding.searchView.apply {
+            isFocusable = false
+            isFocusableInTouchMode = false
+            isClickable = true
+            setOnClickListener {
+                goToSearchProduct()
+            }
+        }
+
         // Load FavItems
         productItems()
 
@@ -63,5 +74,9 @@ class FavoriteItemsActivity : AppCompatActivity() {
         }
 
         viewModel.fetchFavorites() // Fetch favorites when the fragment is created
+    }
+
+    private fun goToSearchProduct () {
+        startActivity(Intent(this, SearchProductActivity::class.java))
     }
 }

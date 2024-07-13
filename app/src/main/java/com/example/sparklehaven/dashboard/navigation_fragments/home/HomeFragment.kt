@@ -29,6 +29,7 @@ import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.view
 import com.example.sparklehaven.data.local.AppDatabase
 import com.example.sparklehaven.data.repository.FavoriteRepository
 import com.example.sparklehaven.databinding.FragmentHomeBinding
+import com.example.sparklehaven.product.activities.SearchProductActivity
 import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
 import com.example.sparklehaven.utils.references.FirebaseRef
 import com.example.sparklehaven.utils.singleton.FirebaseModule
@@ -74,6 +75,15 @@ class HomeFragment : Fragment() {
         // Fetch user data from Firestore
         fetchUserData()
 
+        binding.searchView.apply {
+            isFocusable = false
+            isFocusableInTouchMode = false
+            isClickable = true
+            setOnClickListener {
+               goToSearchProduct()
+            }
+        }
+
         // ImageSlider
         initImageSlider()
         setUpTransformer()
@@ -84,6 +94,10 @@ class HomeFragment : Fragment() {
 
         // Categories RecyclerView
         categories()
+
+        binding.viewAllBtn.setOnClickListener {
+            goToSearchProduct()
+        }
 
         // Items According to categories RecyclerView
         productItems()
@@ -269,6 +283,10 @@ class HomeFragment : Fragment() {
 
         // Fetch and observe favorites
        favoriteViewModel.fetchFavorites()
+    }
+
+    private fun goToSearchProduct () {
+        startActivity(Intent(context, SearchProductActivity::class.java))
     }
 
     private fun goToCart () {

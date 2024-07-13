@@ -1,5 +1,6 @@
 package com.example.sparklehaven.dashboard.navigation_fragments.category
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.adapters.CategoryAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.category.classes.view_model.CategoryViewModel
 import com.example.sparklehaven.databinding.FragmentCategoriesBinding
+import com.example.sparklehaven.product.activities.SearchProductActivity
 
 class CategoriesFragment : Fragment() {
     private lateinit var binding : FragmentCategoriesBinding
@@ -28,6 +30,14 @@ class CategoriesFragment : Fragment() {
     ): View {
         binding = FragmentCategoriesBinding.inflate(layoutInflater)
 
+        binding.searchView.apply {
+            isFocusable = false
+            isFocusableInTouchMode = false
+            isClickable = true
+            setOnClickListener {
+                goToSearchProduct()
+            }
+        }
 
         // Load & observe CategoryItems
         categoryItems()
@@ -41,6 +51,10 @@ class CategoriesFragment : Fragment() {
         binding.categoryRecView.adapter = favoriteItemAdapter
         binding.categoryRecView.layoutManager = LinearLayoutManager(context)
 
+    }
+
+    private fun goToSearchProduct () {
+        startActivity(Intent(context, SearchProductActivity::class.java))
     }
 
     private fun observeCategoryItems () {

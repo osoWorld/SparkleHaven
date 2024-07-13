@@ -19,6 +19,9 @@ import com.example.sparklehaven.auth.classes.FirebaseUser
 import com.example.sparklehaven.databinding.ActivityProfileBinding
 import com.example.sparklehaven.utils.references.FirebaseRef
 import com.example.sparklehaven.utils.singleton.FirebaseModule
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.Source
 
@@ -31,6 +34,7 @@ class ProfileActivity : AppCompatActivity() {
     private val auth = FirebaseModule.firebaseAuth
     private val storage = FirebaseModule.firebaseStorage.reference
     private val userId = auth.currentUser?.uid ?: ""
+    private lateinit var googleApiClient: GoogleApiClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,9 @@ class ProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Initialize GoogleApiClient
+        initializeGoogleApiClient()
 
         binding.profileProgress.visibility = View.GONE
 
@@ -83,6 +90,19 @@ class ProfileActivity : AppCompatActivity() {
             logout()
         }
 
+    }
+
+    private fun initializeGoogleApiClient() {
+        // Configure Google Sign In
+        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleApiClient = GoogleApiClient.Builder(this)
+            .enableAutoManage(this) { /* Handle GoogleApiClient connection failure */ }
+            .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+            .build()
     }
 
     private fun copyToClipboard(label: String, text: String) {
@@ -259,12 +279,48 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        // Sign out the user from Firebase Authentication
-        auth.signOut()
+        // Connect GoogleApiClient before attempting to sign out
+        googleApiClient.connect()
+        googleApiClient.registerConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
+            override fun onConnected(bundle: Bundle?) {
+                // Sign out the user from Firebase Authentication
+                auth.signOut()
 
-        // Optionally, clear the Firestore cache if necessary
-//        clearFirestoreCache()
+                Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback {
+                    // User is now signed out
+                    googleApiClient.disconnect()
+                    redirectToLogin()
+                }
 
+                revokeAccess()
+            }
+
+            override fun onConnectionSuspended(i: Int) {
+
+            }
+        })
+    }
+
+    private fun revokeAccess() {
+        // Connect GoogleApiClient before attempting to revoke access
+        googleApiClient.connect()
+        googleApiClient.registerConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
+            override fun onConnected(bundle: Bundle?) {
+                auth.signOut()
+                Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback {
+                    // User access is revoked
+                    googleApiClient.disconnect()
+                    redirectToLogin()
+                }
+            }
+
+            override fun onConnectionSuspended(i: Int) {
+
+            }
+        })
+    }
+
+    private fun redirectToLogin() {
         // Redirect the user to LoginActivity
         val intent = Intent(this, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

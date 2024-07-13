@@ -6,11 +6,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.adapters.FavoriteItemAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.favorite.classes.view_model.FavoriteViewModel
+import com.example.sparklehaven.dashboard.navigation_fragments.favorite.viewmodel_factory.FavoriteViewModelFactory
+import com.example.sparklehaven.data.local.AppDatabase
+import com.example.sparklehaven.data.repository.FavoriteRepository
 import com.example.sparklehaven.databinding.ActivityFavoriteItemsBinding
+import com.example.sparklehaven.utils.singleton.FirebaseModule
 
 class FavoriteItemsActivity : AppCompatActivity() {
     private lateinit var binding : ActivityFavoriteItemsBinding
@@ -18,7 +23,16 @@ class FavoriteItemsActivity : AppCompatActivity() {
 
     // Initialize ViewModel using viewModels() delegate
     private val viewModel: FavoriteViewModel by viewModels()
-    private val favViewModel: FavoriteViewModel by viewModels()
+    private val favViewModel: FavoriteViewModel by viewModels {
+        val userId = FirebaseModule.firebaseAuth.currentUser?.uid ?: ""
+        FavoriteViewModelFactory(
+            userId,
+            FavoriteRepository(
+                AppDatabase.getDatabase(this).favoriteDao(),
+                FirebaseModule.firebaseFirestore
+            )
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +57,11 @@ class FavoriteItemsActivity : AppCompatActivity() {
         binding.favoriteRecView.adapter = favoriteItemAdapter
         binding.favoriteRecView.layoutManager = GridLayoutManager(this,2)
 
-//        viewModel.favoriteItemsList.observe(this) { favItems ->
-//            favoriteItemAdapter.updateItems(favItems)
-//        }
+        // Observe favorites LiveData and update adapter
+        viewModel.favoriteProducts.observe(this) { favoriteProducts ->
+            favoriteItemAdapter.updateItems(favoriteProducts)
+        }
+
+        viewModel.fetchFavorites() // Fetch favorites when the fragment is created
     }
 }

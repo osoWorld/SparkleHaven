@@ -169,7 +169,7 @@ class CheckoutActivity : AppCompatActivity() {
                         "productName" to cartItem.productName,
                         "productPrice" to cartItem.productPrice,
                         "productImageUrl" to cartItem.productImageUrl,
-                        "productCount" to cartItem.productCount,  // This is the quantity
+                        "productCount" to cartItem.productCount,
                         "totalPrice" to cartItem.totalPrice
                     )
                 },
@@ -212,5 +212,11 @@ class CheckoutActivity : AppCompatActivity() {
 
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Load shipping address
+        loadAddressFromCache()
     }
 }

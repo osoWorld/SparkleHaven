@@ -107,7 +107,7 @@ class ShippingAddressActivity : AppCompatActivity() {
                     }
                 }
                 loadAddressFromCache()  // Load the address from cache after fetching it
-                startActivity(Intent(this, CheckoutActivity::class.java))
+//                startActivity(Intent(this, CheckoutActivity::class.java))
             }
             .addOnFailureListener { e ->
                 binding.progressBar.visibility = View.GONE

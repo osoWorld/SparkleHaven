@@ -72,6 +72,8 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
+        binding.progressBar.visibility = View.GONE
+
         // Fetch user data from Firestore
         fetchUserData()
 
@@ -280,6 +282,10 @@ class HomeFragment : Fragment() {
         viewModel.products.observe(viewLifecycleOwner) { products ->
             productItemAdapter.updateItems(products)
         }
+
+//        favoriteViewModel.progress.observe(viewLifecycleOwner) { progress ->
+//            binding.progressBar.visibility = if (progress) View.VISIBLE else View.GONE
+//        }
 
         // Fetch and observe favorites
        favoriteViewModel.fetchFavorites()

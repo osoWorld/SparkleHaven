@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.model.ShippingDetailBottomSheetModel
 import com.example.sparklehaven.databinding.ShippingDetailLayoutBinding
+import com.example.sparklehaven.product.checkout.classes.model.Address
 
 class ShippingDetailBottomSheetAdapter :
     RecyclerView.Adapter<ShippingDetailBottomSheetAdapter.ShippingDetailBottomSheetViewHolder>() {
-    private var shippingDetailList: List<ShippingDetailBottomSheetModel> = listOf()
-    private var selectedPosition = -1
+    private var shippingDetailList: List<Address> = listOf()
 
     class ShippingDetailBottomSheetViewHolder(val binding: ShippingDetailLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -31,37 +31,17 @@ class ShippingDetailBottomSheetAdapter :
         val shippingDetail = shippingDetailList[position]
 
         holder.binding.apply {
-            shippingDetailUserName.text = shippingDetail.shippingDetailUserName
-            shippingDetailPhoneNumber.text = shippingDetail.shippingDetailPhoneNumber
-            shippingDetailUserName.text = shippingDetail.shippingDetailUserName
-            shippingDetailUserName.text = shippingDetail.shippingDetailUserName
-            shippingDetailRadioButton.isChecked = position == selectedPosition
-
-            // Update the CardView background color based on selection state
-            if (position == selectedPosition) {
-                shippingDetailCard.setCardBackgroundColor(
-                    ContextCompat.getColor(holder.itemView.context, R.color.Beige)
-                )
-            } else {
-                shippingDetailCard.setCardBackgroundColor(
-                    ContextCompat.getColor(holder.itemView.context, R.color.white)
-                )
-            }
-        }
-
-        holder.itemView.setOnClickListener {
-            if (selectedPosition != position) {
-                // Deselect the previously selected item
-                notifyItemChanged(selectedPosition)
-
-                // Select the current item
-                selectedPosition = position
-                notifyItemChanged(selectedPosition)
-            }
+            shippingDetailUserName.text = shippingDetail.name
+            shippingDetailPhoneNumber.text = shippingDetail.phone
+            shippingDetailAddress.text = shippingDetail.address
+            shippingDetailCity.text = shippingDetail.city
+            shippingDetailPostalCode.text = shippingDetail.postalCode
+            shippingDetailState.text = shippingDetail.state
+            shippingDetailCountry.text = shippingDetail.country
         }
     }
 
-    fun updateItems(newItems: List<ShippingDetailBottomSheetModel>) {
+    fun updateItems(newItems: List<Address>) {
         shippingDetailList = newItems
         notifyDataSetChanged()
     }

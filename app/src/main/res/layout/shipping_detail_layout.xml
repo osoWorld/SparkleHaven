@@ -22,38 +22,106 @@
             android:orientation="vertical"
             android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/shippingDetailUserName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mian Suffian"
-                android:textSize="19sp"
-                android:textColor="@color/black"
-                android:layout_marginStart="12dp"
-                android:fontFamily="@font/lora_medium"
-                android:textStyle="bold"/>
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/shippingDetailPhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+92 303 6292862"
-                android:textSize="19sp"
-                android:layout_marginTop="6dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="12dp"
-                android:fontFamily="@font/lora_medium" />
+                <TextView
+                    android:id="@+id/shippingDetailUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mian Suffian"
+                    android:textSize="19sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lora_medium"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/shippingDetailEmail"
+                <TextView
+                    android:id="@+id/shippingDetailPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+92 303 6292862"
+                    android:textSize="19sp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lora_medium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="miansuffian74@gmail.com"
-                android:textSize="19sp"
                 android:layout_marginTop="6dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="12dp"
-                android:fontFamily="@font/lora_medium" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/shippingDetailCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Faisalabad"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textSize="19sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lora_medium" />
+
+                <TextView
+                    android:id="@+id/shippingDetailPostalCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="38000"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textSize="19sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lora_medium" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/shippingDetailCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pakistan"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textSize="19sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lora_medium" />
+
+                <TextView
+                    android:id="@+id/shippingDetailState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Punjab"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textSize="19sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lora_medium" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/shippingDetailAddress"
@@ -63,25 +131,10 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textSize="19sp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="12dp"
                 android:textColor="@color/black"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/lora_medium" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="5"
-            android:gravity="center">
-
-            <RadioButton
-                android:id="@+id/shippingDetailRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"/>
 
         </LinearLayout>
 

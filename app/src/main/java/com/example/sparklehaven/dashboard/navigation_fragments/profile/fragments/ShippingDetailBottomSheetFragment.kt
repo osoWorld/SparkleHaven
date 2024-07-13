@@ -13,6 +13,7 @@ import com.example.sparklehaven.dashboard.navigation_fragments.profile.activitie
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.adapters.ShippingDetailBottomSheetAdapter
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.view_model.ShippingDetailViewModel
 import com.example.sparklehaven.databinding.FragmentShippingDetailBottomSheetBinding
+import com.example.sparklehaven.product.checkout.ShippingAddressActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ShippingDetailBottomSheetFragment : BottomSheetDialogFragment() {
@@ -45,7 +46,7 @@ class ShippingDetailBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun moveToAddShippingDetails() {
         binding.addNewShippingBtn.setOnClickListener {
-            startActivity(Intent(context, ShippingDetailsActivity::class.java))
+            startActivity(Intent(context, ShippingAddressActivity::class.java))
         }
     }
 
@@ -58,6 +59,18 @@ class ShippingDetailBottomSheetFragment : BottomSheetDialogFragment() {
     private fun observeShippingDetails() {
         viewModel.shippingDetailList.observe(viewLifecycleOwner) { shippingDetails ->
             shippingDetailBottomSheetAdapter.updateItems(shippingDetails)
+        }
+
+        viewModel.emptyState.observe(viewLifecycleOwner) { isEmpty ->
+            if (isEmpty) {
+                binding.noAddressText.visibility = View.VISIBLE
+                binding.shippingAddressRecView.visibility = View.GONE
+                binding.addNewShippingBtn.visibility = View.VISIBLE
+            } else {
+                binding.noAddressText.visibility = View.GONE
+                binding.shippingAddressRecView.visibility = View.VISIBLE
+                binding.addNewShippingBtn.visibility = View.GONE
+            }
         }
     }
 }

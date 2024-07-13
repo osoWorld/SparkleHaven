@@ -21,20 +21,19 @@ class SettingsViewModel : ViewModel() {
     }
 
     private val upperSettingItems: List<HomeCategoryModel> = listOf(
-        HomeCategoryModel(R.drawable.profile, "Profile"),
-        HomeCategoryModel(R.drawable.message, "Message"),
-        HomeCategoryModel(R.drawable.shopping_bag, "My Order"),
-        HomeCategoryModel(R.drawable.unfav_icon, "Favorites"),
-        HomeCategoryModel(R.drawable.shipping_address, "Shipping Address"),
-        HomeCategoryModel(R.drawable.credit_card, "My Card"),
-        HomeCategoryModel(R.drawable.setting, "Settings"),
+        HomeCategoryModel(R.drawable.user, "Profile"),
+        HomeCategoryModel(R.drawable.paper_plane, "Message"),
+        HomeCategoryModel(R.drawable.bags_shopping, "My Order"),
+        HomeCategoryModel(R.drawable.heart, "Favorites"),
+        HomeCategoryModel(R.drawable.truck_side, "Shipping Address"),
+        HomeCategoryModel(R.drawable.cvv_card, "My Card")
     )
 
     private val lowerSettingItems: List<HomeCategoryModel> = listOf(
         HomeCategoryModel(R.drawable.faq, "FAQ"),
-        HomeCategoryModel(R.drawable.privacy_policy, "Privacy Policy"),
-        HomeCategoryModel(R.drawable.rate_star, "Ratings"),
-        HomeCategoryModel(R.drawable.help, "Help"),
+        HomeCategoryModel(R.drawable.shield_check, "Privacy Policy"),
+        HomeCategoryModel(R.drawable.feedback_review, "Ratings"),
+        HomeCategoryModel(R.drawable.interrogation, "Help"),
     )
 
     fun loadUpperSettingsItems() {

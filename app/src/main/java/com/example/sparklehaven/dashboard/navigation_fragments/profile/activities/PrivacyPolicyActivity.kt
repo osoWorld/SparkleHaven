@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sparklehaven.R
+import com.example.sparklehaven.databinding.ActivityPrivacyPolicyBinding
 
 class PrivacyPolicyActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPrivacyPolicyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

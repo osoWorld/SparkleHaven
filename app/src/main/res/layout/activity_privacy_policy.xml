@@ -5,6 +5,59 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".dashboard.navigation_fragments.profile.activities.PrivacyPolicyActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/black_fill_circle_shape"
+                android:gravity="center"
+                android:padding="7dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back64"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Privacy POlicy"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/cinzel_medium"/>
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFAQ"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

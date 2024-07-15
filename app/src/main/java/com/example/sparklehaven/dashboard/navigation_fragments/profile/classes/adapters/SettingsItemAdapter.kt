@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.model.HomeCategoryModel
+import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.FAQActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.FavoriteItemsActivity
+import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.HelpActivity
+import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.PrivacyPolicyActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.ProfileActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.fragments.ShippingDetailBottomSheetFragment
 import com.example.sparklehaven.databinding.SettingsItemLayoutBinding
@@ -57,6 +60,15 @@ class SettingsItemAdapter (private val context: Context, private val fragmentMan
                 context.startActivity(intent)
             } else if (settingItems.title == "My Order") {
                 val intent = Intent(context, AddToCartActivity::class.java)
+                context.startActivity(intent)
+            } else if (settingItems.title == "FAQ") {
+                val intent = Intent(context, FAQActivity::class.java)
+                context.startActivity(intent)
+            } else if (settingItems.title == "Privacy Policy") {
+                val intent = Intent(context, PrivacyPolicyActivity::class.java)
+                context.startActivity(intent)
+            } else if (settingItems.title == "Help") {
+                val intent = Intent(context, HelpActivity::class.java)
                 context.startActivity(intent)
             }
         }

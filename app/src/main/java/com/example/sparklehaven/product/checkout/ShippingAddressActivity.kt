@@ -1,6 +1,5 @@
 package com.example.sparklehaven.product.checkout
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -107,7 +106,6 @@ class ShippingAddressActivity : AppCompatActivity() {
                     }
                 }
                 loadAddressFromCache()  // Load the address from cache after fetching it
-//                startActivity(Intent(this, CheckoutActivity::class.java))
             }
             .addOnFailureListener { e ->
                 binding.progressBar.visibility = View.GONE

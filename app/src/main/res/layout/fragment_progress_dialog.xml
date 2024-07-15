@@ -6,7 +6,6 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@android:color/transparent"
-    android:padding="20dp"
     tools:context=".product.checkout.classes.fragments.ProgressDialogFragment">
 
     <LinearLayout

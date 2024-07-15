@@ -74,6 +74,7 @@
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
+                        android:visibility="invisible"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         app:cardBackgroundColor="@color/Black_Pure"

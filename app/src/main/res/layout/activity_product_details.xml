@@ -132,7 +132,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" 222 Liked"
+                    android:text=" Liked"
                     app:drawableStartCompat="@drawable/unfav16"
                     app:drawableTint="@color/black"
                     android:textColor="@color/black"
@@ -151,6 +151,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

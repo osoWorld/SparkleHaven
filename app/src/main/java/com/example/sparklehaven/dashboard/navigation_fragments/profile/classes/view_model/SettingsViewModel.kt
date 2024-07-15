@@ -22,7 +22,7 @@ class SettingsViewModel : ViewModel() {
 
     private val upperSettingItems: List<HomeCategoryModel> = listOf(
         HomeCategoryModel(R.drawable.user, "Profile"),
-        HomeCategoryModel(R.drawable.paper_plane, "Message"),
+//        HomeCategoryModel(R.drawable.paper_plane, "Message"),
         HomeCategoryModel(R.drawable.bags_shopping, "My Order"),
         HomeCategoryModel(R.drawable.heart, "Favorites"),
         HomeCategoryModel(R.drawable.truck_side, "Shipping Address"),
@@ -32,7 +32,7 @@ class SettingsViewModel : ViewModel() {
     private val lowerSettingItems: List<HomeCategoryModel> = listOf(
         HomeCategoryModel(R.drawable.faq, "FAQ"),
         HomeCategoryModel(R.drawable.shield_check, "Privacy Policy"),
-        HomeCategoryModel(R.drawable.feedback_review, "Ratings"),
+//        HomeCategoryModel(R.drawable.feedback_review, "Ratings"),
         HomeCategoryModel(R.drawable.interrogation, "Help"),
     )
 

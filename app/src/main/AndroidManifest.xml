@@ -14,6 +14,15 @@
         android:theme="@style/Theme.SparkleHaven"
         tools:targetApi="31">
         <activity
+            android:name=".dashboard.navigation_fragments.profile.activities.HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dashboard.navigation_fragments.profile.activities.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dashboard.navigation_fragments.profile.activities.FAQActivity"
+            android:exported="false" />
+        <activity
             android:name=".product.activities.SearchProductActivity"
             android:exported="false" />
         <activity

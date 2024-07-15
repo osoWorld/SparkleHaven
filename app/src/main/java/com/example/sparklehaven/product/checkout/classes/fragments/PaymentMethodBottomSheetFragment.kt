@@ -35,7 +35,7 @@ class PaymentMethodBottomSheetFragment : BottomSheetDialogFragment() {
 
 
         // Move to Credit Card Details Screen
-        addANewCard()
+    //    addANewCard()
 
         // Load and Observe Payment Methods
         loadPaymentMethods()

@@ -3,35 +3,54 @@ package com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sparklehaven.R
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.classes.model.FAQItem
+import com.example.sparklehaven.databinding.ItemPrivacyPolicyBinding
 
-class PrivacyPolicyAdapter(private val faqList: List<FAQItem>) : RecyclerView.Adapter<PrivacyPolicyAdapter.FAQViewHolder> () {
+class PrivacyPolicyAdapter(private val faqList: List<FAQItem>) : RecyclerView.Adapter<PrivacyPolicyAdapter.PrivacyPolicyViewHolder> () {
 
-    inner class FAQViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val questionTextView: TextView = itemView.findViewById(R.id.questionTextView)
-        val answerTextView: TextView = itemView.findViewById(R.id.answerTextView)
-    }
+    inner class PrivacyPolicyViewHolder(val binding: ItemPrivacyPolicyBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FAQViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_faq, parent, false)
-        return FAQViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrivacyPolicyViewHolder {
+        return PrivacyPolicyViewHolder(
+            ItemPrivacyPolicyBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = faqList.size
 
-    override fun onBindViewHolder(holder: FAQViewHolder, position: Int) {
-        val faqItem = faqList[position]
-        holder.questionTextView.text = faqItem.question
-        holder.answerTextView.text = faqItem.answer
-        holder.answerTextView.visibility = if (faqItem.isExpanded) View.VISIBLE else View.GONE
+    override fun onBindViewHolder(holder: PrivacyPolicyViewHolder, position: Int) {
+        val privacyPolicyItem = faqList[position]
+        holder.binding.apply {
+            questionTextView.text = privacyPolicyItem.question
+            answerTextView.text = privacyPolicyItem.answer
 
-        holder.itemView.setOnClickListener {
-            faqItem.isExpanded = !faqItem.isExpanded
-            notifyItemChanged(position)
+            if (privacyPolicyItem.isExpanded) {
+                mainLinearLayout.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.gold_outline)
+                innerLinearLayout.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.invisible_circular_background)
+                imageIcon.setImageResource(R.drawable.minus32)
+                questionTextView.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.Gold))
+                answerTextView.visibility = View.VISIBLE
+                imageIcon.imageTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.Gold)
+            } else {
+                mainLinearLayout.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.invisible_circular_background)
+                innerLinearLayout.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.gold_bg)
+                imageIcon.setImageResource(R.drawable.plus32)
+                questionTextView.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+                answerTextView.visibility = View.GONE
+            }
+
+            holder.itemView.setOnClickListener {
+                privacyPolicyItem.isExpanded = !privacyPolicyItem.isExpanded
+                notifyItemChanged(position)
+            }
         }
     }
-
 }

@@ -18,10 +18,15 @@ import com.example.sparklehaven.databinding.SettingsItemLayoutBinding
 import com.example.sparklehaven.product.add_to_cart.AddToCartActivity
 import com.example.sparklehaven.product.checkout.classes.fragments.PaymentMethodBottomSheetFragment
 
-class SettingsItemAdapter (private val context: Context, private val fragmentManager: FragmentManager) : RecyclerView.Adapter<SettingsItemAdapter.SettingsItemViewHolder>() {
+class SettingsItemAdapter(
+    private val context: Context,
+    private val fragmentManager: FragmentManager
+) : RecyclerView.Adapter<SettingsItemAdapter.SettingsItemViewHolder>() {
 
     private var settingsItemList: List<HomeCategoryModel> = listOf()
-    class SettingsItemViewHolder (val binding: SettingsItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+
+    class SettingsItemViewHolder(val binding: SettingsItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingsItemViewHolder {
         return SettingsItemViewHolder(
@@ -73,6 +78,7 @@ class SettingsItemAdapter (private val context: Context, private val fragmentMan
             }
         }
     }
+
     fun updateItems(newItems: List<HomeCategoryModel>) {
         settingsItemList = newItems
         notifyDataSetChanged()

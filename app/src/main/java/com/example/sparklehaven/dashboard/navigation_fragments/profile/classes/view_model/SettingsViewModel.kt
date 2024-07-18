@@ -31,7 +31,7 @@ class SettingsViewModel : ViewModel() {
 
     private val lowerSettingItems: List<HomeCategoryModel> = listOf(
         HomeCategoryModel(R.drawable.faq, "FAQ"),
-//        HomeCategoryModel(R.drawable.shield_check, "Privacy Policy"),
+        HomeCategoryModel(R.drawable.shield_check, "Privacy Policy"),
 //        HomeCategoryModel(R.drawable.feedback_review, "Ratings"),
         HomeCategoryModel(R.drawable.interrogation, "Help"),
     )

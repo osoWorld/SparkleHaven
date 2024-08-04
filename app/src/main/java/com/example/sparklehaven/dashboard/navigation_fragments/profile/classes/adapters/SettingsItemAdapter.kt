@@ -11,6 +11,7 @@ import com.example.sparklehaven.dashboard.navigation_fragments.home.classes.mode
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.FAQActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.FavoriteItemsActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.HelpActivity
+import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.MessageActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.PrivacyPolicyActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.activities.ProfileActivity
 import com.example.sparklehaven.dashboard.navigation_fragments.profile.fragments.ShippingDetailBottomSheetFragment
@@ -74,6 +75,9 @@ class SettingsItemAdapter(
                 context.startActivity(intent)
             } else if (settingItems.title == "Help") {
                 val intent = Intent(context, HelpActivity::class.java)
+                context.startActivity(intent)
+            } else if (settingItems.title == "Message") {
+                val intent = Intent(context, MessageActivity::class.java)
                 context.startActivity(intent)
             }
         }

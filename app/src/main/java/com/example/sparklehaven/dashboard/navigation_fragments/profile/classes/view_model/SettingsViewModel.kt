@@ -22,7 +22,7 @@ class SettingsViewModel : ViewModel() {
 
     private val upperSettingItems: List<HomeCategoryModel> = listOf(
         HomeCategoryModel(R.drawable.user, "Profile"),
-//        HomeCategoryModel(R.drawable.paper_plane, "Message"),
+        HomeCategoryModel(R.drawable.paper_plane, "Message"),
         HomeCategoryModel(R.drawable.bags_shopping, "My Order"),
         HomeCategoryModel(R.drawable.heart, "Favorites"),
         HomeCategoryModel(R.drawable.truck_side, "Shipping Address"),

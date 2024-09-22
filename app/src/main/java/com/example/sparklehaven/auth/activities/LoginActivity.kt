@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Initialize GoogleApiClient
-        initializeGoogleApiClient()
+//        initializeGoogleApiClient()
 
         binding.progressBar.visibility = View.GONE
 
@@ -64,18 +64,18 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun initializeGoogleApiClient() {
-        // Configure Google Sign In
-        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleApiClient = GoogleApiClient.Builder(this)
-            .enableAutoManage(this) { /* Handle GoogleApiClient connection failure */ }
-            .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
-            .build()
-    }
+//    private fun initializeGoogleApiClient() {
+//        // Configure Google Sign In
+//        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
+//
+//        googleApiClient = GoogleApiClient.Builder(this)
+//            .enableAutoManage(this) { /* Handle GoogleApiClient connection failure */ }
+//            .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+//            .build()
+//    }
 
     private fun loginUser() {
         val email = binding.emailEditText.text.toString().trim()

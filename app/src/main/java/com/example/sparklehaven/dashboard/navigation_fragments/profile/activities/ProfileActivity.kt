@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
@@ -41,7 +42,19 @@ class ProfileActivity : AppCompatActivity() {
         getSharedPreferences("cart_preferences", Context.MODE_PRIVATE)
     }
 
+    private val themePreferences: SharedPreferences by lazy {
+        getSharedPreferences("theme_preference", Context.MODE_PRIVATE)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Apply the saved theme before super.onCreate
+        if (themePreferences.getBoolean("dark_theme", false)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         enableEdgeToEdge()
@@ -54,7 +67,8 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Initialize GoogleApiClient
-        initializeGoogleApiClient()
+//        initializeGoogleApiClient()
+
 
         binding.profileProgress.visibility = View.GONE
 
@@ -91,30 +105,46 @@ class ProfileActivity : AppCompatActivity() {
             binding.profileAge.setSelection(binding.profileAge.text.length)
         }
 
+        binding.darkModeSwitch.isChecked = themePreferences.getBoolean("dark_theme",false)
+
+        binding.darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            toggleTheme(isChecked)
+        }
+
         binding.logoutButton.setOnClickListener {
             logout()
         }
 
     }
 
-    private fun initializeGoogleApiClient() {
-        // Configure Google Sign In
-        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleApiClient = GoogleApiClient.Builder(this)
-            .enableAutoManage(this) { /* Handle GoogleApiClient connection failure */ }
-            .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
-            .build()
-    }
+//    private fun initializeGoogleApiClient() {
+//        // Configure Google Sign In
+//        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
+//
+//        googleApiClient = GoogleApiClient.Builder(this)
+//            .enableAutoManage(this) { /* Handle GoogleApiClient connection failure */ }
+//            .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+//            .build()
+//    }
 
     private fun copyToClipboard(label: String, text: String) {
         val clipboardManager = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText(label, text)
         clipboardManager.setPrimaryClip(clipData)
         showSnackbar("$label copied to clipboard")
+    }
+
+    private fun toggleTheme(isDarkTheme : Boolean) {
+        if (isDarkTheme) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            themePreferences.edit().putBoolean("dark_theme", true).apply()
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            themePreferences.edit().putBoolean("dark_theme", false).apply()
+        }
     }
 
     private fun chooseImageFromGallery() {
@@ -325,24 +355,24 @@ class ProfileActivity : AppCompatActivity() {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun revokeAccess() {
-        // Clear shared preferences before revoking access
-        clearSharedPreferences()
-
-        // Sign out from Firebase Auth
-        auth.signOut()
-
-        // Revoke access from Google Sign-In
-        Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback {
-            if (it.isSuccess) {
-                showSnackbar("Access revoked successfully")
-                // Redirect to the login activity
-                startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
-                finish() // Finish the current activity to prevent user from going back
-            } else {
-                // Handle revoke access failure if needed
-                showSnackbar("Failed to revoke access")
-            }
-        }
-    }
+//    private fun revokeAccess() {
+//        // Clear shared preferences before revoking access
+//        clearSharedPreferences()
+//
+//        // Sign out from Firebase Auth
+//        auth.signOut()
+//
+//        // Revoke access from Google Sign-In
+//        Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback {
+//            if (it.isSuccess) {
+//                showSnackbar("Access revoked successfully")
+//                // Redirect to the login activity
+//                startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
+//                finish() // Finish the current activity to prevent user from going back
+//            } else {
+//                // Handle revoke access failure if needed
+//                showSnackbar("Failed to revoke access")
+//            }
+//        }
+//    }
 }

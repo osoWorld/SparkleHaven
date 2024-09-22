@@ -2,7 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.SparkleHaven" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/Gold_Dark</item>
+
+        <item name="android:background">@color/darkThemeBg</item>
+        <item name="cardBackgroundColor">@color/cardBackGroundDark</item>
+        <item name="android:textColor">@color/Text_ColorDark</item>
+        <item name="android:textColorHint">@color/Text_OffWhiteDark</item>
+        <item name="tint">@color/Text_ColorDark</item>
+
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
 </resources>

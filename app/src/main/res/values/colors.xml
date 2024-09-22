@@ -5,10 +5,14 @@
 
 <!--            My Colors               -->
 
+    <color name="blackBg">#252525</color>
+    <color name="whiteBg">#FAF9F6</color>
+
+
     <color name="Beige">#F5F5DC</color>
     <color name="Gold">#FFD700</color>
     <color name="Gold_Dark">#DAA520</color>
-    <color name="Black_Pure">#FF000000</color>
+    <color name="Black_Pure">#FF0000</color>
     <color name="White_Pure">#FFFFFFFF</color>
     <color name="Blue_Facebook">#1877F1</color>
     <color name="Hint_Color">#C4C4C4</color>
@@ -24,5 +28,56 @@
 
     <color name="Darker_Glossy_original">#2E2E2E</color>
     <color name="Darker_Glossy_invisible">#D92E2E2E</color>
+
+
+<!--    Neutral Colors-->
+
+    <color name="neutral1">#252525</color>
+    <color name="neutral2">#3C3C3C</color>
+    <color name="neutral3">#605F5F</color>
+    <color name="neutral4">#9A9A9A</color>
+    <color name="neutral5">#D2D2D2</color>
+    <color name="neutral6">#FCFCFC</color>
+
+
+<!--    Light Theme Colors-->
+
+    <color name="lightThemeBg">#F7F7F7</color>
+    <color name="cardBackGroundLight">#FFFFFF</color>
+    <color name="beigeLight">#F5F5DC</color>
+    <color name="GoldLight">#F0C419 </color>
+    
+    <color name="Gold_DarkLight">#B8860B</color>
+    <color name="Black_PureLight">#1C1C1C</color>
+    
+    <color name="Text_ColorLight">#1C1C1C</color>
+    <color name="HintT_ColorLight">#1C1C1C</color>
+
+    <color name="White_PureLight">#F2F2F2</color>
+    <color name="Blue_FacebookLight">#1877F1</color>
+    <color name="Hint_ColorLight">#A6A6A6</color>
+    <color name="Grey_BackgroundLight">#E1E1E1</color>
+    <color name="grey2Light">#D8D8D8</color>
+    <color name="OffWhiteLight">#F7F7F7</color>
+
+
+<!--    Dark Theme Colors-->
+
+    <color name="darkThemeBg">#121212</color>
+    <color name="cardBackGroundDark">#1E1E1E</color>
+
+    <color name="BeigeDark">#CBCACB</color>
+    <color name="GoldDark">#E6C547</color>
+    <color name="Gold_DarkDark">#A67C00</color>
+    <color name="Text_ColorDark">#EAEAEA</color>
+
+    <color name="Text_Black_PureDark">#4D4D4D</color>
+    <color name="White_PureDark">#D1D1D1</color>
+
+    <color name="Blue_FacebookDark">#1877F1</color>
+    <color name="Hint_ColorDark">#646464</color>
+    <color name="Grey_BackgroundDark">#1E1E1E</color>
+    <color name="grey2Dark">#4A4A4A</color>
+    <color name="Text_OffWhiteDark">#B8B8B8</color>
 
 </resources>

@@ -58,7 +58,7 @@ class ProfileFragment : Fragment() {
                         binding.usernameText.text = it.username
                         binding.userEmailText.text = it.email
 
-                        if (user.userImageUrl != ""){
+                        if (user.userImageUrl != "") {
                             Glide.with(this)
                                 .load(it.userImageUrl)
                                 .placeholder(R.drawable.splash_img)

@@ -215,8 +215,11 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:elevation="8dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
             android:visibility="gone"
-            style="@style/ProgressBarStyle">
+            android:background="@drawable/glossy_rounded_shape_light">
 
             <ProgressBar
                 android:layout_width="wrap_content"

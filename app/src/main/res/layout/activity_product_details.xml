@@ -198,11 +198,12 @@
 
                     <LinearLayout
                         android:id="@+id/minusBtn"
-                        android:layout_width="34dp"
-                        android:layout_height="34dp"
-                        android:background="@drawable/black_outlined_circle_shape"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
                         android:gravity="center"
-                        android:padding="8dp">
+                        android:background="@drawable/black_fill_circle_shape"
+                        style="@style/OnBackIconStyle"
+                        android:padding="9dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -225,7 +226,7 @@
                         android:id="@+id/plusBtn"
                         android:layout_width="34dp"
                         android:layout_height="34dp"
-                        android:background="@drawable/black_fill_circle_shape"
+                        style="@style/OutlinedRoundedButtonStyle"
                         android:gravity="center"
                         android:padding="8dp">
 

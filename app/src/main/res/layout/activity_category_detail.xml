@@ -41,7 +41,6 @@
                 android:id="@+id/categoryDetailSearchView"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@drawable/searchbar_background"
                 android:hint="Search"
                 style="@style/SearchHintStyle" />
 

@@ -435,7 +435,7 @@
                     android:id="@+id/placeOrderButton"
                     android:layout_width="140dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/black_btn_shape_rounded"
+                    android:background="@drawable/black_btn_shape_rounded_dark"
                     android:text="Place Order"
                     style="@style/MainButtonStyle" />
 

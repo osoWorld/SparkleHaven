@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="24dp"
     app:cardBackgroundColor="@color/white"
+    android:foreground="?attr/selectableItemBackground"
     android:adjustViewBounds="true">
 
     <ImageView

@@ -17,7 +17,7 @@
     <color name="Blue_Facebook">#1877F1</color>
     <color name="Hint_Color">#C4C4C4</color>
     <color name="Grey_Background">#F5F5F5</color>
-    <color name="grey2">#E9E9E9</color>
+    <color name="grey2">#E2E0E0</color>
     <color name="OffWhite">#FAF9F6</color>
 
     <color name="glossy">#40FFFFFF</color>
@@ -79,5 +79,6 @@
     <color name="Grey_BackgroundDark">#1E1E1E</color>
     <color name="grey2Dark">#4A4A4A</color>
     <color name="Text_OffWhiteDark">#B8B8B8</color>
+
 
 </resources>

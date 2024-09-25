@@ -224,7 +224,6 @@
                         android:id="@+id/profileAge"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text=" "
                         android:hint="Enter your age"
                         android:textAlignment="textStart"
                         android:layout_marginEnd="4dp"
@@ -232,6 +231,7 @@
                         android:textSize="16sp"
                         android:inputType="number"
                         style="@style/EditTextStyle"
+                        android:paddingHorizontal="0dp"
                         android:layout_weight="1"
                         android:imeOptions="actionDone" />
 
@@ -357,7 +357,8 @@
                     <com.google.android.material.materialswitch.MaterialSwitch
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true" />
+                        app:thumbTint="@color/material_switch_thumb_color"
+                        android:checked="false" />
 
                 </LinearLayout>
 
@@ -390,7 +391,8 @@
                         android:id="@+id/darkModeSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="false"/>
+                        app:thumbTint="@color/material_switch_thumb_color"
+                        android:checked="true"/>
 
                 </LinearLayout>
 
@@ -453,13 +455,9 @@
                 android:id="@+id/logoutButton"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:background="@drawable/black_btn_shape_rounded"
+                style="@style/OutlinedButtonStyle"
                 android:text="Log Out"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lora_medium"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:textAllCaps="false"/>
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
 

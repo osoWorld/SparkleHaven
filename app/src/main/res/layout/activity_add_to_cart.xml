@@ -276,7 +276,7 @@
             android:id="@+id/proceedToCheckoutButton"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:background="@drawable/black_btn_shape_rounded"
+            android:background="@drawable/black_btn_shape_rounded_dark"
             style="@style/MainButtonStyle"
             android:text="Proceed To Checkout"
             android:layout_marginTop="34dp"

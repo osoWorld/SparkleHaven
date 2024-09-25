@@ -76,7 +76,7 @@
             android:layout_width="52dp"
             android:layout_height="36dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/black_btn_shape_rounded"
+            android:background="@drawable/black_btn_shape_rounded_dark"
             android:orientation="horizontal"
             android:layout_marginEnd="12dp"
             android:padding="3dp"

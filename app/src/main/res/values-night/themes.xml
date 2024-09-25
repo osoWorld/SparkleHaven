@@ -16,7 +16,7 @@
         <item name="cardBackgroundColor">@color/cardBackGroundDark</item>
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">3dp</item>
-<!--        <item name="android:foreground">?android:attr/selectableItemBackground</item>-->
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
 
     <style name="HeadingTextStyle">
@@ -53,11 +53,21 @@
     </style>
 
     <style name="OutlinedButtonStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/Text_ColorDark</item>
-        <item name="android:fontFamily">@font/cinzel_medium</item>
+        <item name="android:fontFamily">@font/lora_medium</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/black_btn_shape_rounded_dark</item>
+    </style>
+
+    <style name="OutlinedRoundedButtonStyle">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/Text_ColorDark</item>
+        <item name="android:fontFamily">@font/lora_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/white_border</item>
     </style>
 
     <style name="OnBackIconStyle">
@@ -74,6 +84,9 @@
         <item name="android:textColorHint">@color/Hint_ColorDark</item>
         <item name="android:inputType">textFilter</item>
         <item name="android:drawableStart">@drawable/search_normal_32</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:background">@drawable/searchbar_background_dark</item>
+        <item name="android:drawableTint">@color/Hint_ColorDark</item>
     </style>
 
     <style name="DescriptionTextStyle">
@@ -113,6 +126,7 @@
 
     <style name="ViewStyle">
         <item name="android:background">@color/grey2Light</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <style name="MainBackgroundStyle">
@@ -148,6 +162,14 @@
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">3dp</item>
         <!--        <item name="android:foreground">?android:attr/selectableItemBackground</item>-->
+    </style>
+
+    <style name="MaterialSwitchStyle">
+        <item name="thumbTint">@color/cardBackGroundDark</item>
+    </style>
+
+    <style name="ItemFullCounterStyle">
+        <item name="android:backgroundTint">@color/grey2Dark</item>
     </style>
 
 </resources>

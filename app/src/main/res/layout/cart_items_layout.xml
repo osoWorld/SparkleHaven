@@ -78,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@drawable/light_grey_circular_cornor_shape"
+            style="@style/ItemFullCounterStyle"
             android:orientation="horizontal"
             android:padding="3dp"
             android:gravity="center_vertical">

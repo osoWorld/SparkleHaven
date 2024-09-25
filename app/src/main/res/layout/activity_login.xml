@@ -115,10 +115,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/black_border"
                         android:text="Create an Account"
-                        android:textColor="@color/black"
-                        style="@style/OutlinedButtonStyle" />
+                        style="@style/OutlinedRoundedButtonStyle" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -165,7 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/black_border"
+                    style="@style/OutlinedRoundedButtonStyle"
                     android:gravity="center">
 
                     <ImageView

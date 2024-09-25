@@ -27,6 +27,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="55dp"
                     android:layout_height="55dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="45dp">
 
                     <ImageView
@@ -118,7 +119,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="25dp"
-                    android:background="@drawable/searchbar_background"
                     android:hint="Search"
                     style="@style/SearchHintStyle" />
 

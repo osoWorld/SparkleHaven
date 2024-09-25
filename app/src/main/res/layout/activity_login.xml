@@ -215,11 +215,8 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:elevation="8dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:orientation="vertical"
             android:visibility="gone"
-            android:background="@drawable/glossy_rounded_shape">
+            style="@style/ProgressBarStyle">
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -232,7 +229,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loading..."
-                android:textColor="@color/white"
+                android:textColor="@color/Text_ColorDark"
                 android:textSize="16sp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/lora_medium"/>

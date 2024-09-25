@@ -65,7 +65,7 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:visibility="gone"
-        android:background="@drawable/glossy_rounded_shape"
+        android:background="@drawable/glossy_rounded_shape_light"
         android:elevation="8dp">
 
         <ProgressBar
@@ -80,6 +80,7 @@
             android:layout_height="wrap_content"
             android:text="Loading..."
             android:textSize="16sp"
+            android:textColor="@color/Text_ColorDark"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/lora_medium"/>
 

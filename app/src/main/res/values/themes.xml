@@ -178,12 +178,4 @@
         <item name="android:backgroundTint">@color/grey2</item>
     </style>
 
-    <style name="ProgressBarStyle">
-        <item name="android:background">@drawable/glossy_rounded_shape_light</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:gravity">center</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:layout_centerInParent">true</item>
-    </style>
-
 </resources>

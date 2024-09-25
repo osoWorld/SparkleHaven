@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Shipping Address"
+            android:text="@string/your_shipping_address"
             android:textSize="21sp"
             style="@style/HeadingTextStyle"
             android:layout_marginTop="10dp"/>
@@ -33,7 +33,7 @@
             android:id="@+id/noAddressText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No Address Found"
+            android:text="@string/no_address_found"
             android:textSize="16sp"
             android:visibility="gone"
             style="@style/HeadingTextStyle"
@@ -56,25 +56,24 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="36dp"
+                    android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:background="@drawable/black_outlined_circle_shape"
+                    style="@style/OutlinedRoundedButtonStyle"
                     android:gravity="center"
                     android:padding="5dp">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/plus32"
-                        android:background="@android:color/transparent"/>
+                        android:src="@drawable/plus32" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Address"
-                    android:layout_marginStart="10dp"
+                    android:text="@string/add_address"
+                    android:layout_marginStart="12dp"
                     android:textSize="18sp"
                     style="@style/SubHeadingTextStyle"/>
 

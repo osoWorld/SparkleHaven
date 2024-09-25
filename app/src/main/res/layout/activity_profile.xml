@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -41,7 +42,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="@string/profile"
                 style="@style/HeadingTextStyle" />
 
             <ImageView
@@ -99,6 +100,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:paddingHorizontal="4dp"
             android:layout_marginTop="34dp">
@@ -112,14 +114,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name:"
+                    android:text="@string/name_colin"
                     android:textSize="18sp"
                     style="@style/SubHeadingTextStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="UID:"
+                    android:text="@string/uid_colin"
                     android:textSize="18sp"
                     android:layout_marginTop="16dp"
                     style="@style/SubHeadingTextStyle"/>
@@ -127,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Age:"
+                    android:text="@string/age_colin"
                     android:layout_marginTop="16dp"
                     android:textSize="18sp"
                     style="@style/SubHeadingTextStyle" />
@@ -135,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email:"
+                    android:text="@string/email_colin"
                     android:layout_marginTop="16dp"
                     android:textSize="18sp"
                     style="@style/SubHeadingTextStyle" />
@@ -157,7 +159,7 @@
                         android:id="@+id/profileName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Muhammad Suffian"
+                        android:text=""
                         android:layout_marginEnd="4dp"
                         android:textAlignment="textStart"
                         android:background="@drawable/simple_transparent_bg"
@@ -193,7 +195,7 @@
                         android:id="@+id/profileUid"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="fdzxys123z45uuid"
+                        android:text=""
                         android:textAlignment="textStart"
                         android:maxLines="1"
                         style="@style/DescriptionTextStyle"
@@ -224,7 +226,7 @@
                         android:id="@+id/profileAge"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="Enter your age"
+                        android:hint="@string/enter_your_age_hint"
                         android:textAlignment="textStart"
                         android:layout_marginEnd="4dp"
                         android:background="@drawable/simple_transparent_bg"
@@ -255,7 +257,7 @@
                         android:id="@+id/profileEmail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="miansuffian74@gmail.com"
+                        android:text=""
                         android:layout_marginEnd="4dp"
                         android:textAlignment="textStart"
                         style="@style/DescriptionTextStyle"
@@ -312,12 +314,12 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         style="@style/DescriptionTextStyle"
-                        android:text="Language" />
+                        android:text="@string/language" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="English"
+                        android:text="@string/default_language"
                         style="@style/DescriptionTextStyle" />
 
                     <ImageView
@@ -351,7 +353,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:text="Notification"
+                        android:text="@string/notification"
                         style="@style/DescriptionTextStyle" />
 
                     <com.google.android.material.materialswitch.MaterialSwitch
@@ -384,7 +386,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:text="Dark Mode"
+                        android:text="@string/dark_mode"
                         style="@style/DescriptionTextStyle" />
 
                     <com.google.android.material.materialswitch.MaterialSwitch
@@ -418,7 +420,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:text="Help Center"
+                        android:text="@string/help_center"
                         style="@style/DescriptionTextStyle" />
 
                     <ImageView
@@ -448,7 +450,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:background="@drawable/black_border_rounded"
-                android:text="Update Profile"
+                android:text="@string/update_profile"
                 style="@style/MainButtonStyle" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -456,7 +458,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 style="@style/OutlinedButtonStyle"
-                android:text="Log Out"
+                android:text="@string/log_out"
                 android:layout_marginTop="20dp" />
 
         </LinearLayout>
@@ -490,7 +492,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Uploading..."
+                android:text="@string/progressbar_loading"
                 android:textSize="16sp"
                 android:textColor="@color/Text_ColorDark"
                 android:layout_marginTop="12dp"

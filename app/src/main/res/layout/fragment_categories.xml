@@ -24,7 +24,7 @@
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Category"
+                android:text="@string/category"
                 style="@style/HeadingTextStyle"
                 android:textSize="22sp" />
 
@@ -40,7 +40,7 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="Search"
+                android:hint="@string/search_hint"
                 style="@style/SearchHintStyle"/>
 
         </LinearLayout>

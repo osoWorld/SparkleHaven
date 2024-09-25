@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Successful !"
+            android:text="@string/successful_with_colin"
             android:layout_marginTop="24dp"
             style="@style/SubHeadingTextStyle"
             android:fontFamily="@font/cinzel_medium"
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You have sucessfully registered in our app and start working on it"
+            android:text=""
             android:textAlignment="center"
             android:layout_marginHorizontal="45dp"
             android:layout_marginTop="12dp"
@@ -50,7 +50,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/black_btn_shape"
-        android:text="Start Shopping"
+        android:text="@string/start_shopping"
         style="@style/RoundedButtonStyle"/>
 
 </LinearLayout>

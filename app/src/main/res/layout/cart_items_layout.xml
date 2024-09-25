@@ -39,7 +39,7 @@
                 android:id="@+id/cartItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Elegant Asthetic Gold Pearl Earring"
+                android:text="@string/dummy_product_name"
                 android:maxLines="2"
                 android:ellipsize="end"
                 style="@style/SubHeadingTextStyle"
@@ -53,7 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PKR."
+                    android:text="@string/currency"
                     android:textSize="18sp"
                     style="@style/SubHeadingTextStyle" />
 
@@ -61,7 +61,7 @@
                     android:id="@+id/cartItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12,000,000"
+                    android:text="@string/dummy_price"
                     android:textSize="18sp"
                     android:layout_marginStart="6dp"
                     android:maxLines="2"
@@ -95,7 +95,10 @@
                 android:id="@+id/cartItemCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8"
+                android:text="@string/zero"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:ellipsize="end"
                 style="@style/SubHeadingTextStyle"
                 android:layout_marginHorizontal="10dp" />
 

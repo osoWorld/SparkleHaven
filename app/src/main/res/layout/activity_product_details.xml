@@ -22,6 +22,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="18dp">
@@ -86,7 +87,7 @@
                 android:id="@+id/productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Splended 18 Karat Gold Floral Ring"
+                android:text="@string/dummy_product_name"
                 android:textSize="22sp"
                 android:maxLines="2"
                 style="@style/HeadingTextStyle"
@@ -103,7 +104,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PKR."
+                    android:text="@string/currency"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     style="@style/SmallTextStyle" />
@@ -112,7 +113,7 @@
                     android:id="@+id/itemProductPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="23000"
+                    android:text="@string/dummy_price"
                     android:layout_marginStart="4dp"
                     android:textSize="15sp"
                     style="@style/SmallTextStyle" />
@@ -128,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Liked"
+                    android:text="@string/liked_with_heart"
                     app:drawableStartCompat="@drawable/unfav16"
                     android:layout_weight="1"
                     style="@style/SmallTextStyle" />
@@ -136,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Available in stock"
+                    android:text="@string/available_in_stock"
                     android:layout_weight="1"
                     style="@style/DescriptionTextStyle"
                     android:textAlignment="textEnd" />
@@ -159,7 +160,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(123 Reviews)"
+                    android:text="@string/dummy_reviews"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"
                     android:layout_marginStart="8dp" />
@@ -169,7 +170,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/description"
                 style="@style/SubHeadingTextStyle"
                 android:layout_marginTop="45dp" />
 
@@ -177,7 +178,7 @@
                 android:id="@+id/productDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ring_description"
+                android:text="@string/product_description"
                 android:textSize="15sp"
                 style="@style/SmallTextStyle"
                 android:layout_marginEnd="30dp"
@@ -216,7 +217,7 @@
                         android:id="@+id/productCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="03"
+                        android:text="@string/product_count"
                         android:textSize="18sp"
                         style="@style/SubHeadingTextStyle"
                         android:maxLength="2"
@@ -249,15 +250,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total: PKR."
+                        android:text="@string/total_with_colin_space"
                         style="@style/SubHeadingTextStyle"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/currency"
+                        style="@style/SubHeadingTextStyle"
+                        android:layout_marginStart="3dp"
                         android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/productTotalPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="18000000"
+                        android:text="@string/dummy_price"
                         android:maxLines="1"
                         android:ellipsize="end"
                         style="@style/DescriptionTextStyle"
@@ -295,7 +304,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Add to cart"
+                        android:text="@string/add_to_cart"
                         android:textSize="17sp"
                         android:fontFamily="@font/cinzel_medium"
                         style="@style/MainButtonStyle"

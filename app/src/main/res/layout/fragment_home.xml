@@ -51,14 +51,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Welcome"
+                        android:text="@string/welcome"
                         style="@style/SmallTextStyle" />
 
                     <TextView
                         android:id="@+id/usernameText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Muhammad Suffian"
+                        android:text=""
                         style="@style/SubHeadingTextStyle"
                         android:textSize="17sp"/>
 
@@ -85,7 +85,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="9"
+                            android:text="@string/zero"
                             android:textSize="13sp"
                             android:textAlignment="center"
                             android:padding="1dp"
@@ -119,13 +119,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="25dp"
-                    android:hint="Search"
+                    android:hint="@string/search_hint"
                     style="@style/SearchHintStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Special Offers"
+                    android:text="@string/special_offers"
                     android:textSize="22sp"
                     style="@style/SubHeadingTextStyle"
                     android:layout_marginTop="30dp" />
@@ -165,7 +165,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="More Interested"
+                        android:text="@string/more_interested"
                         android:layout_weight="1"
                         android:textSize="22sp"
                         style="@style/SubHeadingTextStyle"/>
@@ -174,7 +174,7 @@
                         android:id="@+id/viewAllBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="View All"
+                        android:text="@string/view_all"
                         android:layout_marginEnd="16dp"
                         style="@style/SmallTextStyle"
                         android:textStyle="bold"/>
@@ -215,7 +215,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loading..."
+            android:text="@string/progressbar_loading"
             android:textColor="@color/Text_ColorDark"
             android:textSize="16sp"
             android:layout_marginTop="12dp"

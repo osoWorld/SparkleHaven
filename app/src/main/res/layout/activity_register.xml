@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -42,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Sign up"
+                    android:text="@string/sign_up"
                     style="@style/HeadingTextStyle"
                     android:textSize="21sp" />
 
@@ -52,13 +51,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     style="@style/DescriptionTextStyle"
-                    android:text="Create a new account" />
+                    android:text="@string/create_a_new_account" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Username"
+                    android:text="@string/username"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -72,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:text="Email"
+                    android:text="@string/email"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -86,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:text="Password"
+                    android:text="@string/password"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -100,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:text="Confirm Password"
+                    android:text="@string/confirm_password"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -121,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     style="@style/DescriptionTextStyle"
-                    android:text="By creating an account, you agree to our Terms and Conditions" />
+                    android:text="@string/checkbox_agree_to_terms_and_conditions" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/registerBtn"
@@ -131,7 +130,7 @@
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/black_btn_shape"
                     android:fontFamily="@font/cinzel_medium"
-                    android:text="Register"
+                    android:text="@string/register"
                     style="@style/RoundedButtonStyle"
                     android:textStyle="bold" />
 
@@ -160,7 +159,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading..."
+                android:text="@string/progressbar_loading"
                 android:textSize="16sp"
                 android:textColor="@color/Text_ColorDark"
                 android:layout_marginTop="12dp"

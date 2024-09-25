@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -23,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -42,7 +42,7 @@
                     android:id="@+id/addAddressText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Shipping Address"
+                    android:text="@string/shipping_address"
                     style="@style/HeadingTextStyle" />
 
                 <ImageView
@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Name"
+                    android:text="@string/name"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     style="@style/SubHeadingTextStyle"
-                    android:text="Phone Number" />
+                    android:text="@string/phone_number" />
 
                 <EditText
                     android:id="@+id/phoneEditText"
@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Address"
+                    android:text="@string/address"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -104,6 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:baselineAligned="false"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -115,7 +116,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="City"
+                            android:text="@string/city"
                             style="@style/SubHeadingTextStyle" />
 
                         <EditText
@@ -138,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lora_medium"
-                            android:text="Postal Code"
+                            android:text="@string/postal_code"
                             style="@style/SubHeadingTextStyle" />
 
                         <EditText
@@ -158,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="State"
+                    android:text="@string/state"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -172,7 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Country"
+                    android:text="@string/country"
                     style="@style/SubHeadingTextStyle" />
 
                 <EditText
@@ -188,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:background="@drawable/black_btn_shape_rounded_dark"
-                    android:text="Save Address"
+                    android:text="@string/save_address"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="12dp"
                     android:textSize="18sp"
@@ -219,7 +220,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loading..."
+            android:text="@string/progressbar_loading"
             android:textSize="16sp"
             android:textColor="@color/Text_ColorDark"
             android:layout_marginTop="12dp"

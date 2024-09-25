@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="WELCOME !"
+                        android:text="@string/welcome_with_exclaimation"
                         style="@style/HeadingTextStyle"
                         android:textSize="21sp" />
 
@@ -57,13 +57,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         style="@style/DescriptionTextStyle"
-                        android:text="Please login to continue our app" />
+                        android:text="@string/login_description" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="Email"
+                        android:text="@string/email"
                         style="@style/SubHeadingTextStyle" />
 
                     <EditText
@@ -78,7 +78,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
                         style="@style/SubHeadingTextStyle"
-                        android:text="Password" />
+                        android:text="@string/password" />
 
                     <EditText
                         android:id="@+id/passwordEditText"
@@ -92,7 +92,7 @@
                         android:id="@+id/forgetPasswordTextBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Forget Password ?"
+                        android:text="@string/forget_password_with_questionmark"
                         android:textAlignment="textEnd"
                         android:textStyle="normal"
                         android:textSize="18sp"
@@ -106,7 +106,7 @@
                         android:layout_marginTop="30dp"
                         android:background="@drawable/black_btn_shape"
                         android:fontFamily="@font/cinzel_medium"
-                        android:text="Login"
+                        android:text="@string/login"
                         style="@style/RoundedButtonStyle"
                         android:textStyle="bold" />
 
@@ -115,7 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
                         android:layout_marginTop="16dp"
-                        android:text="Create an Account"
+                        android:text="@string/create_an_account"
                         style="@style/OutlinedRoundedButtonStyle" />
 
                     <LinearLayout
@@ -135,7 +135,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="or"
+                            android:text="@string/or"
                             android:textSize="17sp"
                             style="@style/DescriptionTextStyle"
                             android:layout_marginStart="20dp"
@@ -175,7 +175,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sign in with Google"
+                        android:text="@string/sign_in_with_google"
                         android:layout_marginStart="10dp"
                         style="@style/DescriptionTextStyle" />
 
@@ -199,7 +199,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sign in with Facebook"
+                        android:text="@string/sign_in_with_facebook"
                         android:layout_marginStart="10dp"
                         android:textColor="@color/white"
                         style="@style/DescriptionTextStyle" />
@@ -231,7 +231,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loading..."
+                android:text="@string/progressbar_loading"
                 android:textColor="@color/Text_ColorDark"
                 android:textSize="16sp"
                 android:layout_marginTop="12dp"

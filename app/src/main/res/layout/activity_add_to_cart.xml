@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -38,7 +39,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Cart"
+                android:text="@string/cart"
                 style="@style/HeadingTextStyle"/>
 
             <ImageView
@@ -49,7 +50,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:background="@drawable/invisible_circular_background">
@@ -65,7 +66,7 @@
             android:layout_width="150dp"
             android:layout_height="46dp"
             android:background="@drawable/black_btn_shape"
-            android:text="Add a Coupon"
+            android:text="@string/add_a_coupon"
             style="@style/RoundedButtonStyle"
             android:layout_marginTop="16dp"
             android:layout_gravity="end" />
@@ -97,7 +98,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Subtotal: "
+                        android:text="@string/subtotal"
                         android:layout_marginTop="3dp"
                         android:layout_weight="1"
                         android:maxLines="1"
@@ -118,14 +119,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PKR."
+                            android:text="@string/currency"
                             style="@style/SubHeadingTextStyle" />
 
                         <TextView
                             android:id="@+id/subTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="8888888"
+                            android:text="@string/zero"
                             style="@style/SubHeadingTextStyle"
                             android:maxLines="3"
                             android:textStyle="normal"
@@ -156,7 +157,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Shipping: "
+                        android:text="@string/shipping"
                         style="@style/SubHeadingTextStyle"
                         android:layout_marginTop="3dp"
                         android:layout_weight="1"
@@ -172,14 +173,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PKR."
+                            android:text="@string/currency"
                             style="@style/SubHeadingTextStyle" />
 
                         <TextView
                             android:id="@+id/shippingTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="8888888"
+                            android:text="@string/zero"
                             style="@style/SubHeadingTextStyle"
                             android:maxLines="2"
                             android:textStyle="normal"
@@ -202,6 +203,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="4dp"
@@ -216,7 +218,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total: "
+                            android:text="@string/total"
                             style="@style/SubHeadingTextStyle"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/cinzel_medium"/>
@@ -225,7 +227,7 @@
                             android:id="@+id/itemTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="(3 items)"
+                            android:text="@string/zero_item"
                             style="@style/SubHeadingTextStyle"
                             android:maxLines="1"
                             android:autoSizeTextType="uniform"
@@ -248,14 +250,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PKR."
+                            android:text="@string/currency"
                             style="@style/SubHeadingTextStyle" />
 
                         <TextView
                             android:id="@+id/grandTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="8888888"
+                            android:text="@string/zero"
                             style="@style/SubHeadingTextStyle"
                             android:maxLines="4"
                             android:autoSizeTextType="uniform"
@@ -278,7 +280,7 @@
             android:layout_height="54dp"
             android:background="@drawable/black_btn_shape_rounded_dark"
             style="@style/MainButtonStyle"
-            android:text="Proceed To Checkout"
+            android:text="@string/proceed_to_checkout"
             android:layout_marginTop="34dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="12dp" />

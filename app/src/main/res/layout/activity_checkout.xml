@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -37,7 +38,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Shipping Details"
+                android:text="@string/shipping_details"
                 style="@style/HeadingTextStyle" />
 
             <ImageView
@@ -60,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name:"
+                    android:text="@string/name_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle" />
 
@@ -68,7 +69,7 @@
                     android:id="@+id/nameShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     style="@style/DescriptionTextStyle"
                     android:textSize="16sp"
                     android:maxLines="3"
@@ -86,7 +87,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address:"
+                    android:text="@string/address_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"/>
 
@@ -94,7 +95,7 @@
                     android:id="@+id/addressShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     style="@style/DescriptionTextStyle"
                     android:maxLines="3"
                     android:ellipsize="end"
@@ -111,7 +112,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="City:"
+                    android:text="@string/city_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"/>
 
@@ -119,7 +120,7 @@
                     android:id="@+id/cityShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
@@ -136,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="State:"
+                    android:text="@string/state_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"/>
 
@@ -144,7 +145,7 @@
                     android:id="@+id/stateShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
@@ -161,7 +162,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone number:"
+                    android:text="@string/phone_number_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"/>
 
@@ -169,7 +170,7 @@
                     android:id="@+id/phoneShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
@@ -186,7 +187,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Zip code:"
+                    android:text="@string/zip_code_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"/>
 
@@ -194,7 +195,7 @@
                     android:id="@+id/zipShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
@@ -211,7 +212,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Country:"
+                    android:text="@string/country_colin"
                     android:textStyle="bold"
                     style="@style/DescriptionTextStyle"/>
 
@@ -219,7 +220,7 @@
                     android:id="@+id/countryShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text=""
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
@@ -234,7 +235,7 @@
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/black_btn_shape"
-            android:text="Change Address"
+            android:text="@string/change_address"
             android:layout_marginTop="6dp"
             style="@style/RoundedButtonStyle"
             android:textSize="15sp"
@@ -243,7 +244,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Payment Method"
+            android:text="@string/payment_method"
             style="@style/SubHeadingTextStyle"
             android:layout_marginTop="10dp" />
 
@@ -279,14 +280,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Visa"
+                        android:text="@string/select_a_method"
                         android:maxLines="1"
                         style="@style/SubHeadingTextStyle" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XXXX-XXXX-XXXX-1234"
+                        android:text="@string/dummy_debit_number"
                         android:layout_marginStart="12dp"
                         android:maxLines="1"
                         android:textSize="14sp"
@@ -303,7 +304,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Item"
+            android:text="@string/product_item"
             style="@style/SubHeadingTextStyle"
             android:layout_marginTop="20dp" />
 
@@ -323,7 +324,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Promo Code"
+            android:text="@string/promo_code"
             style="@style/SubHeadingTextStyle"
             android:layout_marginTop="20dp" />
 
@@ -366,7 +367,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#welcome2024"
+                        android:text="@string/dummy_promo_code"
                         android:textSize="21sp"
                         style="@style/SubHeadingTextStyle"
                         android:maxLines="1" />
@@ -396,7 +397,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Price"
+                    android:text="@string/total_price"
                     android:textSize="20sp"
                     style="@style/SubHeadingTextStyle" />
 
@@ -411,7 +412,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PKR."
+                        android:text="@string/currency"
                         android:textStyle="bold"
                         android:textSize="17sp"
                         style="@style/DescriptionTextStyle" />
@@ -420,7 +421,7 @@
                         android:id="@+id/grandPriceText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="88888888"
+                        android:text="@string/zero"
                         android:maxLines="3"
                         android:textSize="17sp"
                         style="@style/DescriptionTextStyle"
@@ -457,7 +458,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PLace Order"
+                        android:text="@string/place_order"
                         android:textSize="17sp"
                         android:fontFamily="@font/cinzel_medium"
                         style="@style/MainButtonStyle"

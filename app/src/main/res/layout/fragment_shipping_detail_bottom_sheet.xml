@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:scrollbars="none"
+    style="@style/AppbarStyle"
     tools:context=".dashboard.navigation_fragments.profile.fragments.ShippingDetailBottomSheetFragment">
 
     <LinearLayout
@@ -18,10 +19,8 @@
             android:layout_height="wrap_content"
             android:text="Your Shipping Address"
             android:textSize="21sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/cinzel_medium"/>
+            style="@style/HeadingTextStyle"
+            android:layout_marginTop="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shippingAddressRecView"
@@ -35,21 +34,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="No Address Found"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="16sp"
             android:visibility="gone"
+            style="@style/HeadingTextStyle"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="6dp"
-            android:fontFamily="@font/cinzel_medium"/>
+            android:layout_marginBottom="6dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/addNewShippingBtn"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            app:cardBackgroundColor="@color/Beige"
             app:cardElevation="4dp"
+            style="@style/CardViewStyle2"
             android:layout_margin="12dp"
             app:cardCornerRadius="12dp">
 
@@ -69,7 +65,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/plus32"/>
+                        android:src="@drawable/plus32"
+                        android:background="@android:color/transparent"/>
 
                 </LinearLayout>
 
@@ -77,11 +74,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add Address"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_marginStart="10dp"
                     android:textSize="18sp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle"/>
 
             </LinearLayout>
 

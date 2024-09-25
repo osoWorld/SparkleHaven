@@ -12,7 +12,7 @@
     <color name="Beige">#F5F5DC</color>
     <color name="Gold">#FFD700</color>
     <color name="Gold_Dark">#DAA520</color>
-    <color name="Black_Pure">#FF0000</color>
+    <color name="Black_Pure">#FF000000</color>
     <color name="White_Pure">#FFFFFFFF</color>
     <color name="Blue_Facebook">#1877F1</color>
     <color name="Hint_Color">#C4C4C4</color>

@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:scrollbars="none"
+    style="@style/MainBackgroundStyle"
     tools:context=".auth.activities.RegisterActivity">
 
     <RelativeLayout
@@ -41,103 +42,75 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/cinzel_medium"
                     android:text="Sign up"
-                    android:textColor="@color/black"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
+                    style="@style/HeadingTextStyle"
+                    android:textSize="21sp" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/lora_medium"
-                    android:text="Create a new account"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    style="@style/DescriptionTextStyle"
+                    android:text="Create a new account" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Username"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/usernameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Email"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="textEmailAddress" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Password"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPassword"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="textPassword" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Confirm Password"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/confirmPasswordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPassword"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="textPassword" />
 
-                <androidx.appcompat.widget.AppCompatCheckBox
+                <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/termsAndConditionCheckBox"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
@@ -147,10 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:fontFamily="@font/lora_medium"
-                    android:text="By creating an account, you agree to our Terms and Conditions"
-                    android:textColor="@color/Black_Pure"
-                    android:textSize="16sp" />
+                    style="@style/DescriptionTextStyle"
+                    android:text="By creating an account, you agree to our Terms and Conditions" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/registerBtn"
@@ -161,12 +132,11 @@
                     android:background="@drawable/black_btn_shape"
                     android:fontFamily="@font/cinzel_medium"
                     android:text="Register"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
+                    style="@style/RoundedButtonStyle"
                     android:textStyle="bold" />
 
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -191,7 +161,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loading..."
-                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/lora_medium"/>

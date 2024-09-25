@@ -43,7 +43,7 @@ class PrivacyPolicyAdapter(private val faqList: List<FAQItem>) : RecyclerView.Ad
                 mainLinearLayout.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.invisible_circular_background)
                 innerLinearLayout.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.gold_bg)
                 imageIcon.setImageResource(R.drawable.plus32)
-                questionTextView.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+//                questionTextView.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.darkThemeBg))
                 answerTextView.visibility = View.GONE
             }
 

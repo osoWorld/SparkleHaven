@@ -5,11 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/MainBackgroundStyle"
     tools:context=".dashboard.navigation_fragments.profile.activities.ProfileActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,14 +29,12 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:background="@drawable/black_fill_circle_shape"
-                android:gravity="center"
-                android:padding="7dp">
+                style="@style/OnBackIconStyle">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/back64"
-                    app:tint="@color/white" />
+                    android:src="@drawable/back64" />
 
             </LinearLayout>
 
@@ -42,11 +42,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Profile"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/cinzel_medium"/>
+                style="@style/HeadingTextStyle" />
 
             <ImageView
                 android:layout_width="38dp"
@@ -64,7 +60,6 @@
                 android:id="@+id/cardView"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                app:cardBackgroundColor="@color/Beige"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -77,6 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
+                    app:tint="@null"
                     android:src="@drawable/splash_img" />
 
             </androidx.cardview.widget.CardView>
@@ -93,7 +89,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/draw" />
+                    android:src="@drawable/draw"
+                    app:tint="@color/Text_ColorLight"/>
 
             </LinearLayout>
 
@@ -117,17 +114,15 @@
                     android:layout_height="wrap_content"
                     android:text="Name:"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="UID:"
                     android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,8 +130,7 @@
                     android:text="Age:"
                     android:layout_marginTop="16dp"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,8 +138,7 @@
                     android:text="Email:"
                     android:layout_marginTop="16dp"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle" />
 
             </LinearLayout>
 
@@ -168,14 +161,13 @@
                         android:layout_marginEnd="4dp"
                         android:textAlignment="textStart"
                         android:background="@drawable/simple_transparent_bg"
-                        android:textSize="16sp"
+                        style="@style/EditTextStyle"
                         android:layout_weight="1"
                         android:layout_marginTop="2dp"
+                        android:padding="0dp"
+                        android:textSize="16sp"
                         android:inputType="textPersonName"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:imeOptions="actionNext"
-                        android:fontFamily="@font/lora_medium"
+                        android:imeOptions="actionDone"
                         android:autoSizeTextType="uniform"
                         android:autoSizeMinTextSize="10sp"
                         android:autoSizeMaxTextSize="16sp"
@@ -183,8 +175,8 @@
 
                     <ImageView
                         android:id="@+id/nameEditFocus"
-                        android:layout_width="24dp"
-                        android:layout_height="17dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="end"
                         android:layout_marginEnd="12dp"
                         android:src="@drawable/pen_nib" />
@@ -203,12 +195,10 @@
                         android:layout_height="wrap_content"
                         android:text="fdzxys123z45uuid"
                         android:textAlignment="textStart"
-                        android:background="@drawable/simple_transparent_bg"
-                        android:textSize="16sp"
                         android:maxLines="1"
+                        style="@style/DescriptionTextStyle"
                         android:layout_weight="1"
                         android:layout_marginEnd="4dp"
-                        android:fontFamily="@font/lora_medium"
                         android:autoSizeTextType="uniform"
                         android:autoSizeMinTextSize="10sp"
                         android:autoSizeMaxTextSize="16sp"
@@ -240,18 +230,15 @@
                         android:layout_marginEnd="4dp"
                         android:background="@drawable/simple_transparent_bg"
                         android:textSize="16sp"
-                        android:textColorHint="@color/Hint_Color"
                         android:inputType="number"
-                        android:singleLine="true"
-                        android:ellipsize="end"
+                        style="@style/EditTextStyle"
                         android:layout_weight="1"
-                        android:imeOptions="actionNext"
-                        android:fontFamily="@font/lora_medium"/>
+                        android:imeOptions="actionDone" />
 
                     <ImageView
                         android:id="@+id/ageEditFocus"
-                        android:layout_width="24dp"
-                        android:layout_height="17dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="end"
                         android:layout_marginEnd="12dp"
                         android:src="@drawable/pen_nib" />
@@ -271,10 +258,8 @@
                         android:text="miansuffian74@gmail.com"
                         android:layout_marginEnd="4dp"
                         android:textAlignment="textStart"
-                        android:background="@drawable/simple_transparent_bg"
-                        android:textSize="16sp"
+                        style="@style/DescriptionTextStyle"
                         android:layout_weight="1"
-                        android:fontFamily="@font/lora_medium"
                         android:autoSizeTextType="uniform"
                         android:autoSizeMinTextSize="10sp"
                         android:autoSizeMaxTextSize="16sp"
@@ -297,11 +282,11 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="34dp"
-            android:layout_marginHorizontal="5dp"
-            app:cardElevation="4dp">
+            style="@style/CardViewStyle"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginHorizontal="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -309,7 +294,6 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Language Row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -320,41 +304,36 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/language"
-                        app:tint="@color/black" />
+                        android:src="@drawable/language" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:text="Language"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/DescriptionTextStyle"
+                        android:text="Language" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="English"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/DescriptionTextStyle" />
 
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="8dp"
                         android:src="@drawable/next"
-                        android:padding="5dp"
-                        app:tint="@color/black" />
+                        android:padding="5dp" />
+
                 </LinearLayout>
 
-                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/light_grey_circular_cornor_shape"/>
 
-                <!-- Notification Row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -365,8 +344,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/notification"
-                         app:tint="@color/black" />
+                        android:src="@drawable/notification" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -374,8 +352,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Notification"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/DescriptionTextStyle" />
 
                     <com.google.android.material.materialswitch.MaterialSwitch
                         android:layout_width="wrap_content"
@@ -384,13 +361,11 @@
 
                 </LinearLayout>
 
-                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/light_grey_circular_cornor_shape"/>
 
-                <!-- Dark Mode Row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -401,8 +376,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/night_mode"
-                        app:tint="@color/black" />
+                        android:src="@drawable/night_mode" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -410,8 +384,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Dark Mode"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/DescriptionTextStyle" />
 
                     <com.google.android.material.materialswitch.MaterialSwitch
                         android:id="@+id/darkModeSwitch"
@@ -421,13 +394,11 @@
 
                 </LinearLayout>
 
-                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/light_grey_circular_cornor_shape"/>
 
-                <!-- Help Center Row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -438,8 +409,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/help"
-                        app:tint="@color/black" />
+                        android:src="@drawable/help" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -447,16 +417,14 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Help Center"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/DescriptionTextStyle" />
 
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="8dp"
                         android:src="@drawable/next"
-                        android:padding="5dp"
-                        app:tint="@color/black" />
+                        android:padding="5dp" />
 
                 </LinearLayout>
 
@@ -478,12 +446,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:background="@drawable/black_border_rounded"
-                android:textAllCaps="false"
                 android:text="Update Profile"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/lora_medium"/>
+                style="@style/MainButtonStyle" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/logoutButton"
@@ -492,7 +456,6 @@
                 android:background="@drawable/black_btn_shape_rounded"
                 android:text="Log Out"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/white"
                 android:fontFamily="@font/lora_medium"
                 android:textStyle="bold"
                 android:textSize="17sp"
@@ -510,8 +473,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="170dp"
@@ -531,7 +493,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Uploading..."
-                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/lora_medium"/>

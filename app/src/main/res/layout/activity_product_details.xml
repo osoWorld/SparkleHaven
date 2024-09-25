@@ -5,19 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White_Pure"
+    android:scrollbars="none"
+    style="@style/MainBackgroundStyle"
     tools:context=".product.activities.ProductDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:orientation="vertical"
-            android:background="@color/Beige">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_marginHorizontal="18dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -35,13 +35,12 @@
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/black_fill_circle_shape"
-                        android:padding="6dp">
+                        style="@style/OnBackIconStyle">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/back64"
-                            app:tint="@color/white" />
+                            android:src="@drawable/back64"/>
 
                     </LinearLayout>
 
@@ -52,14 +51,12 @@
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:background="@drawable/black_fill_circle_shape"
-                    android:gravity="center"
-                    android:padding="7dp">
+                    style="@style/OnBackIconStyle">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/shopping_bag"
-                        app:tint="@color/white" />
+                        android:src="@drawable/shopping_bag" />
 
                 </LinearLayout>
 
@@ -73,6 +70,8 @@
                 android:scaleType="fitXY"
                 android:paddingVertical="20dp"
                 android:paddingHorizontal="30dp"
+                app:tint="@null"
+                style="@style/ProductImageStyle"
                 android:src="@drawable/pure_gold_couple_ring"/>
 
         </LinearLayout>
@@ -88,12 +87,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Splended 18 Karat Gold Floral Ring"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:maxLines="2"
-                android:ellipsize="end"
-                android:fontFamily="@font/cinzel_medium"
-                android:textStyle="bold"/>
+                style="@style/HeadingTextStyle"
+                android:textAlignment="textStart"
+                android:ellipsize="end" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,8 +106,7 @@
                     android:text="PKR."
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/Black_Pure"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SmallTextStyle" />
 
                 <TextView
                     android:id="@+id/itemProductPrice"
@@ -118,8 +115,7 @@
                     android:text="23000"
                     android:layout_marginStart="4dp"
                     android:textSize="15sp"
-                    android:textColor="@color/Black_Pure"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SmallTextStyle" />
 
             </LinearLayout>
             
@@ -134,24 +130,20 @@
                     android:layout_height="wrap_content"
                     android:text=" Liked"
                     app:drawableStartCompat="@drawable/unfav16"
-                    app:drawableTint="@color/black"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SmallTextStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Available in stock"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"
+                    android:textAlignment="textEnd" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -162,18 +154,15 @@
                     android:layout_height="24dp"
                     android:numStars="5"
                     android:stepSize="1"
-                    android:progressTint="@color/Gold_Dark"
-                    android:backgroundTint="@color/black" />
+                    android:progressTint="@color/Gold_Dark" />
                 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(123 Reviews)"
-                    android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"
+                    android:layout_marginStart="8dp" />
 
             </LinearLayout>
 
@@ -181,20 +170,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="45dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/lora_medium"/>
+                style="@style/SubHeadingTextStyle"
+                android:layout_marginTop="45dp" />
 
             <TextView
                 android:id="@+id/productDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ring_description"
-                android:textColor="@color/black"
                 android:textSize="15sp"
-                android:fontFamily="@font/lora_medium"
+                style="@style/SmallTextStyle"
                 android:layout_marginEnd="30dp"
                 android:layout_marginTop="8dp"/>
 
@@ -232,9 +217,7 @@
                         android:layout_height="wrap_content"
                         android:text="03"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"
-                        android:textStyle="bold"
+                        style="@style/SubHeadingTextStyle"
                         android:maxLength="2"
                         android:layout_marginHorizontal="14dp"/>
 
@@ -249,8 +232,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus32"
-                            app:tint="@color/white" />
+                            android:src="@drawable/plus32" />
 
                     </LinearLayout>
 
@@ -267,9 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total: PKR."
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"
+                        style="@style/SubHeadingTextStyle"
                         android:textSize="18sp"/>
 
                     <TextView
@@ -279,9 +259,8 @@
                         android:text="18000000"
                         android:maxLines="1"
                         android:ellipsize="end"
+                        style="@style/DescriptionTextStyle"
                         android:layout_marginStart="6dp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"
                         android:textSize="18sp"/>
 
                 </LinearLayout>
@@ -292,12 +271,12 @@
                 android:id="@+id/addToCartBtn"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                app:cardElevation="4dp"
                 android:layout_gravity="bottom"
                 app:cardCornerRadius="12dp"
+                style="@style/MainButtonStyle"
+                android:layout_marginHorizontal="6dp"
                 android:layout_marginTop="28dp"
-                android:layout_marginBottom="6dp"
-                app:cardBackgroundColor="@color/black">
+                android:layout_marginBottom="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -308,17 +287,17 @@
                     <ImageView
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:src="@drawable/shopping_bag"
-                        app:tint="@color/white" />
+                        style="@style/ReverseTint"
+                        android:padding="2dp"
+                        android:src="@drawable/shopping_bag" />
                     
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add to cart"
-                        android:textSize="18sp"
+                        android:textSize="17sp"
                         android:fontFamily="@font/cinzel_medium"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
+                        style="@style/MainButtonStyle"
                         android:layout_marginStart="10dp"/>
 
                 </LinearLayout>

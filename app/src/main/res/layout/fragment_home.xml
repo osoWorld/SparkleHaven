@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/MainBackgroundStyle"
     tools:context=".dashboard.navigation_fragments.home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,15 +27,15 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="55dp"
                     android:layout_height="55dp"
-                    app:cardCornerRadius="45dp"
-                    app:cardBackgroundColor="@color/white">
+                    app:cardCornerRadius="45dp">
 
                     <ImageView
                         android:id="@+id/userHomeImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/splash_img"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        app:tint="@null"/>
 
                 </androidx.cardview.widget.CardView>
 
@@ -51,18 +51,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Welcome"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"
-                        android:textSize="14sp"/>
+                        style="@style/SmallTextStyle" />
 
                     <TextView
                         android:id="@+id/usernameText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Muhammad Suffian"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"
-                        android:textStyle="bold"
+                        style="@style/SubHeadingTextStyle"
                         android:textSize="17sp"/>
 
                 </LinearLayout>
@@ -74,13 +70,12 @@
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
-                        android:visibility="invisible"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        app:cardBackgroundColor="@color/Black_Pure"
                         app:cardCornerRadius="30dp"
                         android:layout_marginBottom="20dp"
                         android:layout_marginEnd="6dp"
+                        style="@style/RoundedButtonStyle"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -90,12 +85,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="9"
-                            android:textStyle="bold"
                             android:textSize="13sp"
-                            android:textColor="@color/white"
                             android:textAlignment="center"
                             android:padding="1dp"
-                            android:layout_marginBottom="4dp"/>
+                            style="@style/ReverseTextStyle"
+                            android:layout_marginBottom="3dp"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -125,22 +119,16 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="25dp"
                     android:background="@drawable/searchbar_background"
-                    android:padding="10dp"
                     android:hint="Search"
-                    android:textColorHint="@color/Hint_Color"
-                    android:fontFamily="@font/lora_medium"
-                    android:drawableStart="@drawable/search_normal_32"
-                    android:drawablePadding="10dp" />
+                    style="@style/SearchHintStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Special Offers"
-                    android:fontFamily="@font/lora_medium"
                     android:textSize="22sp"
-                    android:layout_marginTop="30dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    style="@style/SubHeadingTextStyle"
+                    android:layout_marginTop="30dp" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPagerImageSlider"
@@ -175,23 +163,20 @@
                     android:layout_marginBottom="20dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="More Interested"
                         android:layout_weight="1"
-                        android:fontFamily="@font/lora_medium"
                         android:textSize="22sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                        style="@style/SubHeadingTextStyle"/>
 
                     <TextView
                         android:id="@+id/viewAllBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="View All"
-                        android:textColor="@color/black"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/lora_medium"
+                        style="@style/SmallTextStyle"
                         android:textStyle="bold"/>
 
                 </LinearLayout>

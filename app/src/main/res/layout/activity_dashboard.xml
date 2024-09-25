@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/MainBackgroundStyle"
     tools:context=".dashboard.DashboardActivity">
 
     <FrameLayout
@@ -26,7 +26,7 @@
         android:elevation="16dp"
         android:padding="7dp"
         app:bubbletab_custom_font="@font/cinzel_medium"
-        app:bubbletab_disabled_icon_color="@color/black"
+        app:bubbletab_disabled_icon_color="@color/darkThemeBg"
         app:bubbletab_horizontal_padding="20dp"
         app:bubbletab_icon_padding="5sp"
         app:bubbletab_icon_size="20dp"

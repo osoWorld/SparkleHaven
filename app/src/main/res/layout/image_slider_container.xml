@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
+        app:tint="@null"
         android:src="@drawable/golden_wedding_rings"/>
 
 </androidx.cardview.widget.CardView>

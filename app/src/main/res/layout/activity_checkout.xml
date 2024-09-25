@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/MainBackgroundStyle"
+    android:scrollbars="none"
     tools:context=".product.checkout.CheckoutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -24,27 +25,20 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:background="@drawable/black_fill_circle_shape"
-                android:gravity="center"
-                android:padding="7dp">
+                style="@style/OnBackIconStyle">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/back64"
-                    app:tint="@color/white" />
+                    android:src="@drawable/back64" />
 
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Shipping Details"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/cinzel_medium"/>
+                style="@style/HeadingTextStyle" />
 
             <ImageView
                 android:layout_width="38dp"
@@ -67,22 +61,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle" />
 
                 <TextView
                     android:id="@+id/nameShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
+                    style="@style/DescriptionTextStyle"
                     android:textSize="16sp"
                     android:maxLines="3"
                     android:ellipsize="end"
-                    android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    android:layout_marginStart="6dp" />
 
             </LinearLayout>
 
@@ -96,22 +87,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
                 <TextView
                     android:id="@+id/addressShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
+                    style="@style/DescriptionTextStyle"
                     android:maxLines="3"
                     android:ellipsize="end"
-                    android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    android:layout_marginStart="6dp" />
 
             </LinearLayout>
 
@@ -125,22 +112,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="City:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
                 <TextView
                     android:id="@+id/cityShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
             </LinearLayout>
 
@@ -154,22 +137,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="State:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
                 <TextView
                     android:id="@+id/stateShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
             </LinearLayout>
 
@@ -183,22 +162,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone number:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
                 <TextView
                     android:id="@+id/phoneShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
             </LinearLayout>
 
@@ -212,22 +187,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Zip code:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
                 <TextView
                     android:id="@+id/zipShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
             </LinearLayout>
 
@@ -241,22 +212,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Country:"
-                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
                 <TextView
                     android:id="@+id/countryShippingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:maxLines="3"
                     android:ellipsize="end"
                     android:layout_marginStart="6dp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/DescriptionTextStyle"/>
 
             </LinearLayout>
 
@@ -268,32 +235,26 @@
             android:layout_height="48dp"
             android:background="@drawable/black_btn_shape"
             android:text="Change Address"
-            android:textAllCaps="false"
             android:layout_marginTop="6dp"
-            android:textColor="@color/white"
+            style="@style/RoundedButtonStyle"
             android:textSize="15sp"
-            android:layout_gravity="end"
-            android:fontFamily="@font/lora_medium"/>
+            android:layout_gravity="end" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Payment Method"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/lora_medium"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+            style="@style/SubHeadingTextStyle"
+            android:layout_marginTop="10dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/paymentMethodCard"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             app:cardCornerRadius="14dp"
-            app:cardElevation="3dp"
+            style="@style/CardViewStyle"
             android:layout_marginHorizontal="2dp"
-            android:layout_marginTop="12dp"
-            app:cardBackgroundColor="@color/white">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -305,36 +266,33 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/visa" />
+                    android:src="@drawable/visa"
+                    app:tint="@null"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="19dp"
                     android:gravity="center_vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Visa"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="19sp"
                         android:maxLines="1"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/SubHeadingTextStyle" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="XXXX-XXXX-XXXX-1234"
-                        android:textColor="@color/black"
                         android:layout_marginStart="12dp"
                         android:maxLines="1"
                         android:textSize="14sp"
+                        style="@style/DescriptionTextStyle"
                         android:layout_marginEnd="4dp"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/lora_medium"/>
+                        android:layout_marginTop="3dp" />
 
                 </LinearLayout>
 
@@ -346,11 +304,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Product Item"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/lora_medium"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+            style="@style/SubHeadingTextStyle"
+            android:layout_marginTop="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -366,25 +321,19 @@
         </LinearLayout>
 
         <TextView
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Promo Code"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/lora_medium"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+            style="@style/SubHeadingTextStyle"
+            android:layout_marginTop="20dp" />
 
         <androidx.cardview.widget.CardView
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             app:cardCornerRadius="14dp"
-            app:cardElevation="3dp"
+            style="@style/CardViewStyle"
             android:layout_marginHorizontal="2dp"
-            android:layout_marginTop="12dp"
-            app:cardBackgroundColor="@color/white">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -396,8 +345,9 @@
                 <LinearLayout
                     android:layout_width="60dp"
                     android:layout_height="52dp"
-                    android:padding="14dp"
-                    android:background="@drawable/black_circular_filled_bg">
+                    android:padding="12dp"
+                    android:background="@drawable/black_circular_filled_bg"
+                    style="@style/OnBackIconStyle">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -417,11 +367,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#welcome2024"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
                         android:textSize="21sp"
-                        android:maxLines="1"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/SubHeadingTextStyle"
+                        android:maxLines="1" />
 
                 </LinearLayout>
 
@@ -448,11 +396,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
                     android:text="Total Price"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -464,22 +409,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PKR."
-                        android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lora_medium"/>
+                        style="@style/DescriptionTextStyle" />
 
                     <TextView
                         android:id="@+id/grandPriceText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="88888888"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
                         android:maxLines="3"
+                        style="@style/DescriptionTextStyle"
                         android:ellipsize="end"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/lora_medium"/>
+                        android:layout_marginStart="6dp" />
 
                 </LinearLayout>
 
@@ -496,10 +437,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/black_btn_shape_rounded"
                     android:text="Place Order"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/MainButtonStyle" />
 
             </LinearLayout>
 

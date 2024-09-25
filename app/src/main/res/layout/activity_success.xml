@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
+    style="@style/MainBackgroundStyle"
     tools:context=".success.SuccessActivity">
 
     <LinearLayout
@@ -27,9 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Successful !"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:layout_marginTop="24dp"
+            style="@style/SubHeadingTextStyle"
             android:fontFamily="@font/cinzel_medium"
             android:textSize="24sp"/>
 
@@ -37,12 +36,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="You have sucessfully registered in our app and start working on it"
-            android:textColor="@color/black"
             android:textAlignment="center"
             android:layout_marginHorizontal="45dp"
             android:layout_marginTop="12dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/lora_medium"/>
+            style="@style/DescriptionTextStyle" />
 
     </LinearLayout>
 
@@ -53,13 +50,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/black_btn_shape"
-        android:fontFamily="@font/lora_medium"
         android:text="Start Shopping"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        style="@style/RoundedButtonStyle"/>
 
 </LinearLayout>

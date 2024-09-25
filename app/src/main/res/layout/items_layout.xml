@@ -4,21 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/White_Pure"
     android:layout_margin="8dp"
+    style="@style/CardViewStyle"
     app:cardCornerRadius="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/Grey_Background">
+        android:orientation="vertical">
         
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            app:cardCornerRadius="30dp"
-            app:cardBackgroundColor="@color/Beige">
+            app:cardCornerRadius="30dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -30,7 +28,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/smart_watch"
+                    android:src="@drawable/pure_gold_couple_ring"
+                    app:tint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +39,8 @@
                     android:id="@+id/favoriteIconBtn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:cardBackgroundColor="@color/Black_Pure"
                     app:cardCornerRadius="30dp"
+                    style="@style/ReverseCardViewStyle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" >
 
@@ -57,6 +56,7 @@
                             android:id="@+id/isFavoriteIcon"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            style="@style/ReverseTint"
                             android:src="@drawable/unfav_icon" />
 
                     </LinearLayout>
@@ -78,12 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Watch"
-                android:textStyle="bold"
-                android:textSize="19sp"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textColor="@color/Black_Pure"
-                android:fontFamily="@font/lora_medium"/>
+                style="@style/SubHeadingTextStyle" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,10 +94,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PKR."
-                    android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/Black_Pure"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle" />
 
                 <TextView
                     android:id="@+id/itemProductPrice"
@@ -109,8 +104,7 @@
                     android:text="23000"
                     android:layout_marginStart="4dp"
                     android:textSize="15sp"
-                    android:textColor="@color/Black_Pure"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SmallTextStyle" />
 
             </LinearLayout>
 

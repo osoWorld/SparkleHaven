@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/white"
     android:id="@+id/shippingDetailCard"
     app:cardCornerRadius="14dp"
     android:layout_margin="10dp"
+    style="@style/CardViewStyle2"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -17,7 +17,7 @@
         android:padding="12dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1">
@@ -34,12 +34,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mian Suffian"
-                    android:textSize="19sp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/lora_medium"
-                    android:textStyle="bold"/>
+                    style="@style/SubHeadingTextStyle"
+                    android:layout_marginStart="12dp" />
 
                 <TextView
                     android:id="@+id/shippingDetailPhoneNumber"
@@ -47,10 +44,9 @@
                     android:layout_height="wrap_content"
                     android:text="+92 303 6292862"
                     android:textSize="19sp"
-                    android:textColor="@color/black"
+                    style="@style/DescriptionTextStyle"
                     android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/lora_medium" />
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
@@ -68,11 +64,10 @@
                     android:text="Faisalabad"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    style="@style/DescriptionTextStyle"
                     android:textSize="19sp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/lora_medium" />
+                    android:layout_marginStart="12dp" />
 
                 <TextView
                     android:id="@+id/shippingDetailPostalCode"
@@ -81,11 +76,10 @@
                     android:text="38000"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    style="@style/DescriptionTextStyle"
                     android:textSize="19sp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/lora_medium" />
+                    android:layout_marginStart="12dp" />
 
             </LinearLayout>
 
@@ -102,11 +96,10 @@
                     android:text="Pakistan"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    style="@style/DescriptionTextStyle"
                     android:textSize="19sp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/lora_medium" />
+                    android:layout_marginStart="12dp" />
 
                 <TextView
                     android:id="@+id/shippingDetailState"
@@ -115,11 +108,10 @@
                     android:text="Punjab"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    style="@style/DescriptionTextStyle"
                     android:textSize="19sp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/lora_medium" />
+                    android:layout_marginStart="12dp" />
 
             </LinearLayout>
 
@@ -130,11 +122,10 @@
                 android:text="X-421, Eden Orchard, Lasani Puli, Faisalabad, Pakistan"
                 android:ellipsize="end"
                 android:maxLines="2"
+                style="@style/DescriptionTextStyle"
                 android:textSize="19sp"
                 android:layout_marginTop="12dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="12dp"
-                android:fontFamily="@font/lora_medium" />
+                android:layout_marginStart="12dp" />
 
         </LinearLayout>
 

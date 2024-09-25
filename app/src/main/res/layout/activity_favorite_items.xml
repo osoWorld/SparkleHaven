@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/MainBackgroundStyle"
     tools:context=".dashboard.navigation_fragments.profile.activities.FavoriteItemsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        style="@style/AppbarStyle"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <LinearLayout
@@ -27,11 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Favorite"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:fontFamily="@font/cinzel_medium"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                style="@style/HeadingTextStyle"
+                android:textSize="22sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -45,12 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/searchbar_background"
-                android:padding="10dp"
                 android:hint="Search"
-                android:textColorHint="@color/Hint_Color"
-                android:fontFamily="@font/lora_medium"
-                android:drawableStart="@drawable/search_normal_32"
-                android:drawablePadding="10dp" />
+                style="@style/SearchHintStyle" />
 
         </LinearLayout>
 

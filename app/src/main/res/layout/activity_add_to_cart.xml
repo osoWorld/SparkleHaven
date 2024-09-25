@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White_Pure"
+    android:scrollbars="none"
+    style="@style/MainBackgroundStyle"
     tools:context=".product.add_to_cart.AddToCartActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -21,30 +22,24 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/onBackButton"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:background="@drawable/black_fill_circle_shape"
-                android:gravity="center"
-                android:padding="7dp">
+                style="@style/OnBackIconStyle">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/back64"
-                    app:tint="@color/white" />
+                    android:src="@drawable/back64" />
 
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Cart"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/cinzel_medium"/>
+                style="@style/HeadingTextStyle"/>
 
             <ImageView
                 android:layout_width="38dp"
@@ -67,25 +62,24 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:visibility="gone"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="46dp"
             android:background="@drawable/black_btn_shape"
             android:text="Add a Coupon"
-            android:textAllCaps="false"
+            style="@style/RoundedButtonStyle"
             android:layout_marginTop="16dp"
-            android:layout_gravity="end"
-            android:textColor="@color/white"
-            android:fontFamily="@font/lora_medium"/>
+            android:layout_gravity="end" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="6dp"
+            app:cardElevation="3dp"
             app:cardCornerRadius="14dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginHorizontal="4dp"
-            app:cardBackgroundColor="@color/white">
+            android:layout_marginTop="36dp"
+            style="@style/CardViewStyle"
+            android:elevation="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginHorizontal="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,12 +98,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Subtotal: "
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
                         android:layout_marginTop="3dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        style="@style/SubHeadingTextStyle"
                         android:autoSizeTextType="uniform"
                         android:autoSizeMinTextSize="10sp"
                         android:autoSizeMaxTextSize="18sp"
@@ -127,25 +119,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="PKR."
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium"/>
+                            style="@style/SubHeadingTextStyle" />
 
                         <TextView
                             android:id="@+id/subTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="8888888"
-                            android:textSize="19sp"
+                            style="@style/SubHeadingTextStyle"
                             android:maxLines="3"
+                            android:textStyle="normal"
                             android:autoSizeTextType="uniform"
                             android:autoSizeMinTextSize="10sp"
                             android:autoSizeMaxTextSize="19sp"
                             android:autoSizeStepGranularity="1sp"
-                            android:layout_marginStart="6dp"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium"/>
+                            android:layout_marginStart="6dp" />
 
                     </LinearLayout>
 
@@ -169,9 +157,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Shipping: "
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
+                        style="@style/SubHeadingTextStyle"
                         android:layout_marginTop="3dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/cinzel_medium"/>
@@ -187,25 +173,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="PKR."
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium"/>
+                            style="@style/SubHeadingTextStyle" />
 
                         <TextView
                             android:id="@+id/shippingTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="8888888"
-                            android:textSize="19sp"
+                            style="@style/SubHeadingTextStyle"
                             android:maxLines="2"
+                            android:textStyle="normal"
                             android:autoSizeTextType="uniform"
                             android:autoSizeMinTextSize="10sp"
                             android:autoSizeMaxTextSize="19sp"
                             android:autoSizeStepGranularity="1sp"
-                            android:layout_marginStart="6dp"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium"/>
+                            android:layout_marginStart="6dp" />
 
                     </LinearLayout>
 
@@ -235,9 +217,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total: "
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
+                            style="@style/SubHeadingTextStyle"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/cinzel_medium"/>
 
@@ -246,15 +226,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="(3 items)"
+                            style="@style/SubHeadingTextStyle"
                             android:maxLines="1"
                             android:autoSizeTextType="uniform"
                             android:autoSizeMinTextSize="10sp"
                             android:autoSizeMaxTextSize="18sp"
                             android:autoSizeStepGranularity="1sp"
                             android:layout_marginStart="2dp"
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/cinzel_medium"/>
 
@@ -271,25 +249,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="PKR."
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium"/>
+                            style="@style/SubHeadingTextStyle" />
 
                         <TextView
                             android:id="@+id/grandTotalText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="8888888"
-                            android:textSize="19sp"
+                            style="@style/SubHeadingTextStyle"
                             android:maxLines="4"
                             android:autoSizeTextType="uniform"
                             android:autoSizeMinTextSize="10sp"
                             android:autoSizeMaxTextSize="19sp"
                             android:autoSizeStepGranularity="1sp"
-                            android:layout_marginStart="6dp"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium"/>
+                            android:layout_marginStart="6dp" />
 
                     </LinearLayout>
 
@@ -304,14 +277,11 @@
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:background="@drawable/black_btn_shape_rounded"
+            style="@style/MainButtonStyle"
             android:text="Proceed To Checkout"
-            android:textColor="@color/white"
             android:layout_marginTop="34dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="12dp"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:fontFamily="@font/lora_medium"/>
+            android:layout_marginBottom="12dp" />
 
     </LinearLayout>
 

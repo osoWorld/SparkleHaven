@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:layout_marginTop="6dp"
+    style="@style/MainBackgroundStyle"
     android:orientation="vertical">
 
     <LinearLayout
@@ -25,19 +25,16 @@
                 android:id="@+id/settingsItemIcon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/smart_watch"
-                app:tint="@color/black" />
+                android:src="@drawable/smart_watch" />
 
             <TextView
                 android:id="@+id/settingsItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Smart Watch"
-                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/lora_medium"/>
+                style="@style/SubHeadingTextStyle"
+                android:layout_marginStart="8dp" />
 
         </LinearLayout>
 

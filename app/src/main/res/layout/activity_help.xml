@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/MainBackgroundStyle"
     tools:context=".dashboard.navigation_fragments.profile.activities.HelpActivity">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="For help, please contact us at:"
         android:textSize="18sp"
-        android:textColor="@color/black"
+        style="@style/SubHeadingTextStyle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
 
@@ -25,10 +25,10 @@
         android:text="miansuffian74@gmail.com"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="18sp"
+        style="@style/SubHeadingTextStyle"
         android:layout_below="@id/help_info"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:clickable="true"
         android:autoLink="email"/>
 
 </RelativeLayout>

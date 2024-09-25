@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/MainBackgroundStyle"
     tools:context=".splash.SplashActivity">
 
     <ImageView
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        app:tint="@null"
         android:src="@drawable/splash_img" />
 
     <LinearLayout
@@ -24,21 +26,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/glossy_lighter"
             android:elevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@color/glossy_lighter"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/appLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="180dp"
+                    app:tint="@null"
                     android:layout_marginHorizontal="66dp"
-                    android:src="@drawable/sparkle_haven_redesign_f_f"
-                     />
+                    android:src="@drawable/sparkle_haven_redesign_f_f"/>
 
             </LinearLayout>
 
@@ -47,6 +51,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/glossy_lighter"
             android:layout_weight="1"/>
 
     </LinearLayout>

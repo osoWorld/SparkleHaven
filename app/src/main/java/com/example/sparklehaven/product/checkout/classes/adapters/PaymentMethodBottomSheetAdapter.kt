@@ -36,15 +36,15 @@ class PaymentMethodBottomSheetAdapter : RecyclerView.Adapter<PaymentMethodBottom
             paymentMethodRadioButton.isChecked = position == selectedPosition
 
             // Update the CardView background color based on selection state
-            if (position == selectedPosition) {
-                paymentMethodCard.setCardBackgroundColor(
-                    ContextCompat.getColor(holder.itemView.context, R.color.Beige)
-                )
-            } else {
-                paymentMethodCard.setCardBackgroundColor(
-                    ContextCompat.getColor(holder.itemView.context, R.color.white)
-                )
-            }
+//            if (position == selectedPosition) {
+//                paymentMethodCard.setCardBackgroundColor(
+//                    ContextCompat.getColor(holder.itemView.context, R.color.Beige)
+//                )
+//            } else {
+//                paymentMethodCard.setCardBackgroundColor(
+//                    ContextCompat.getColor(holder.itemView.context, R.color.white)
+//                )
+//            }
         }
 
         holder.itemView.setOnClickListener {

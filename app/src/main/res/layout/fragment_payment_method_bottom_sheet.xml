@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:scrollbars="none"
+    style="@style/AppbarStyle"
     tools:context=".product.checkout.classes.fragments.PaymentMethodBottomSheetFragment">
 
     <LinearLayout
@@ -19,10 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Select a Payment Method"
             android:textSize="21sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/cinzel_medium"/>
+            style="@style/HeadingTextStyle"
+            android:layout_marginTop="10dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/paymentMethodsRecView"
@@ -35,8 +34,8 @@
             android:id="@+id/addNewCardBtn"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            app:cardBackgroundColor="@color/Beige"
             app:cardElevation="4dp"
+            style="@style/CardViewStyle2"
             android:layout_margin="12dp"
             app:cardCornerRadius="12dp">
 
@@ -56,7 +55,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/plus32"/>
+                        android:src="@drawable/plus32" />
 
                 </LinearLayout>
 
@@ -64,11 +63,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add Card"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_marginStart="10dp"
                     android:textSize="18sp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/SubHeadingTextStyle" />
 
             </LinearLayout>
 

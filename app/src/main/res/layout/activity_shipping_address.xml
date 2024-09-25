@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/MainBackgroundStyle"
     tools:context=".product.checkout.ShippingAddressActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,28 +29,21 @@
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:background="@drawable/black_fill_circle_shape"
-                    android:gravity="center"
-                    android:padding="7dp">
+                    style="@style/OnBackIconStyle">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/back64"
-                        app:tint="@color/white" />
+                        android:src="@drawable/back64" />
 
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/addAddressText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Shipping Address"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/cinzel_medium"/>
+                    style="@style/HeadingTextStyle" />
 
                 <ImageView
                     android:layout_width="38dp"
@@ -68,61 +62,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Name"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/nameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lora_medium"
-                    android:text="Phone Number"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle"
+                    android:text="Phone Number" />
 
                 <EditText
                     android:id="@+id/phoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
                     android:inputType="phone"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Address"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/addressEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPostalAddress"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="textPostalAddress" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -139,23 +115,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/lora_medium"
                             android:text="City"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            style="@style/SubHeadingTextStyle" />
 
                         <EditText
                             android:id="@+id/cityEditText"
                             android:layout_width="match_parent"
                             android:layout_height="46dp"
-                            android:singleLine="true"
-                            android:ellipsize="end"
+                            style="@style/EditTextStyle"
                             android:layout_marginStart="6dp"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium" />
-
+                            android:inputType="text" />
 
                     </LinearLayout>
 
@@ -170,20 +139,15 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lora_medium"
                             android:text="Postal Code"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            style="@style/SubHeadingTextStyle" />
 
                         <EditText
                             android:id="@+id/postalEditText"
                             android:layout_width="match_parent"
                             android:layout_height="46dp"
-                            android:singleLine="true"
-                            android:ellipsize="end"
+                            style="@style/EditTextStyle"
                             android:layout_marginStart="6dp"
-                            android:imeOptions="actionNext"
-                            android:inputType="number"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/lora_medium" />
+                            android:inputType="number" />
 
 
                     </LinearLayout>
@@ -194,41 +158,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="State"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/stateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:inputType="text" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lora_medium"
                     android:text="Country"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    style="@style/SubHeadingTextStyle" />
 
                 <EditText
                     android:id="@+id/countryEditText"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lora_medium" />
+                    style="@style/EditTextStyle"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/saveAddressButton"
@@ -238,10 +191,8 @@
                     android:text="Save Address"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="12dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:fontFamily="@font/lora_medium"/>
+                    style="@style/MainButtonStyle" />
 
             </LinearLayout>
 
@@ -269,7 +220,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Loading..."
-            android:textColor="@color/white"
             android:textSize="16sp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/lora_medium"/>
